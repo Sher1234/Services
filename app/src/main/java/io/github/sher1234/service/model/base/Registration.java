@@ -1,0 +1,125 @@
+package io.github.sher1234.service.model.base;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Registration extends Base implements Serializable {
+
+    private int NumberOfVisits;
+    private String SiteDetails;
+    private String CustomerName;
+    private String NatureOfSite;
+    private String ProductDetail;
+    private String ProductNumber;
+    private String ComplaintType;
+    private String WarrantyStatus;
+
+    public Registration() {
+
+    }
+
+    public Registration(int numberOfVisits, String siteDetails, String customerName,
+                        String natureOfSite, String productDetail, String productNumber,
+                        String complaintType, String warrantyStatus, Date dateTime, String userID,
+                        String callNumber, String concernName, String concernPhone,
+                        boolean isCompleted) {
+        super(dateTime, userID, callNumber, concernName, concernPhone, isCompleted);
+        NumberOfVisits = numberOfVisits;
+        SiteDetails = siteDetails;
+        CustomerName = customerName;
+        NatureOfSite = natureOfSite;
+        ProductDetail = productDetail;
+        ProductNumber = productNumber;
+        ComplaintType = complaintType;
+        WarrantyStatus = warrantyStatus;
+    }
+
+    public String getWarrantyStatus() {
+        return WarrantyStatus;
+    }
+
+    public void setWarrantyStatus(String warrantyStatus) {
+        WarrantyStatus = warrantyStatus;
+    }
+
+    public String getComplaintType() {
+        return ComplaintType;
+    }
+
+    public void setComplaintType(String complaintType) {
+        ComplaintType = complaintType;
+    }
+
+    public String getProductNumber() {
+        return ProductNumber;
+    }
+
+    public void setProductNumber(String productNumber) {
+        ProductNumber = productNumber;
+    }
+
+    public String getProductDetail() {
+        return ProductDetail;
+    }
+
+    public void setProductDetail(String productDetail) {
+        ProductDetail = productDetail;
+    }
+
+    public String getNatureOfSite() {
+        return NatureOfSite;
+    }
+
+    public void setNatureOfSite(String natureOfSite) {
+        NatureOfSite = natureOfSite;
+    }
+
+    public String getCustomerName() {
+        return CustomerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        CustomerName = customerName;
+    }
+
+    public String getSiteDetails() {
+        return SiteDetails;
+    }
+
+    public void setSiteDetails(String siteDetails) {
+        SiteDetails = siteDetails;
+    }
+
+    public int getNumberOfVisits() {
+        return NumberOfVisits;
+    }
+
+    public String getNumberOfVisitsString() {
+        return NumberOfVisits + "";
+    }
+
+    public void setNumberOfVisits(int numberOfVisits) {
+        NumberOfVisits = numberOfVisits;
+    }
+
+    public Map<String, String> getRegistrationMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("UserID", getUserID());
+        map.put("CallNumber", getCallNumber());
+        map.put("DateTime", getDateTimeString());
+        map.put("ConcernName", getConcernName());
+        map.put("IsCompleted", getIsCompleted());
+        map.put("SiteDetails", getSiteDetails());
+        map.put("CustomerName", getCustomerName());
+        map.put("NatureOfSite", getNatureOfSite());
+        map.put("ConcernPhone", getConcernPhone());
+        map.put("ComplaintType", getComplaintType());
+        map.put("ProductDetail", getProductDetail());
+        map.put("ProductNumber", getProductNumber());
+        map.put("WarrantyStatus", getWarrantyStatus());
+        map.put("NumberOfVisits", getNumberOfVisitsString());
+        return map;
+    }
+}
