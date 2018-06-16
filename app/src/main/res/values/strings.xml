@@ -20,4 +20,7 @@
     <string name="employee_id">Employee ID</string>
     <string name="update_account">Update Account</string>
     <string name="email_as_eid">Use Email as Employee ID</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="weekly">Weekly</string>
+    <string name="quarterly">Quarterly</string>
 </resources>

@@ -19,49 +19,36 @@ import org.jetbrains.annotations.NotNull;
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.api.Api;
+import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
+import io.github.sher1234.service.util.NavigationHost;
+import io.github.sher1234.service.util.UserPreferences;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class Main4 extends Fragment implements View.OnClickListener {
-
-    private static final String PARAM_EMAIL = "PARAM_EMAIL-M4";
+public class Start3 extends Fragment implements View.OnClickListener {
 
     private TextInputEditText editText1;
     private TextInputEditText editText2;
     private TextInputEditText editText3;
-    private TextInputEditText editText4;
-
     private View mProgressView;
 
-    private String email;
+    private RegisterTask task;
 
-    private ResetPasswordTask task;
-
-    public Main4() {
-    }
-
-    @NonNull
-    public static Fragment newInstance(String email) {
-        Main4 main4 =  new Main4();
-        Bundle bundle = new Bundle();
-        bundle.putString(PARAM_EMAIL, email);
-        main4.setArguments(bundle);
-        return main4;
+    public Start3() {
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main_4, container, false);
+        View view = inflater.inflate(R.layout.fragment_start_3, container, false);
         view.findViewById(R.id.button).setOnClickListener(this);
         mProgressView = view.findViewById(R.id.progressView);
         editText1 = view.findViewById(R.id.editText1);
         editText2 = view.findViewById(R.id.editText2);
         editText3 = view.findViewById(R.id.editText3);
-        editText4 = view.findViewById(R.id.editText4);
         task = null;
         return view;
     }
@@ -69,24 +56,13 @@ public class Main4 extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        editText1.setText(email);
-        editText1.setEnabled(false);
-        editText2.requestFocus();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        assert getArguments() != null;
-        email = getArguments().getString(PARAM_EMAIL, null);
+        editText1.setText("");
+        editText2.setText("");
+        editText3.setText("");
     }
 
     private boolean isPasswordMismatch() {
-        return !getString(editText3).equals(getString(editText4)) || getString(editText3).length() < 8;
-    }
-
-    private boolean isOtpInvalid() {
-        return getString(editText2).length() != 6;
+        return !getString(editText2).equals(getString(editText3)) || getString(editText2).length() < 8;
     }
 
     private boolean isEmailInvalid() {
@@ -123,34 +99,29 @@ public class Main4 extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "Invalid Email", Toast.LENGTH_SHORT).show();
                     break;
                 }
-                if (isOtpInvalid()) {
-                    Toast.makeText(getContext(), "Invalid OTP", Toast.LENGTH_SHORT).show();
-                    break;
-                }
                 if (isPasswordMismatch()) {
                     Toast.makeText(getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
                     break;
                 }
                 if (task != null)
                     task.cancel(true);
-                task = new ResetPasswordTask(getString(editText2), getString(editText1), getString(editText3));
+                User user = new User();
+                user.setEmail(getString(editText1));
+                user.setPassword(getString(editText2));
+                task = new RegisterTask(user);
                 task.execute();
                 break;
         }
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class ResetPasswordTask extends AsyncTask<Void, Void, Boolean> {
+    private class RegisterTask extends AsyncTask<Void, Void, Boolean> {
         private io.github.sher1234.service.model.base.Response response;
-        private final String otp;
-        private final String email;
-        private final String password;
+        private final User user;
         private int i = 4869;
 
-        ResetPasswordTask(String otp, String email, String password) {
-            this.otp = otp;
-            this.email = email;
-            this.password = password;
+        RegisterTask(User user) {
+            this.user = user;
         }
 
         @Override
@@ -163,16 +134,16 @@ public class Main4 extends Fragment implements View.OnClickListener {
         protected Boolean doInBackground(Void... voids) {
             Retrofit retrofit = AppController.getRetrofit(Api.BASE_URL);
             Api api = retrofit.create(Api.class);
-            Call<Users> call = api.ResetPassword(otp, email, password);
+            Call<Users> call = api.Register(user.getEmail(), user.getPassword());
             call.enqueue(new Callback<Users>() {
                 @Override
                 public void onResponse(@NonNull Call<Users> call, @NonNull Response<Users> response) {
                     if (response.body() != null && response.body().getResponse() != null) {
-                        ResetPasswordTask.this.response = response.body().getResponse();
-                        i = ResetPasswordTask.this.response.getCode();
+                        RegisterTask.this.response = response.body().getResponse();
+                        i = RegisterTask.this.response.getCode();
                     }
                     else {
-                        ResetPasswordTask.this.response = null;
+                        RegisterTask.this.response = null;
                         i = -1;
                     }
                 }
@@ -200,14 +171,16 @@ public class Main4 extends Fragment implements View.OnClickListener {
             if (response != null) {
                 Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
                 if (response.getCode() == 1)
-                    onPasswordReset();
+                    onLogin();
             } else
                 Toast.makeText(getContext(), "Unknown Error", Toast.LENGTH_SHORT).show();
         }
 
-        private void onPasswordReset() {
-            assert getFragmentManager() != null;
-            getFragmentManager().popBackStack();
+        @SuppressLint("CommitPrefEdits")
+        private void onLogin() {
+            assert getActivity() != null;
+            ((UserPreferences) getActivity()).updateUserPreferences(user);
+            ((NavigationHost) getActivity()).navigateTo(Start5.newInstance(user), false);
         }
     }
 }

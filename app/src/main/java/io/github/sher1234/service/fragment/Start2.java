@@ -4,16 +4,13 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,18 +20,18 @@ import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
+import io.github.sher1234.service.activity.MainActivity;
 import io.github.sher1234.service.api.Api;
-import io.github.sher1234.service.api.File;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
+import io.github.sher1234.service.util.NavigationHost;
+import io.github.sher1234.service.util.UserPreferences;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static io.github.sher1234.service.activity.MainActivity.F_TAG;
-
-public class Main2 extends Fragment implements View.OnClickListener {
+public class Start2 extends Fragment implements View.OnClickListener {
 
     private TextInputEditText editText1;
     private TextInputEditText editText2;
@@ -44,7 +41,7 @@ public class Main2 extends Fragment implements View.OnClickListener {
 
     private View mProgressView;
 
-    public Main2() {
+    public Start2() {
         resetTask = null;
         loginTask = null;
     }
@@ -52,7 +49,7 @@ public class Main2 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_start_2, container, false);
         view.findViewById(R.id.button1).setOnClickListener(this);
         view.findViewById(R.id.button2).setOnClickListener(this);
         mProgressView = view.findViewById(R.id.progressView);
@@ -202,14 +199,8 @@ public class Main2 extends Fragment implements View.OnClickListener {
             super.onPostExecute(aBoolean);
             showProgress(false);
             if (response.getCode() == 1) {
-                FragmentManager fragmentManager = getFragmentManager();
-                assert fragmentManager != null;
-                Fragment outFragment = getFragmentManager().findFragmentByTag(F_TAG);
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                if (outFragment != null)
-                    fragmentTransaction.remove(outFragment);
-                fragmentTransaction.replace(R.id.frameLayout, Main4.newInstance(mEmail), F_TAG);
-                fragmentTransaction.addToBackStack(F_TAG).commit();
+                assert getActivity() != null;
+                ((NavigationHost) getActivity()).navigateTo(Start4.newInstance(mEmail), true);
             } else {
                 if (response != null)
                     Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
@@ -289,33 +280,13 @@ public class Main2 extends Fragment implements View.OnClickListener {
         @SuppressLint("CommitPrefEdits")
         private void onLogin() {
             assert getActivity() != null;
-            assert getActivity().getApplicationContext() != null;
-            SharedPreferences preferences = getActivity()
-                    .getSharedPreferences(File.UserPreferences, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("status", true);
-            editor.putString("Email", user.getEmail());
-            editor.putString("Password", user.getPassword());
-            editor.putString("Name", user.getName());
-            editor.putString("Phone", user.getPhone());
-            editor.putBoolean("IsAdmin", user.isAdmin());
-            editor.putString("EmployeeID", user.getEmployeeID());
+            ((UserPreferences) getActivity()).updateUserPreferences(user);
             if (!user.isExists()) {
-                editor.putBoolean("exists", false);
-                FragmentManager fragmentManager = getFragmentManager();
-                assert fragmentManager != null;
-                Fragment outFragment = getFragmentManager().findFragmentByTag(F_TAG);
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.enter_right, R.anim.exit_left,
-                        R.anim.enter_left, R.anim.exit_right);
-                if (outFragment != null)
-                    fragmentTransaction.remove(outFragment);
-                fragmentTransaction.replace(R.id.frameLayout, Main5.newInstance(user), F_TAG);
-                fragmentTransaction.addToBackStack(F_TAG).commit();
+                ((NavigationHost) getActivity()).navigateTo(Start5.newInstance(user), false);
             } else {
-                editor.putBoolean("exists", true);
+                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
             }
-            editor.apply();
         }
     }
 }

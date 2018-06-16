@@ -7,7 +7,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
-        versionName "0.0.2-beta"
+        versionName "0.0.3-beta"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -30,6 +30,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    // Test
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
 
     testImplementation 'junit:junit:4.12'
     implementation 'org.jetbrains:annotations-java5:16.0.1'

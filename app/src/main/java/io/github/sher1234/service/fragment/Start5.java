@@ -3,8 +3,7 @@ package io.github.sher1234.service.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,16 +21,17 @@ import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
+import io.github.sher1234.service.activity.MainActivity;
 import io.github.sher1234.service.api.Api;
-import io.github.sher1234.service.api.File;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
+import io.github.sher1234.service.util.UserPreferences;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class Main5 extends Fragment implements View.OnClickListener, CheckBox.OnCheckedChangeListener {
+public class Start5 extends Fragment implements View.OnClickListener, CheckBox.OnCheckedChangeListener {
     private static final String PARAM_USER = "PARAM_USER-M5";
 
     private TextInputEditText editText1;
@@ -44,12 +44,12 @@ public class Main5 extends Fragment implements View.OnClickListener, CheckBox.On
 
     private User user;
 
-    public Main5() {
+    public Start5() {
     }
 
     @NonNull
     public static Fragment newInstance(User user) {
-        Main5 main4 =  new Main5();
+        Start5 main4 = new Start5();
         Bundle bundle = new Bundle();
         bundle.putSerializable(PARAM_USER, user);
         main4.setArguments(bundle);
@@ -59,7 +59,7 @@ public class Main5 extends Fragment implements View.OnClickListener, CheckBox.On
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main_5, container, false);
+        View view = inflater.inflate(R.layout.fragment_start_5, container, false);
         view.findViewById(R.id.button).setOnClickListener(this);
         mProgressView = view.findViewById(R.id.progressView);
         CheckBox checkBox = view.findViewById(R.id.checkBox);
@@ -234,19 +234,9 @@ public class Main5 extends Fragment implements View.OnClickListener, CheckBox.On
         @SuppressLint("CommitPrefEdits")
         private void onLogin() {
             assert getActivity() != null;
-            assert getActivity().getApplicationContext() != null;
-            SharedPreferences preferences = getActivity()
-                    .getSharedPreferences(File.UserPreferences, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("status", true);
-            editor.putString("Email", user.getEmail());
-            editor.putString("Password", user.getPassword());
-            editor.putString("Name", user.getName());
-            editor.putString("Phone", user.getPhone());
-            editor.putBoolean("IsAdmin", user.isAdmin());
-            editor.putString("EmployeeID", user.getEmployeeID());
-            editor.putBoolean("exists", true);
-            editor.apply();
+            ((UserPreferences) getActivity()).updateUserPreferences(user);
+            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().finish();
         }
     }
 }

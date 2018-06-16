@@ -6,46 +6,132 @@
     android:layout_height="match_parent"
     tools:context=".fragment.Main1">
 
-    <ImageView
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:contentDescription="@string/app_name" />
-
     <LinearLayout
-        android:layout_gravity="bottom|center_horizontal"
-        android:orientation="vertical"
-        android:layout_marginBottom="48dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
 
-        <android.support.design.button.MaterialButton
-            android:id="@+id/button1"
-            app:textAllCaps="false"
-            android:layout_margin="5dp"
-            app:strokeWidth="2dp"
-            android:textColor="?colorAccent"
-            app:strokeColor="?colorAccent"
-            android:text="@string/action_sign_in_short"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_gravity="center_horizontal"
-            app:cornerRadius="@dimen/fab_margin"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="25dp"
+            android:paddingBottom="10dp">
 
-        <android.support.design.button.MaterialButton
-            android:id="@+id/button2"
-            style="@style/Widget.MaterialComponents.Button"
-            app:textAllCaps="false"
-            android:layout_margin="5dp"
-            android:text="@string/register"
-            android:layout_gravity="center_horizontal"
-            app:cornerRadius="@dimen/fab_margin"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:text="Udit Aggarwal"
+                    android:textColor="?android:attr/textColorPrimaryInverse"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold"
+                    tools:text="Udit Aggarwal" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:text="agg.hunny2013@gmail.com"
+                    android:textColor="?android:attr/textColorPrimaryInverseDisableOnly"
+                    android:textSize="12sp"
+                    tools:text="agg.hunny2013@gmail.com" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="?android:attr/textColorPrimaryInverseDisableOnly">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registrations" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visits" />
+
+        </android.support.design.widget.TabLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#eaeaea"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <android.support.design.button.MaterialButton
+                        android:id="@+id/button1"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:padding="5dp"
+                        android:text="@string/weekly"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/colorPrimaryDark"
+                        app:textAllCaps="false" />
+
+                    <android.support.design.button.MaterialButton
+                        android:id="@+id/button2"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:text="@string/quarterly"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="12sp"
+                        app:rippleColor="@color/colorPrimary"
+                        app:textAllCaps="false" />
+
+                </LinearLayout>
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
-
 </android.support.design.widget.CoordinatorLayout>
