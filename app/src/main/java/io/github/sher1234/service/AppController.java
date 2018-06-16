@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +31,7 @@ public class AppController extends Application {
     }
 
     @NonNull
-    public static Retrofit getRetrofit(String url,  long connectTimeOut,
+    public static Retrofit getRetrofit(@NotNull String url, long connectTimeOut,
                                        long readTimeOut, long writeTimeOut) {
         Gson gson = new GsonBuilder()
                 .setLenient()

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.Main1">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:hint="@string/email"
+            android:textColorHint="#d9d9d9"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText1"
+                android:enabled="false"
+                android:focusable="false"
+                style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                android:inputType="textEmailAddress"
+                android:textColor="#ffffffff"
+                android:textSize="15sp"
+                tools:text="agg.hunny2013@gmail.com"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="12dp"
+            android:textColorHint="#d9d9d9"
+            app:passwordToggleEnabled="true"
+            android:hint="@string/otp"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText2"
+                android:textColorHint="?colorAccent"
+                style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                android:inputType="number"
+                android:textSize="15sp"
+                android:textColor="#ffffffff"
+                tools:text="4869"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="12dp"
+            android:textColorHint="#d9d9d9"
+            app:passwordToggleEnabled="true"
+            android:hint="@string/new_password"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText3"
+                android:textColorHint="?colorAccent"
+                style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                android:inputType="textPassword"
+                android:textSize="15sp"
+                android:textColor="#ffffffff"
+                tools:text="agg.hunny2013@gmail.com"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="12dp"
+            android:textColorHint="#d9d9d9"
+            app:passwordToggleEnabled="true"
+            android:hint="@string/retype_password"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText4"
+                android:textColorHint="?colorAccent"
+                style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                android:inputType="textPassword"
+                android:textSize="15sp"
+                android:textColor="#ffffffff"
+                tools:text="agg.hunny2013@gmail.com"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="end"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/button"
+            style="@style/Widget.MaterialComponents.Button"
+            app:textAllCaps="false"
+            android:textSize="13sp"
+            android:text="@string/reset_password"
+            app:cornerRadius="@dimen/fab_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#91000000"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/loading"
+                android:textColor="?colorAccent" />
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:indeterminate="true" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

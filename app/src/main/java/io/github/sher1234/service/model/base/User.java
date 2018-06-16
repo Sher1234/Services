@@ -6,19 +6,20 @@ import java.util.Map;
 
 public class User implements Serializable {
 
-    String Name;
-    String Email;
-    String Phone;
-    String UserID;
-    String Password;
-    String EmployeeID;
+    private int IsAdmin;
+    private String Name;
+    private String Email;
+    private String Phone;
+    private String Password;
+    private String EmployeeID;
 
     public User() {
 
     }
 
-    public User(String userID, String name, String phone, String email, String password, String employeeID) {
-        UserID = userID;
+    public User(boolean isAdmin, String name, String phone, String email,
+                String password, String employeeID) {
+        IsAdmin = setAdmin(isAdmin);
         Name = name;
         Phone = phone;
         Email = email;
@@ -26,12 +27,18 @@ public class User implements Serializable {
         EmployeeID = employeeID;
     }
 
-    public String getUserID() {
-        return UserID;
+    public boolean isAdmin() {
+        return IsAdmin == 1;
     }
 
-    public void setUserID(String userID) {
-        UserID = userID;
+    public String getIsAdmin() {
+        return IsAdmin + "";
+    }
+
+    public int setAdmin(boolean isAdmin) {
+        if (isAdmin)
+            return 1;
+        return  0;
     }
 
     public String getName() {
@@ -66,16 +73,6 @@ public class User implements Serializable {
         EmployeeID = employeeID;
     }
 
-    public Map<String, String> getUserMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put("UserID", UserID);
-        map.put("Phone", Phone);
-        map.put("Email", Email);
-        map.put("Name", Name);
-        map.put("Password", Password);
-        map.put("EmployeeID", EmployeeID);
-        return map;
-    }
 
     public String getPassword() {
         return Password;
@@ -85,10 +82,20 @@ public class User implements Serializable {
         Password = password;
     }
 
+    public Map<String, String> getUserMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("IsAdmin", getIsAdmin());
+        map.put("Phone", Phone);
+        map.put("Email", Email);
+        map.put("Name", Name);
+        map.put("Password", Password);
+        map.put("EmployeeID", EmployeeID);
+        return map;
+    }
     public boolean isExists() {
         return  getName() != null && getName().length() > 0
                 && getEmail() != null && getEmail().length() > 0
-                && getUserID() != null && getUserID().length() > 0
+                && !getIsAdmin().isEmpty() && getIsAdmin().length() > 0
                 && getPassword() != null && getPassword().length() > 0
                 && getEmployeeID() != null && getEmployeeID().length() > 0
                 && getPhone() != null && getPhone().length() > 0;
