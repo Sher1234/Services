@@ -5,16 +5,15 @@ import android.annotation.SuppressLint;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import io.github.sher1234.service.util.Strings;
 
 @SuppressWarnings("all")
 public class Base implements Serializable {
 
-    private String UserID;
+    private String Email;
     private int IsCompleted;
-    private String DateTime;
     private String CallNumber;
     private String ConcernName;
     private String ConcernPhone;
@@ -23,37 +22,19 @@ public class Base implements Serializable {
 
     }
 
-    Base(Date date, String userID, String callNumber, String concernName,
-                String concernPhone, boolean isCompleted) {
-        UserID = userID;
+    Base(String email, String callNumber, String concernName,
+         String concernPhone, boolean isCompleted) {
+        Email = email;
         CallNumber = callNumber;
-        DateTime = setDateTime(date);
         ConcernName = concernName;
-        IsCompleted = setCompleted(isCompleted);
         ConcernPhone = concernPhone;
+        IsCompleted = setCompleted(isCompleted);
     }
 
     @NotNull
     @SuppressLint("SimpleDateFormat")
-    private SimpleDateFormat getDateFormat() {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    }
-
-    private String setDateTime(Date date) {
-        return  getDateFormat().format(date);
-    }
-
-    public Date getDateTime() {
-        try {
-            return getDateFormat().parse(DateTime);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public String getDateTimeString() {
-        return DateTime;
+    protected SimpleDateFormat getDateFormat() {
+        return new SimpleDateFormat(Strings.DateFormat);
     }
 
     public boolean isCompleted() {
@@ -86,12 +67,12 @@ public class Base implements Serializable {
         CallNumber = callNumber;
     }
 
-    public String getUserID() {
-        return UserID;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setUserID(String userID) {
-        UserID = userID;
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public String getConcernName() {

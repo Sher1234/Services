@@ -31,15 +31,14 @@ public class AppController extends Application {
     }
 
     @NonNull
-    public static Retrofit getRetrofit(@NotNull String url, long connectTimeOut,
-                                       long readTimeOut, long writeTimeOut) {
+    public static Retrofit getRetrofit(@NotNull String url) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(connectTimeOut, TimeUnit.MINUTES)
-                .readTimeout(readTimeOut, TimeUnit.MINUTES)
-                .writeTimeout(writeTimeOut, TimeUnit.MINUTES)
+                .connectTimeout((long) 1, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout((long) 5, TimeUnit.MINUTES)
                 .build();
         return new Retrofit.Builder()
                 .baseUrl(url)
@@ -47,10 +46,5 @@ public class AppController extends Application {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-    }
-
-    @NonNull
-    public static Retrofit getRetrofit(String url) {
-        return getRetrofit(url, 1, 2, 5);
     }
 }

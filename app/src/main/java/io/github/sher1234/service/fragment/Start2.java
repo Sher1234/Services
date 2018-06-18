@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
-import io.github.sher1234.service.activity.MainActivity;
+import io.github.sher1234.service.activity.DashboardActivity;
 import io.github.sher1234.service.api.Api;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
@@ -284,7 +284,7 @@ public class Start2 extends Fragment implements View.OnClickListener {
             if (!user.isExists()) {
                 ((NavigationHost) getActivity()).navigateTo(Start5.newInstance(user), false);
             } else {
-                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().startActivity(new Intent(getActivity(), DashboardActivity.class));
                 getActivity().finish();
             }
         }

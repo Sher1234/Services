@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Main1">
+    tools:context=".activity.DashboardActivity"
+    tools:showIn="@layout/activity_dashboard">
 
     <LinearLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -16,9 +17,9 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
             android:orientation="horizontal"
-            android:paddingStart="25dp"
+            android:paddingStart="18dp"
             android:paddingTop="15dp"
-            android:paddingEnd="25dp"
+            android:paddingEnd="18dp"
             android:paddingBottom="10dp">
 
             <ImageView
@@ -31,6 +32,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="5dp">
 
@@ -39,7 +41,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="1dp"
-                    android:text="Udit Aggarwal"
                     android:textColor="?android:attr/textColorPrimaryInverse"
                     android:textSize="13.5sp"
                     android:textStyle="bold"
@@ -50,16 +51,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="1dp"
-                    android:text="agg.hunny2013@gmail.com"
                     android:textColor="?android:attr/textColorPrimaryInverseDisableOnly"
                     android:textSize="12sp"
                     tools:text="agg.hunny2013@gmail.com" />
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:background="@drawable/tv_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="1dp"
+                android:textColor="?android:attr/textColorPrimaryInverse"
+                android:tooltipText="Pending Calls"
+                tools:targetApi="o"
+                tools:text="99" />
+
         </LinearLayout>
 
         <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
@@ -69,69 +87,20 @@
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registrations" />
+                android:text="@string/registrations" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Visits" />
+                android:text="@string/visits" />
 
         </android.support.design.widget.TabLayout>
 
-        <ScrollView
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#eaeaea"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <android.support.design.button.MaterialButton
-                        android:id="@+id/button1"
-                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:padding="5dp"
-                        android:text="@string/weekly"
-                        android:textSize="12sp"
-                        app:backgroundTint="@color/colorPrimaryDark"
-                        app:textAllCaps="false" />
-
-                    <android.support.design.button.MaterialButton
-                        android:id="@+id/button2"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:text="@string/quarterly"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="12sp"
-                        app:rippleColor="@color/colorPrimary"
-                        app:textAllCaps="false" />
-
-                </LinearLayout>
-
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/barChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-        </ScrollView>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>

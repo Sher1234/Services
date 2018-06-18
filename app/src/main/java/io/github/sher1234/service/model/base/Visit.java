@@ -1,6 +1,7 @@
 package io.github.sher1234.service.model.base;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +10,11 @@ public class Visit extends Base implements Serializable {
 
     private int Visit;
     private String Image;
+    private String EndTime;
     private String Feedback;
     private String Location;
     private String Signature;
+    private String StartTime;
     private String VisitNumber;
     private String ActionTaken;
     private String Observation;
@@ -22,11 +25,11 @@ public class Visit extends Base implements Serializable {
 
     }
 
-    public Visit(Date dateTime, String userID, String callNumber, String concernName,
+    public Visit(Date startTime, Date endTime, String email, String callNumber, String concernName,
                  String concernPhone, boolean isCompleted, int visit, String image, String feedback,
                  String location, String signature, String visitNumber, String actionTaken,
                  String observation, String concernEmail, String customerSatisfaction) {
-        super(dateTime, userID, callNumber, concernName, concernPhone, isCompleted);
+        super(email, callNumber, concernName, concernPhone, isCompleted);
         Visit = visit;
         Image = image;
         Feedback = feedback;
@@ -36,7 +39,47 @@ public class Visit extends Base implements Serializable {
         ActionTaken = actionTaken;
         Observation = observation;
         ConcernEmail = concernEmail;
+        EndTime = setDateTime(startTime);
+        StartTime = setDateTime(endTime);
         CustomerSatisfaction = customerSatisfaction;
+    }
+
+    private String setDateTime(Date date) {
+        return getDateFormat().format(date);
+    }
+
+    public Date getStartTime() {
+        try {
+            return getDateFormat().parse(StartTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void setStartTime(Date startTime) {
+        StartTime = setDateTime(startTime);
+    }
+
+    public String getStartTimeString() {
+        return StartTime;
+    }
+
+    public Date getEndTime() {
+        try {
+            return getDateFormat().parse(EndTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void setEndTime(Date endTime) {
+        EndTime = setDateTime(endTime);
+    }
+
+    public String getEndTimeString() {
+        return EndTime;
     }
 
     public String getCustomerSatisfaction() {
@@ -125,9 +168,10 @@ public class Visit extends Base implements Serializable {
 
     public Map<String, String> getVisitMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("UserID", getUserID());
+        map.put("Email", getEmail());
         map.put("CallNumber", getCallNumber());
-        map.put("DateTime", getDateTimeString());
+        map.put("EndTime", getEndTimeString());
+        map.put("StartTime", getStartTimeString());
         map.put("ConcernName", getConcernName());
         map.put("IsCompleted", getIsCompleted());
         map.put("Visit", getVisitString());

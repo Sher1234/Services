@@ -18,7 +18,7 @@ public class VisitedCall extends Visit {
                  String location, String signature, String visitNumber, String actionTaken,
                  String observation, String concernEmail, String customerSatisfaction, String name,
                  String phone, String email, String employeeID) {
-        super(dateTime, userID, callNumber, concernName, concernPhone, isCompleted, visit, image,
+        super(dateTime, dateTime, userID, callNumber, concernName, concernPhone, isCompleted, visit, image,
                 feedback, location, signature, visitNumber, actionTaken, observation, concernEmail,
                 customerSatisfaction);
         Name = name;

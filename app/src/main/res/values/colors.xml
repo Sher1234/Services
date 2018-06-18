@@ -6,4 +6,12 @@
     <color name="colorPrimary">#01579b</color>
     <color name="colorPrimaryDark">#003e64</color>
     <color name="colorAccent">#ffc107</color>
+    <color name="colorTextLight">#ffffff</color>
+    <!-- Form Elements -->
+    <color name="colorHeaderBackground">#DDDDDD</color>
+    <color name="colorHeaderText">#000000</color>
+    <color name="colorElementBackground">#FFFFFF</color>
+    <color name="colorElementTextTitle">#222222</color>
+    <color name="colorElementTextValue">#000000</color>
+    <color name="colorDivider">#DDDDDD</color>
 </resources>

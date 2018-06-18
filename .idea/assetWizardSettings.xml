@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android%20Studio/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_close_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android%20Studio/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/alert/ic_error_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_close" />
+                            <entry key="color" value="850002" />
+                            <entry key="outputName" value="ic_pending" />
                             <entry key="sourceFile" value="C:\Users\agghu" />
                           </map>
                         </option>

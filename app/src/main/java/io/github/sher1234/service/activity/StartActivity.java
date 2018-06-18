@@ -19,11 +19,11 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.R;
-import io.github.sher1234.service.api.File;
 import io.github.sher1234.service.fragment.Start1;
 import io.github.sher1234.service.fragment.Start5;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.util.NavigationHost;
+import io.github.sher1234.service.util.Strings;
 import io.github.sher1234.service.util.UserPreferences;
 
 public class StartActivity extends AppCompatActivity implements NavigationHost, UserPreferences {
@@ -39,11 +39,11 @@ public class StartActivity extends AppCompatActivity implements NavigationHost, 
             fragment = new Start1();
         else
             fragment = getSupportFragmentManager().getFragment(savedInstanceState, F_TAG);
-        SharedPreferences preferences = getSharedPreferences(File.UserPreferences, MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(Strings.UserPreferences, MODE_PRIVATE);
         if (preferences.getBoolean("status", false)) {
             if (preferences.getBoolean("exists", false)) {
                 Toast.makeText(this, "Logging in, Please wait", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, DashboardActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Complete Account Details", Toast.LENGTH_SHORT).show();
@@ -142,7 +142,7 @@ public class StartActivity extends AppCompatActivity implements NavigationHost, 
     @Override
     @SuppressLint("CommitPrefEdits")
     public void updateUserPreferences(@NotNull User user) {
-        SharedPreferences preferences = getSharedPreferences(File.UserPreferences, Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(Strings.UserPreferences, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("status", true);
         editor.putString("Email", user.getEmail());

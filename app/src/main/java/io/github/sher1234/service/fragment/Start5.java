@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
-import io.github.sher1234.service.activity.MainActivity;
+import io.github.sher1234.service.activity.DashboardActivity;
 import io.github.sher1234.service.api.Api;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
@@ -231,11 +231,10 @@ public class Start5 extends Fragment implements View.OnClickListener, CheckBox.O
                 Toast.makeText(getContext(), "Unknown Error", Toast.LENGTH_SHORT).show();
         }
 
-        @SuppressLint("CommitPrefEdits")
         private void onLogin() {
             assert getActivity() != null;
             ((UserPreferences) getActivity()).updateUserPreferences(user);
-            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), DashboardActivity.class));
             getActivity().finish();
         }
     }

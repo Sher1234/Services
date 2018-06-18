@@ -1,12 +1,14 @@
 package io.github.sher1234.service.model.base;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registration extends Base implements Serializable {
 
+    private String DateTime;
     private int NumberOfVisits;
     private String SiteDetails;
     private String CustomerName;
@@ -22,10 +24,10 @@ public class Registration extends Base implements Serializable {
 
     public Registration(int numberOfVisits, String siteDetails, String customerName,
                         String natureOfSite, String productDetail, String productNumber,
-                        String complaintType, String warrantyStatus, Date dateTime, String userID,
+                        String complaintType, String warrantyStatus, Date dateTime, String email,
                         String callNumber, String concernName, String concernPhone,
                         boolean isCompleted) {
-        super(dateTime, userID, callNumber, concernName, concernPhone, isCompleted);
+        super(email, callNumber, concernName, concernPhone, isCompleted);
         NumberOfVisits = numberOfVisits;
         SiteDetails = siteDetails;
         CustomerName = customerName;
@@ -34,6 +36,24 @@ public class Registration extends Base implements Serializable {
         ProductNumber = productNumber;
         ComplaintType = complaintType;
         WarrantyStatus = warrantyStatus;
+        DateTime = setDateTime(dateTime);
+    }
+
+    public String setDateTime(Date date) {
+        return getDateFormat().format(date);
+    }
+
+    public Date getDateTime() {
+        try {
+            return getDateFormat().parse(DateTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getDateTimeString() {
+        return DateTime;
     }
 
     public String getWarrantyStatus() {
@@ -106,7 +126,7 @@ public class Registration extends Base implements Serializable {
 
     public Map<String, String> getRegistrationMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("UserID", getUserID());
+        map.put("Email", getEmail());
         map.put("CallNumber", getCallNumber());
         map.put("DateTime", getDateTimeString());
         map.put("ConcernName", getConcernName());

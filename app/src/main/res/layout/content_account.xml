@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AccountActivity"
+    tools:showIn="@layout/activity_account">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="18dp">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textColor="?android:attr/textColorPrimaryInverse"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold"
+                    tools:text="Udit Aggarwal" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textColor="?android:attr/textColorPrimaryInverseDisableOnly"
+                    android:textSize="12sp"
+                    tools:text="agg.hunny2013@gmail.com" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/editView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
+
+                        <android.support.design.widget.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/fab_margin"
+                            android:layout_marginEnd="@dimen/fab_margin"
+                            android:hint="@string/phone">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/editText1"
+                                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:inputType="phone"
+                                android:textColor="?android:attr/textColorPrimaryNoDisable"
+                                android:textSize="15sp"
+                                tools:text="+91-9999691306" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/fab_margin"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="@dimen/fab_margin"
+                            android:hint="@string/employee_id">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/editText2"
+                                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:inputType="text"
+                                android:textColor="?android:attr/textColorPrimaryNoDisable"
+                                android:textSize="15sp"
+                                tools:text="agg.hunny2013@gmail.com" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <CheckBox
+                                android:id="@+id/checkBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="@dimen/fab_margin"
+                                android:layout_marginEnd="@dimen/fab_margin"
+                                android:text="@string/email_as_eid"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/fab_margin"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="@dimen/fab_margin"
+                                android:gravity="end|center">
+
+                                <android.support.design.button.MaterialButton
+                                    android:id="@+id/button7"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:text="@string/cancel"
+                                    app:textAllCaps="false" />
+
+                                <android.support.design.button.MaterialButton
+                                    android:id="@+id/button8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:text="@string/update_account"
+                                    app:textAllCaps="false" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/fab_margin"
+                        android:layout_marginRight="@dimen/fab_margin"
+                        android:layout_weight="0"
+                        android:background="@drawable/tv_background"
+                        android:contentDescription="@string/all_calls"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_edit" />
+
+                </LinearLayout>
+
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/editView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <android.support.design.button.MaterialButton
+                        android:id="@+id/button9"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fab_margin"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="@dimen/fab_margin"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/change_password"
+                        app:strokeColor="@color/colorAccent"
+                        app:textAllCaps="false" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <android.support.design.widget.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/fab_margin"
+                            android:layout_marginEnd="@dimen/fab_margin"
+                            android:hint="@string/old_password"
+                            app:passwordToggleEnabled="true">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/editText3"
+                                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:textSize="15sp"
+                                tools:text="9999691306" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/fab_margin"
+                            android:layout_marginEnd="@dimen/fab_margin"
+                            android:hint="@string/new_password"
+                            app:passwordToggleEnabled="true">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/editText4"
+                                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:textSize="15sp"
+                                tools:text="9999691306" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/fab_margin"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="@dimen/fab_margin"
+                            android:hint="@string/retype_password"
+                            app:passwordToggleEnabled="true">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/editText5"
+                                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:textSize="15sp"
+                                tools:text="9999691036" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/fab_margin"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="@dimen/fab_margin"
+                            android:gravity="end|center">
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/button10"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:text="@string/cancel"
+                                app:textAllCaps="false" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/button11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:text="@string/change_password"
+                                app:textAllCaps="false" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.design.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

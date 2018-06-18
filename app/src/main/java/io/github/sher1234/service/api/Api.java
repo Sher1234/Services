@@ -2,6 +2,8 @@ package io.github.sher1234.service.api;
 
 import java.util.Map;
 
+import io.github.sher1234.service.model.response.Dashboard;
+import io.github.sher1234.service.model.response.Registrations;
 import io.github.sher1234.service.model.response.Users;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -45,4 +47,13 @@ public interface Api {
     @POST("login/?m=6")
     @FormUrlEncoded
     Call<Users> UpdateAccount(@FieldMap Map<String, String> map);
+
+    @POST("dashboard/")
+    @FormUrlEncoded
+    Call<Dashboard> GetDashboard(@Field("Email") String email,
+                                 @Field("DateTime") String dateTime);
+
+    @POST("query/?m=0")
+    @FormUrlEncoded
+    Call<Registrations> GetRegistrationsUser(@FieldMap Map<String, String> map);
 }
