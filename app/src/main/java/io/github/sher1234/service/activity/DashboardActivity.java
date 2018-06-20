@@ -43,7 +43,7 @@ import retrofit2.Retrofit;
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private final int ActivityRequestCode = 1306;
+    private boolean exit = false;
     private ViewPager viewPager;
     private TextView textView1;
     private TextView textView2;
@@ -52,7 +52,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private DashboardTask task;
     private User user;
     private String date;
-    private boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +89,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         super.onStart();
         user = getUserFromPreferences();
         Calendar calendar = Calendar.getInstance();
-        date = new SimpleDateFormat(Strings.DateFormat).format(calendar.getTime());
+        date = new SimpleDateFormat(Strings.DateFormatServer).format(calendar.getTime());
         textView2.setText(user.getEmail());
         textView1.setText(user.getName());
         textView3.setText("0");
@@ -128,6 +127,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.button3:
+                startActivity(new Intent(this, RegCallActivity.class));
                 break;
 
             case R.id.button4:

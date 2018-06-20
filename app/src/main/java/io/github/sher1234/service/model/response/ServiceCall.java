@@ -5,46 +5,41 @@ import java.util.List;
 
 import io.github.sher1234.service.model.base.RegisteredCall;
 import io.github.sher1234.service.model.base.Response;
+import io.github.sher1234.service.model.base.VisitImage;
 import io.github.sher1234.service.model.base.VisitedCall;
 
 public class ServiceCall implements Serializable {
 
     private Response Response;
     private List<VisitedCall> Visits;
-    private List<RegisteredCall> Registrations;
+    private RegisteredCall Registration;
+    private List<VisitImage> VisitImages;
 
     public ServiceCall() {
 
     }
 
     public ServiceCall(Response response, List<VisitedCall> visits,
-                       List<RegisteredCall> registrations) {
+                       RegisteredCall registrations, List<VisitImage> visitImages) {
         Response = response;
         this.Visits = visits;
-        Registrations = registrations;
+        VisitImages = visitImages;
+        Registration = registrations;
     }
 
-    public List<RegisteredCall> getRegistrations() {
-        return Registrations;
-    }
-
-    public void setRegistrations(List<RegisteredCall> registrations) {
-        Registrations = registrations;
+    public RegisteredCall getRegistration() {
+        return Registration;
     }
 
     public Response getResponse() {
         return Response;
     }
 
-    public void setResponse(Response response) {
-        Response = response;
-    }
-
     public List<VisitedCall> getVisits() {
         return Visits;
     }
 
-    public void setVisits(List<VisitedCall> visits) {
-        this.Visits = visits;
+    public List<VisitImage> getVisitImages() {
+        return VisitImages;
     }
 }

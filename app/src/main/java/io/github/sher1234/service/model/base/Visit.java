@@ -48,6 +48,14 @@ public class Visit extends Base implements Serializable {
         return getDateFormat().format(date);
     }
 
+    public String getStartTimeView() {
+        return getDateFormatView().format(getStartTime());
+    }
+
+    public String getEndTimeView() {
+        return getDateFormatView().format(getEndTime());
+    }
+
     public Date getStartTime() {
         try {
             return getDateFormat().parse(StartTime);
@@ -164,6 +172,10 @@ public class Visit extends Base implements Serializable {
 
     public void setVisit(int visit) {
         Visit = visit;
+    }
+
+    public boolean isVisitStarted() {
+        return StartTime != null && (EndTime == null || EndTime.length() < 2);
     }
 
     public Map<String, String> getVisitMap() {

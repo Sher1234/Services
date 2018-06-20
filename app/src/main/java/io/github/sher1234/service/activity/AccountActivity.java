@@ -159,6 +159,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.button3:
+                startActivity(new Intent(this, RegCallActivity.class));
+                finish();
                 break;
 
             case R.id.button4:

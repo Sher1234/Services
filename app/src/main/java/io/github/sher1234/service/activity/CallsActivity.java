@@ -73,8 +73,8 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 getResources().getDrawable(R.drawable.ic_menu),
                 getResources().getDrawable(R.drawable.ic_close)));
 
-        findViewById(R.id.button1).setSelected(true);
-        findViewById(R.id.button2).setOnClickListener(this);
+        findViewById(R.id.button1).setOnClickListener(this);
+        findViewById(R.id.button2).setOnClickListener(null);
         findViewById(R.id.button3).setOnClickListener(this);
         findViewById(R.id.button4).setOnClickListener(this);
         findViewById(R.id.button5).setOnClickListener(this);
@@ -185,9 +185,11 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.button2:
+                //CallsActivity
                 break;
 
             case R.id.button3:
+                startActivity(new Intent(this, RegCallActivity.class));
                 break;
 
             case R.id.button4:
@@ -196,6 +198,7 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.button5:
+                //About App
                 break;
 
             case R.id.button6:
@@ -255,7 +258,7 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
     @SuppressLint("SimpleDateFormat")
     private Query onFilter() {
         int i = 0;
-        SimpleDateFormat dateFormat = new SimpleDateFormat(Strings.DateFormat);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(Strings.DateFormatServer);
         Query query = new Query();
         query.setQuery("SELECT * FROM RegisteredCallsX WHERE ");
         String search = getFormValue(486901);
@@ -335,9 +338,11 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 query.setQuery(query.getQuery() + warrantyStatus);
             if (query.getQuery().endsWith(" AND "))
                 query.setQuery(query.getQuery().substring(0, query.getQuery().length() - 5));
-            query.setQuery(query.getQuery() + " AND Email = '" + email + "' ORDER BY DateTime DESC;");
+            query.setQuery(query.getQuery() + " AND Email = '" + email + "' ORDER BY IsCompleted " +
+                    "ASC, DateTime ASC;");
         } else {
-            query.setQuery("SELECT * FROM RegisteredCallsX WHERE Email = '" + email + "' ORDER BY DateTime DESC;");
+            query.setQuery("SELECT * FROM RegisteredCallsX WHERE Email = '" + email + "' ORDER " +
+                    "BY IsCompleted ASC, DateTime ASC;");
         }
         query.setTable("Registrations");
         Log.e("log/query", query.getQuery());

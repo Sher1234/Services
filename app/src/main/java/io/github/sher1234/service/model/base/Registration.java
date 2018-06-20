@@ -43,6 +43,10 @@ public class Registration extends Base implements Serializable {
         return getDateFormat().format(date);
     }
 
+    public String getDateTimeView() {
+        return getDateFormatView().format(getDateTime());
+    }
+
     public Date getDateTime() {
         try {
             return getDateFormat().parse(DateTime);
@@ -141,5 +145,21 @@ public class Registration extends Base implements Serializable {
         map.put("WarrantyStatus", getWarrantyStatus());
         map.put("NumberOfVisits", getNumberOfVisitsString());
         return map;
+    }
+
+    public Query getQuery() {
+        Query query = new Query();
+        String s = "INSERT INTO `RegisteredCallsX` (`CallNumber`, `ComplaintType`, `ConcernName`, " +
+                "`ConcernPhone`, `CustomerName`, `DateTime`, `IsCompleted`, `NatureOfSite`, " +
+                "`NumberOfVisits`, `ProductNumber`, `ProductDetail`, `SiteDetails`, `Email`, " +
+                "`WarrantyStatus`) VALUES ('" + getCallNumber() + "', '" + getComplaintType() +
+                "', '" + getConcernName() + "', '" + getConcernPhone() + "', '" + getCustomerName() +
+                "', '" + getDateTimeString() + "', '" + getIsCompleted() + "', '" + getNatureOfSite() +
+                "', '" + getNumberOfVisitsString() + "', '" + getProductNumber() + "', '" +
+                getProductDetail() + "', '" + getSiteDetails() + "', '" + getEmail() + "', '" +
+                getWarrantyStatus() + "');";
+        query.setQuery(s);
+        query.setTable("None");
+        return query;
     }
 }

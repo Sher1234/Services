@@ -4,7 +4,10 @@ import java.util.Map;
 
 import io.github.sher1234.service.model.response.Dashboard;
 import io.github.sher1234.service.model.response.Registrations;
+import io.github.sher1234.service.model.response.Responded;
+import io.github.sher1234.service.model.response.ServiceCall;
 import io.github.sher1234.service.model.response.Users;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -56,4 +59,20 @@ public interface Api {
     @POST("query/?m=0")
     @FormUrlEncoded
     Call<Registrations> GetRegistrationsUser(@FieldMap Map<String, String> map);
+
+    @POST("set/?m=0")
+    @FormUrlEncoded
+    Call<Responded> RegisterCall(@FieldMap Map<String, String> map);
+
+    @POST("set/?m=1")
+    @FormUrlEncoded
+    Call<Responded> RegisterVisit(@FieldMap Map<String, String> map);
+
+    @POST("set/?m=1")
+    @FormUrlEncoded
+    Call<ResponseBody> RegisterVisitX(@FieldMap Map<String, String> map);
+
+    @POST("get/call/")
+    @FormUrlEncoded
+    Call<ServiceCall> GetServiceCall(@Field("CallNumber") String s);
 }

@@ -35,4 +35,13 @@
     <string name="reset">Reset</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="register_visit">Register Visit</string>
+    <string name="select_images">Select Images</string>
+    <string name="image_error">Visit images are currently disabled by administrator.</string>
+    <string name="registration">Registration</string>
+    <string name="no_visits">No Visits Available</string>
+    <string name="add_visit">Add Visit</string>
+    <string name="visit_incomplete">Visit is not yet completed</string>
+    <string name="complete_visit">Complete Visit</string>
+    <string name="view_in_map">View in Map</string>
 </resources>

@@ -14,4 +14,7 @@
     <color name="colorElementTextTitle">#222222</color>
     <color name="colorElementTextValue">#000000</color>
     <color name="colorDivider">#DDDDDD</color>
+
+    <color name="colorCompleted">#2E7D32</color>
+    <color name="colorPending">#850002</color>
 </resources>

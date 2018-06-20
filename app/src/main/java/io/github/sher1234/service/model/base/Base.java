@@ -34,7 +34,13 @@ public class Base implements Serializable {
     @NotNull
     @SuppressLint("SimpleDateFormat")
     protected SimpleDateFormat getDateFormat() {
-        return new SimpleDateFormat(Strings.DateFormat);
+        return new SimpleDateFormat(Strings.DateFormatServer);
+    }
+
+    @NotNull
+    @SuppressLint("SimpleDateFormat")
+    protected SimpleDateFormat getDateFormatView() {
+        return new SimpleDateFormat(Strings.DateFormatView);
     }
 
     public boolean isCompleted() {
@@ -43,6 +49,13 @@ public class Base implements Serializable {
 
     public String getIsCompleted() {
         return IsCompleted + "";
+    }
+
+    public String getIsCompletedString() {
+        if (IsCompleted == 1)
+            return "Completed";
+        else
+            return "Pending";
     }
 
     public int setCompleted(boolean completed) {

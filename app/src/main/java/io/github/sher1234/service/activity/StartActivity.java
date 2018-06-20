@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -81,20 +83,12 @@ public class StartActivity extends AppCompatActivity implements NavigationHost, 
 
     private void permissionRequest() {
         String[] strings;
-        if (android.os.Build.VERSION.SDK_INT >= 16) {
-            strings = new String[5];
-            strings[0] = Manifest.permission.INTERNET;
-            strings[1] = Manifest.permission.ACCESS_FINE_LOCATION;
-            strings[2] = Manifest.permission.ACCESS_COARSE_LOCATION;
-            strings[3] = Manifest.permission.READ_EXTERNAL_STORAGE;
-            strings[4] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-        } else {
-            strings = new String[4];
-            strings[0] = Manifest.permission.INTERNET;
-            strings[1] = Manifest.permission.ACCESS_FINE_LOCATION;
-            strings[2] = Manifest.permission.ACCESS_COARSE_LOCATION;
-            strings[3] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-        }
+        strings = new String[5];
+        strings[0] = Manifest.permission.INTERNET;
+        strings[1] = Manifest.permission.ACCESS_FINE_LOCATION;
+        strings[2] = Manifest.permission.ACCESS_COARSE_LOCATION;
+        strings[3] = Manifest.permission.READ_EXTERNAL_STORAGE;
+        strings[4] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED || ContextCompat
@@ -120,8 +114,12 @@ public class StartActivity extends AppCompatActivity implements NavigationHost, 
         if (requestCode == 4869) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 Toast.makeText(this, "Permissions Granted", Toast.LENGTH_SHORT).show();
-            else
+            else {
                 Toast.makeText(this, "Permission Error", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }
         }
     }
 
