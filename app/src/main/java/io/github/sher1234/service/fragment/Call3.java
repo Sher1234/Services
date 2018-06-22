@@ -256,7 +256,7 @@ public class Call3 extends Fragment implements View.OnClickListener {
         mFormBuilder.addFormElements(formItems);
     }
 
-    public void setFormValue(int i, String s) {
+    private void setFormValue(int i, String s) {
         mFormBuilder.getFormElement(i).setValue(s);
     }
 

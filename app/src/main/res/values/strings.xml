@@ -18,7 +18,6 @@
     <string name="email_as_eid">Use Email as Employee ID</string>
     <string name="dashboard">Dashboard</string>
     <string name="weekly">Weekly</string>
-    <string name="quarterly">Quarterly</string>
     <string name="registrations">Registrations</string>
     <string name="refresh">Refresh</string>
     <string name="sign_out">Sign Out</string>
@@ -33,8 +32,6 @@
     <string name="cancel">Cancel</string>
     <string name="filter">Filter</string>
     <string name="reset">Reset</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="register_visit">Register Visit</string>
     <string name="select_images">Select Images</string>
     <string name="image_error">Visit images are currently disabled by administrator.</string>
@@ -44,4 +41,5 @@
     <string name="visit_incomplete">Visit is not yet completed</string>
     <string name="complete_visit">Complete Visit</string>
     <string name="view_in_map">View in Map</string>
+    <string name="monthly">Monthly</string>
 </resources>

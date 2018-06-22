@@ -88,13 +88,13 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
             description = "Overview of Registrations";
             barEntriesW = dashboard.getRegsWeekly().getBarEntries();
             barLabelsW = dashboard.getWeekDates();
-            barEntriesQ = dashboard.getRegsQuarterly().getBarEntries();
+            barEntriesQ = dashboard.getRegsMonthly().getBarEntries();
             barLabelsQ = dashboard.getQuarterDates();
         } else if (MODE == 1) {
             description = "Overview of Visits";
             barEntriesW = dashboard.getVisitsWeekly().getBarEntries();
             barLabelsW = dashboard.getWeekDates();
-            barEntriesQ = dashboard.getVisitsQuarterly().getBarEntries();
+            barEntriesQ = dashboard.getVisitsMonthly().getBarEntries();
             barLabelsQ = dashboard.getQuarterDates();
         } else {
             barEntriesW = new ArrayList<>();
@@ -108,7 +108,7 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
         barDataSetW.setBarSpacePercent(55);
         barDataW = new BarData(barLabelsW, barDataSetW);
 
-        BarDataSet barDataSetQ = new BarDataSet(barEntriesQ, "Quarterly");
+        BarDataSet barDataSetQ = new BarDataSet(barEntriesQ, "Monthly");
         barDataSetQ.setColors(ColorTemplate.JOYFUL_COLORS);
         barDataSetQ.setBarSpacePercent(55);
         barDataQ = new BarData(barLabelsQ, barDataSetQ);
@@ -135,7 +135,7 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
             case R.id.radioButton2:
                 radioButton1.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 radioButton2.setTextColor(getResources().getColor(R.color.colorTextLight));
-                updateBarData(barDataQ, "Quarterly");
+                updateBarData(barDataQ, "Monthly");
                 break;
         }
     }

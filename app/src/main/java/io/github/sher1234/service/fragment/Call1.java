@@ -134,7 +134,7 @@ public class Call1 extends Fragment {
         mFormBuilder.addFormElements(formItems);
     }
 
-    public void setFormValue(int i, String s) {
+    private void setFormValue(int i, String s) {
         mFormBuilder.getFormElement(i).setValue(s);
     }
 

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("All")
 public class Visit extends Base implements Serializable {
 
     private int Visit;

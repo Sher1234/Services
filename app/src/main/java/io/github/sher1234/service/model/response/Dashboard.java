@@ -3,21 +3,21 @@ package io.github.sher1234.service.model.response;
 import java.io.Serializable;
 import java.util.List;
 
-import io.github.sher1234.service.model.base.Quarterly;
 import io.github.sher1234.service.model.base.Response;
-import io.github.sher1234.service.model.base.Weekly;
+import io.github.sher1234.service.model.base.Time;
 
+@SuppressWarnings("All")
 public class Dashboard implements Serializable {
 
     private Response Response;
 
-    private Weekly RegsWeekly;
+    private Time RegsWeekly;
 
-    private Quarterly RegsQuarterly;
+    private Time RegsMonthly;
 
-    private Weekly VisitsWeekly;
+    private Time VisitsWeekly;
 
-    private Quarterly VisitsQuarterly;
+    private Time VisitsMonthly;
 
     private String PendingAll;
 
@@ -31,12 +31,12 @@ public class Dashboard implements Serializable {
 
     }
 
-    public Dashboard(Response response, Quarterly regsQuarterly, Quarterly visitsQuarterly,
-                     Weekly regsWeekly, Weekly visitsWeekly, String pendingAll, int pendingWithVisit,
+    public Dashboard(Response response, Time regsMonthly, Time visitsMonthly,
+                     Time regsWeekly, Time visitsWeekly, String pendingAll, int pendingWithVisit,
                      List<String> weekDates, List<String> quarterDates) {
         Response = response;
-        RegsQuarterly = regsQuarterly;
-        VisitsQuarterly = visitsQuarterly;
+        RegsMonthly = regsMonthly;
+        VisitsMonthly = visitsMonthly;
         RegsWeekly = regsWeekly;
         VisitsWeekly = visitsWeekly;
         PendingAll = pendingAll;
@@ -49,19 +49,19 @@ public class Dashboard implements Serializable {
         return Response;
     }
 
-    public Quarterly getRegsQuarterly() {
-        return RegsQuarterly;
+    public Time getRegsMonthly() {
+        return RegsMonthly;
     }
 
-    public Quarterly getVisitsQuarterly() {
-        return VisitsQuarterly;
+    public Time getVisitsMonthly() {
+        return VisitsMonthly;
     }
 
-    public Weekly getRegsWeekly() {
+    public Time getRegsWeekly() {
         return RegsWeekly;
     }
 
-    public Weekly getVisitsWeekly() {
+    public Time getVisitsWeekly() {
         return VisitsWeekly;
     }
 

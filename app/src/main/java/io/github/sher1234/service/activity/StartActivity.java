@@ -30,7 +30,7 @@ import io.github.sher1234.service.util.UserPreferences;
 
 public class StartActivity extends AppCompatActivity implements NavigationHost, UserPreferences {
 
-    public static final String F_TAG = "FRAGMENT-TAG-START";
+    private static final String F_TAG = "FRAGMENT-TAG-START";
     private Fragment fragment;
 
     @Override

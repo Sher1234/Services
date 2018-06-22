@@ -42,7 +42,7 @@
                 android:background="@drawable/chip_background"
                 android:button="@android:color/transparent"
                 android:padding="8dp"
-                android:text="@string/quarterly"
+                android:text="@string/monthly"
                 android:textSize="12sp" />
 
         </RadioGroup>
