@@ -1,5 +1,7 @@
 package io.github.sher1234.service.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,11 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.activity.RegVisitActivity;
+import io.github.sher1234.service.activity.RegVisitSeActivity;
 import io.github.sher1234.service.model.base.RegisteredCall;
 import io.github.sher1234.service.model.base.VisitedCall;
 import io.github.sher1234.service.model.response.ServiceCall;
@@ -91,7 +93,6 @@ public class Call3 extends Fragment implements View.OnClickListener {
     private void setVisitModelStarted(VisitedCall visitedCall, RegisteredCall registeredCall) {
         if (visitedCall == null)
             return;
-        Calendar calendar = Calendar.getInstance();
         setFormValue(486901, registeredCall.getCustomerName());
         setFormValue(486902, registeredCall.getSiteDetails());
 
@@ -99,7 +100,6 @@ public class Call3 extends Fragment implements View.OnClickListener {
         setFormValue(486904, visitedCall.getVisitNumber());
         setFormValue(486905, visitedCall.getStartTimeView());
 
-        setFormValue(486906, visitedCall.getEndTimeView());
         setFormValue(486907, visitedCall.getName());
         setFormValue(486908, registeredCall.getPhone());
         setFormValue(486909, visitedCall.getEmail());
@@ -131,11 +131,8 @@ public class Call3 extends Fragment implements View.OnClickListener {
                 .setRequired(true).setEnabled(false);
         element2 = FormElementTextMultiLine.createInstance().setTitle("Start Time")
                 .setRequired(true).setTag(486905).setEnabled(false);
-        element3 = FormElementTextMultiLine.createInstance().setTitle("End Time")
-                .setRequired(true).setTag(486906).setEnabled(false);
         formItems.add(element1);
         formItems.add(element2);
-        formItems.add(element3);
 
         element0 = FormHeader.createInstance("Visit Person");
         element1 = FormElementTextMultiLine.createInstance().setTitle("Name").setTag(486907)
@@ -155,7 +152,6 @@ public class Call3 extends Fragment implements View.OnClickListener {
     private void setVisitModel(VisitedCall visitedCall, RegisteredCall registeredCall) {
         if (visitedCall == null)
             return;
-        Calendar calendar = Calendar.getInstance();
         setFormValue(486901, registeredCall.getCustomerName());
         setFormValue(486902, registeredCall.getSiteDetails());
 
@@ -266,7 +262,8 @@ public class Call3 extends Fragment implements View.OnClickListener {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.findItem(R.id.menuAdd).setEnabled(false).setVisible(false);
+        if (menu.findItem(R.id.menuAdd) != null)
+            menu.findItem(R.id.menuAdd).setEnabled(false).setVisible(false);
         inflater.inflate(R.menu.menu_add, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -292,9 +289,7 @@ public class Call3 extends Fragment implements View.OnClickListener {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(q)));
             return true;
         } else if (item.getItemId() == R.id.menuAdd && getActivity() != null) {
-            Intent intent = new Intent(getActivity(), RegVisitActivity.class);
-            intent.putExtra(Strings.ExtraServiceCall, serviceCall);
-            getActivity().startActivity(intent);
+            showDialog();
             return true;
         } else
             return super.onOptionsItemSelected(item);
@@ -302,6 +297,44 @@ public class Call3 extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if (view.getId() == R.id.button) {
+            Intent intent = new Intent(getActivity(), RegVisitSeActivity.class);
+            intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+            intent.putExtra(Strings.ExtraString, 1);
+            if (getFragmentManager() != null)
+                getFragmentManager().beginTransaction().remove(this).commit();
+            startActivity(intent);
+        }
+    }
 
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Add Visit").setCancelable(true)
+                .setPositiveButton("Full", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(), RegVisitActivity.class);
+                        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                        if (getActivity() != null)
+                            getActivity().startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Start", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(), RegVisitSeActivity.class);
+                        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                        intent.putExtra(Strings.ExtraString, 0);
+                        if (getActivity() != null)
+                            getActivity().startActivity(intent);
+                    }
+                })
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
     }
 }

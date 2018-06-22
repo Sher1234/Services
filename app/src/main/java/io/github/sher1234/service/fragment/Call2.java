@@ -1,5 +1,7 @@
 package io.github.sher1234.service.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.activity.RegVisitActivity;
+import io.github.sher1234.service.activity.RegVisitSeActivity;
 import io.github.sher1234.service.adapter.VisitRecycler;
 import io.github.sher1234.service.model.response.ServiceCall;
 import io.github.sher1234.service.util.Strings;
@@ -86,12 +89,41 @@ public class Call2 extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(getActivity(), RegVisitActivity.class);
-        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
-        if (item.getItemId() == R.id.menuAdd && getActivity() != null) {
-            getActivity().startActivity(intent);
+        if (item.getItemId() == R.id.menuAdd) {
+            showDialog();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Add Visit").setCancelable(true)
+                .setPositiveButton("Full", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(), RegVisitActivity.class);
+                        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                        if (getActivity() != null)
+                            getActivity().startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Start", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(), RegVisitSeActivity.class);
+                        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                        intent.putExtra(Strings.ExtraString, 0);
+                        if (getActivity() != null)
+                            getActivity().startActivity(intent);
+                    }
+                })
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
     }
 }

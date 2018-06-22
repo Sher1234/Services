@@ -39,8 +39,33 @@ public class Visit extends Base implements Serializable {
         ActionTaken = actionTaken;
         Observation = observation;
         ConcernEmail = concernEmail;
-        EndTime = setDateTime(startTime);
-        StartTime = setDateTime(endTime);
+        EndTime = setDateTime(endTime);
+        StartTime = setDateTime(startTime);
+        CustomerSatisfaction = customerSatisfaction;
+    }
+
+    public Visit(String visitNumber, String callNumber, int visit, Date startTime,
+                 String email, String location) {
+        super(email, callNumber, null, null, false);
+        Visit = visit;
+        Location = location;
+        VisitNumber = visitNumber;
+        StartTime = setDateTime(startTime);
+    }
+
+    public Visit(String visitNumber, String callNumber, boolean isCompleted, String actionTaken,
+                 String observation, String concernName, String concernPhone, String concernEmail,
+                 String customerSatisfaction, Date endTime, String feedback, String image,
+                 String signature) {
+        super(null, callNumber, concernName, concernPhone, isCompleted);
+        Image = image;
+        Feedback = feedback;
+        Signature = signature;
+        VisitNumber = visitNumber;
+        ActionTaken = actionTaken;
+        Observation = observation;
+        ConcernEmail = concernEmail;
+        EndTime = setDateTime(endTime);
         CustomerSatisfaction = customerSatisfaction;
     }
 
@@ -199,4 +224,34 @@ public class Visit extends Base implements Serializable {
         map.put("CustomerSatisfaction", getCustomerSatisfaction());
         return map;
     }
+
+    public Map<String, String> getVisitStartMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("Email", getEmail());
+        map.put("CallNumber", getCallNumber());
+        map.put("StartTime", getStartTimeString());
+        map.put("Visit", getVisitString());
+        map.put("Location", getLocation());
+        map.put("VisitNumber", getVisitNumber());
+        return map;
+    }
+
+    public Map<String, String> getVisitEndMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("CallNumber", getCallNumber());
+        map.put("EndTime", getEndTimeString());
+        map.put("ConcernName", getConcernName());
+        map.put("IsCompleted", getIsCompleted());
+        map.put("Image", getImage());
+        map.put("Feedback", getFeedback());
+        map.put("ConcernPhone", getConcernPhone());
+        map.put("Signature", getSignature());
+        map.put("VisitNumber", getVisitNumber());
+        map.put("ActionTaken", getActionTaken());
+        map.put("Observation", getObservation());
+        map.put("ConcernEmail", getConcernEmail());
+        map.put("CustomerSatisfaction", getCustomerSatisfaction());
+        return map;
+    }
+
 }

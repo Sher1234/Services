@@ -7,7 +7,6 @@ import io.github.sher1234.service.model.response.Registrations;
 import io.github.sher1234.service.model.response.Responded;
 import io.github.sher1234.service.model.response.ServiceCall;
 import io.github.sher1234.service.model.response.Users;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -68,9 +67,13 @@ public interface Api {
     @FormUrlEncoded
     Call<Responded> RegisterVisit(@FieldMap Map<String, String> map);
 
-    @POST("set/?m=1")
+    @POST("set/?m=2")
     @FormUrlEncoded
-    Call<ResponseBody> RegisterVisitX(@FieldMap Map<String, String> map);
+    Call<Responded> RegisterVisitStart(@FieldMap Map<String, String> map);
+
+    @POST("set/?m=3")
+    @FormUrlEncoded
+    Call<Responded> RegisterVisitEnd(@FieldMap Map<String, String> map);
 
     @POST("get/call/")
     @FormUrlEncoded

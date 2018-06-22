@@ -14,18 +14,19 @@ import android.support.design.button.MaterialButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
@@ -51,8 +52,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-@SuppressWarnings("All")
-public class RegVisitActivity extends AppCompatActivity implements OnFormElementValueChangedListener,
+// @SuppressWarnings("All")
+public class RegVisitSeActivity extends AppCompatActivity implements OnFormElementValueChangedListener,
         View.OnClickListener {
 
     private LocationTrack locationTrack;
@@ -62,6 +63,7 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
     private ServiceCall serviceCall;
     private String email;
     private Date date;
+    private int m;
 
     private MaterialButton button1;
     private MaterialButton button2;
@@ -81,6 +83,7 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
 
         SharedPreferences preferences = getSharedPreferences(Strings.UserPreferences, MODE_PRIVATE);
         serviceCall = (ServiceCall) getIntent().getSerializableExtra(Strings.ExtraServiceCall);
+        m = getIntent().getIntExtra(Strings.ExtraString, 0);
         email = preferences.getString(Strings.Email, null);
 
         button2 = findViewById(R.id.button3);
@@ -90,15 +93,24 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
         RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
         mFormBuilder = new FormBuilder(this, mRecyclerView, this);
         onValidateSaveButton();
-        if (serviceCall.getVisits() != null && serviceCall.getVisits().size() > 0) {
-            int i = serviceCall.getVisits().size() - 1;
-            onCreateForm(serviceCall.getRegistration(), serviceCall.getVisits().get(i));
-        } else
-            onCreateForm(serviceCall.getRegistration(), null);
+        if (m == 0) {
+            String s = "Start Visit";
+            button2.setText(s);
+            onCreateFormStart(serviceCall.getRegistration());
+        } else {
+            String s = "End Visit";
+            button2.setText(s);
+            onCreateFormEnd(serviceCall.getRegistration(),
+                    serviceCall.getVisits().get(serviceCall.getVisits().size() - 1));
+        }
     }
 
     private void onValidateSaveButton() {
-        if (date != null && email.contains("@") && getFormValue(486911).length() > 5 &&
+        if (m == 0 && mFormBuilder.isValidForm()) {
+            button2.setEnabled(true);
+            button2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            button2.setStrokeColorResource(R.color.colorPrimaryDark);
+        } else if (m == 1 && date != null && email.contains("@") && getFormValue(486911).length() > 5 &&
                 getFormValue(486903).length() > 2 && getFormValue(486904).length() == 10 &&
                 getFormValue(486912).length() > 5 && getFormValue(486907).length() > 2 &&
                 getFormValue(486906).length() > 2 && getFormValue(486905).contains("@") &&
@@ -131,7 +143,7 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
     }
 
     @SuppressLint("SimpleDateFormat")
-    private void onCreateForm(@NotNull RegisteredCall registration, @Nullable VisitedCall visit) {
+    private void onCreateFormStart(@NotNull RegisteredCall registration) {
         Calendar calendar = Calendar.getInstance();
         String s1, s2;
         try {
@@ -150,48 +162,82 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
             e.printStackTrace();
         }
         date = calendar.getTime();
-
         List<BaseFormElement> formItems = new ArrayList<>();
-
-        List<String> op1 = new ArrayList<>();
-        op1.add("Completed");
-        op1.add("Pending");
-
-        List<String> op2 = new ArrayList<>();
-        op2.add("Yes");
-        op2.add("No");
-
-        BaseFormElement element0, element1, element2, element3, element4;
-
+        BaseFormElement element0, element1, element2, element3;
         // Call Details
         element0 = FormHeader.createInstance("Call Details");
-        element1 = FormElementTextSingleLine.createInstance().setTitle("Call Number*").setTag(486911)
+        element1 = FormElementTextSingleLine.createInstance().setTitle("Call Number*").setTag(486901)
                 .setValue(registration.getCallNumber()).setRequired(true)
                 .setEnabled(false);
-        element2 = FormElementTextSingleLine.createInstance().setTitle("Visit Number*").setTag(486912)
+        element2 = FormElementTextSingleLine.createInstance().setTitle("Visit Number*").setTag(486902)
                 .setValue(s2).setRequired(true).setEnabled(false);
         element3 = FormElementTextSingleLine.createInstance().setTitle("Start Time*")
-                .setValue(s1).setRequired(true).setTag(486913).setEnabled(false);
-        element4 = FormElementTextSingleLine.createInstance().setTitle("End Time*")
-                .setValue(s1).setRequired(true).setTag(486914).setEnabled(false);
+                .setValue(s1).setRequired(true).setTag(486903).setEnabled(false);
         formItems.add(element0);
         formItems.add(element1);
         formItems.add(element2);
         formItems.add(element3);
-        formItems.add(element4);
-
         // Customer Details
         element0 = FormHeader.createInstance("Customer Details");
         element1 = FormElementTextSingleLine.createInstance().setTitle("Name").setHint("Name")
-                .setTag(486901).setValue(registration.getCustomerName())
-                .setEnabled(false);
-        element2 = FormElementTextMultiLine.createInstance().setTitle("Site Details").setTag(486902)
+                .setTag(486904).setValue(registration.getCustomerName()).setEnabled(false);
+        element2 = FormElementTextMultiLine.createInstance().setTitle("Site Details").setTag(486905)
                 .setHint("Site Details").setValue(registration.getSiteDetails())
                 .setEnabled(false);
         formItems.add(element0);
         formItems.add(element1);
         formItems.add(element2);
+        mFormBuilder.addFormElements(formItems);
+    }
 
+    @SuppressLint("SimpleDateFormat")
+    private void onCreateFormEnd(@NotNull RegisteredCall registration, @Nullable VisitedCall visit) {
+        Calendar calendar = Calendar.getInstance();
+        String s;
+        try {
+            DateFormat dateFormat = new SimpleDateFormat(Strings.DateFormatView);
+            s = dateFormat.format(calendar.getTime());
+        } catch (Exception e) {
+            s = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1)
+                    + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.HOUR_OF_DAY)
+                    + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND);
+            e.printStackTrace();
+        }
+        date = calendar.getTime();
+        List<BaseFormElement> formItems = new ArrayList<>();
+        List<String> op1 = new ArrayList<>();
+        op1.add("Completed");
+        op1.add("Pending");
+        List<String> op2 = new ArrayList<>();
+        op2.add("Yes");
+        op2.add("No");
+        BaseFormElement element0, element1, element2, element3, element4;
+        // Call Details
+        assert visit != null;
+        element0 = FormHeader.createInstance("Call Details");
+        element1 = FormElementTextSingleLine.createInstance().setTitle("Call Number*").setTag(486911)
+                .setValue(registration.getCallNumber()).setRequired(true)
+                .setEnabled(false);
+        element2 = FormElementTextSingleLine.createInstance().setTitle("Visit Number*").setTag(486912)
+                .setValue(visit.getVisitNumber()).setRequired(true).setEnabled(false);
+        element3 = FormElementTextSingleLine.createInstance().setTitle("Start Time*")
+                .setValue(visit.getStartTimeView()).setRequired(true).setTag(486913).setEnabled(false);
+        element4 = FormElementTextSingleLine.createInstance().setTitle("End Time*")
+                .setValue(s).setRequired(true).setTag(486914).setEnabled(false);
+        formItems.add(element0);
+        formItems.add(element1);
+        formItems.add(element2);
+        formItems.add(element3);
+        formItems.add(element4);
+        // Customer Details
+        element0 = FormHeader.createInstance("Customer Details");
+        element1 = FormElementTextSingleLine.createInstance().setTitle("Name").setHint("Name")
+                .setTag(486901).setValue(registration.getCustomerName()).setEnabled(false);
+        element2 = FormElementTextMultiLine.createInstance().setTitle("Site Details").setTag(486902)
+                .setHint("Site Details").setValue(registration.getSiteDetails()).setEnabled(false);
+        formItems.add(element0);
+        formItems.add(element1);
+        formItems.add(element2);
         // Concern Person
         element0 = FormHeader.createInstance("Concern Person");
         element1 = FormElementTextSingleLine.createInstance().setTitle("Name*").setHint("Enter Name")
@@ -200,10 +246,6 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
                 .setRequired(true).setTag(486904);
         element3 = FormElementTextEmail.createInstance().setTitle("e-Mail ID*").setHint("Enter Email")
                 .setRequired(true).setTag(486905);
-        if (visit != null) {
-            element1.setValue(visit.getConcernName());
-            element2.setValue(visit.getConcernPhone());
-        }
         formItems.add(element0);
         formItems.add(element1);
         formItems.add(element2);
@@ -213,8 +255,6 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
         element0 = FormHeader.createInstance("Visit Details");
         element1 = FormElementTextMultiLine.createInstance().setTitle("Observation*")
                 .setHint("Enter Observation").setRequired(true).setTag(486906);
-        if (visit != null)
-            element1.setValue(visit.getObservation());
         element2 = FormElementTextSingleLine.createInstance().setTitle("Action Taken*")
                 .setHint("Enter Action Taken").setRequired(true).setTag(486907);
         formItems.add(element0);
@@ -264,18 +304,23 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
     }
 
     @NotNull
-    private Visit getVisit() {
-        boolean b = false;
-        if (getFormValue(486908).equalsIgnoreCase("Completed"))
-            b = true;
+    private Map<String, String> getVisitStart() {
         int i = serviceCall.getRegistration().getNumberOfVisits() + 1;
         String location = getLocationString();
         if (location == null || getLocationString() == null)
             location = getLocationString();
-        return new Visit(date, date, email, getFormValue(486911), getFormValue(486903),
-                getFormValue(486904), b, i, "", getFormValue(486910), location,
-                "", getFormValue(486912), getFormValue(486907),
-                getFormValue(486906), getFormValue(486905), getFormValue(486909));
+        return new Visit(getFormValue(486902), getFormValue(486901), i, date, email, location).getVisitStartMap();
+    }
+
+    @NotNull
+    private Map<String, String> getVisitEnd() {
+        boolean b = false;
+        if (getFormValue(486908).equalsIgnoreCase("Completed"))
+            b = true;
+        return new Visit(getFormValue(486912), getFormValue(486911), b, getFormValue(486907),
+                getFormValue(486906), getFormValue(486903), getFormValue(486904),
+                getFormValue(486905), getFormValue(486909), date, getFormValue(486910),
+                "", "").getVisitEndMap();
     }
 
     public String getFormValue(int i) {
@@ -314,7 +359,10 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
             case R.id.button3:
                 if (task != null)
                     task.cancel(true);
-                task = new RegVisitTask(getVisit());
+                if (m == 0)
+                    task = new RegVisitTask(getVisitStart());
+                else
+                    task = new RegVisitTask(getVisitEnd());
                 task.execute();
                 break;
         }
@@ -340,20 +388,25 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
             e.printStackTrace();
         }
         date = calendar.getTime();
-        for (int i = 486901; i <= 486914; i++)
+        int j = 486905;
+        if (m == 1)
+            j = 486914;
+        for (int i = 486901; i <= j; i++)
             resetFormValue(i);
-        mFormBuilder.getFormElement(486901).setValue(registration.getCustomerName());
-        mFormBuilder.getFormElement(486902).setValue(registration.getSiteDetails());
-        mFormBuilder.getFormElement(486911).setValue(registration.getCallNumber());
-        mFormBuilder.getFormElement(486912).setValue(s2);
-        mFormBuilder.getFormElement(486913).setValue(s1);
-        mFormBuilder.getFormElement(486914).setValue(s1);
-        mFormBuilder.getmFormAdapter().notifyDataSetChanged();
-        if (visit == null)
-            return;
-        mFormBuilder.getFormElement(486903).setValue(visit.getConcernName());
-        mFormBuilder.getFormElement(486904).setValue(visit.getConcernPhone());
-        mFormBuilder.getFormElement(486906).setValue(visit.getObservation());
+        if (m != 0) {
+            mFormBuilder.getFormElement(486901).setValue(registration.getCustomerName());
+            mFormBuilder.getFormElement(486902).setValue(registration.getSiteDetails());
+            mFormBuilder.getFormElement(486911).setValue(registration.getCallNumber());
+            mFormBuilder.getFormElement(486912).setValue(visit.getVisitNumber());
+            mFormBuilder.getFormElement(486913).setValue(visit.getStartTimeView());
+            mFormBuilder.getFormElement(486914).setValue(s1);
+        } else {
+            mFormBuilder.getFormElement(486904).setValue(registration.getCustomerName());
+            mFormBuilder.getFormElement(486905).setValue(registration.getSiteDetails());
+            mFormBuilder.getFormElement(486901).setValue(registration.getCallNumber());
+            mFormBuilder.getFormElement(486902).setValue(s2);
+            mFormBuilder.getFormElement(486903).setValue(s1);
+        }
         mFormBuilder.getmFormAdapter().notifyDataSetChanged();
     }
 
@@ -362,10 +415,10 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
 
         private Responded responded;
         private int i = 4869;
-        private Visit visit;
+        private Map<String, String> map;
 
-        RegVisitTask(@NotNull Visit visit) {
-            this.visit = visit;
+        RegVisitTask(@NotNull Map<String, String> map) {
+            this.map = map;
         }
 
         @Override
@@ -378,14 +431,15 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
         protected Boolean doInBackground(Void... params) {
             Retrofit retrofit = AppController.getRetrofit(Api.BASE_URL);
             Api queryApi = retrofit.create(Api.class);
-            Call<Responded> call = queryApi.RegisterVisit(visit.getVisitMap());
+            Call<Responded> call;
+            if (m == 0)
+                call = queryApi.RegisterVisitStart(map);
+            else
+                call = queryApi.RegisterVisitEnd(map);
             call.enqueue(new Callback<Responded>() {
                 @Override
                 public void onResponse(@NonNull Call<Responded> call, @NonNull Response<Responded> response) {
                     if (response.body() != null && response.body().getResponse() != null) {
-                        Log.e("r/m/e", response.message() +
-                                "\n" + response.toString() + "\n" +
-                                response.code() + "\n" + response.body().getResponse().getMessage());
                         responded = response.body();
                         i = responded.getResponse().getCode();
                     } else {
@@ -418,7 +472,7 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
             if (responded != null) {
                 Toast.makeText(AppController.getInstance(), responded.getResponse().getMessage(), Toast.LENGTH_LONG).show();
                 if (responded.getResponse().getCode() == 1)
-                    RegVisitActivity.this.finish();
+                    RegVisitSeActivity.this.finish();
             } else {
                 Toast.makeText(AppController.getInstance(), "Unknown Error, Try Again", Toast.LENGTH_SHORT).show();
             }

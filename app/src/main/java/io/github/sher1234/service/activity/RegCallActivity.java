@@ -96,7 +96,7 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(Strings.DateFormatID);
             s2 = "MAC" + dateFormat.format(calendar.getTime());
-            dateFormat = new SimpleDateFormat(Strings.DateFormatServer);
+            dateFormat = new SimpleDateFormat(Strings.DateFormatView);
             s1 = dateFormat.format(calendar.getTime());
         } catch (Exception e) {
             s1 = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1)
@@ -291,16 +291,17 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
         String s1, s2;
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(Strings.DateFormatID);
-            s2 = "MA" + dateFormat.format(calendar.getTime());
-            dateFormat = new SimpleDateFormat(Strings.DateFormatServer);
+            s2 = "MAC" + dateFormat.format(calendar.getTime());
+            dateFormat = new SimpleDateFormat(Strings.DateFormatView);
             s1 = dateFormat.format(calendar.getTime());
         } catch (Exception e) {
-            s1 = calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1)
-                    + "/" + calendar.get(Calendar.YEAR) + ", " + calendar.get(Calendar.HOUR_OF_DAY)
+            s1 = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1)
+                    + "-" + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.HOUR_OF_DAY)
                     + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND);
-            s2 = "MA" + calendar.get(Calendar.YEAR) + (calendar.get(Calendar.MONTH) + 1)
-                    + calendar.get(Calendar.DAY_OF_MONTH) + calendar.get(Calendar.HOUR_OF_DAY)
-                    + calendar.get(Calendar.MINUTE) + calendar.get(Calendar.SECOND);
+            s2 = "MAC" + calendar.get(Calendar.YEAR) + (calendar.get(Calendar.MONTH) + 1) +
+                    calendar.get(Calendar.DAY_OF_MONTH) + calendar.get(Calendar.HOUR_OF_DAY) +
+                    calendar.get(Calendar.MINUTE) + calendar.get(Calendar.SECOND) +
+                    calendar.get(Calendar.MILLISECOND);
             e.printStackTrace();
         }
         date = calendar.getTime();
