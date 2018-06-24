@@ -27,6 +27,8 @@ import java.util.List;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
+import io.github.sher1234.service.activity.admin.AdminActivity;
+import io.github.sher1234.service.activity.admin.UsersActivity;
 import io.github.sher1234.service.api.Api;
 import io.github.sher1234.service.model.base.Registration;
 import io.github.sher1234.service.model.response.Responded;
@@ -52,6 +54,7 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
     private MaterialButton button;
     private View mProgressView;
     private RegCallTask task;
+    private boolean isAdmin;
     private String email;
     private Date date;
 
@@ -67,6 +70,7 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
                 getResources().getDrawable(R.drawable.ic_menu),
                 getResources().getDrawable(R.drawable.ic_close)));
 
+        findViewById(R.id.button0).setOnClickListener(this);
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
@@ -77,7 +81,11 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
         findViewById(R.id.button8).setOnClickListener(this);
 
         SharedPreferences preferences = getSharedPreferences(Strings.UserPreferences, MODE_PRIVATE);
+        isAdmin = preferences.getBoolean("IsAdmin", false);
         email = preferences.getString("Email", "");
+
+        if (isAdmin)
+            findViewById(R.id.button0).setVisibility(View.VISIBLE);
 
         button = findViewById(R.id.button8);
         mProgressView = findViewById(R.id.progressView);
@@ -229,16 +237,23 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button1:
-                startActivity(new Intent(this, DashboardActivity.class));
+                if (isAdmin)
+                    startActivity(new Intent(this, AdminActivity.class));
+                else
+                    startActivity(new Intent(this, DashboardActivity.class));
                 finish();
                 break;
 
             case R.id.button2:
-                startActivity(new Intent(this, CallsActivity.class));
+                if (isAdmin)
+                    startActivity(new Intent(this, io.github.sher1234.service.activity.admin.CallsActivity.class));
+                else
+                    startActivity(new Intent(this, CallsActivity.class));
                 finish();
                 break;
 
-            case R.id.button3:
+            case R.id.button0:
+                startActivity(new Intent(this, UsersActivity.class));
                 break;
 
             case R.id.button4:

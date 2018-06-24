@@ -24,6 +24,8 @@ import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
+import io.github.sher1234.service.activity.admin.AdminActivity;
+import io.github.sher1234.service.activity.admin.UsersActivity;
 import io.github.sher1234.service.api.Api;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
@@ -71,10 +73,10 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                 getResources().getDrawable(R.drawable.ic_menu),
                 getResources().getDrawable(R.drawable.ic_close)));
 
+        findViewById(R.id.button0).setOnClickListener(this);
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
-        findViewById(R.id.button4).setSelected(true);
         findViewById(R.id.button5).setOnClickListener(this);
         findViewById(R.id.button6).setOnClickListener(this);
 
@@ -116,6 +118,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         editText5.setText("");
         showView(false, linearLayout1, linearLayout2);
         showView(true, layout1, layout2, button, imageView);
+        showView(user.isAdmin(), findViewById(R.id.button0));
     }
 
     @Override
@@ -149,12 +152,18 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button1:
-                startActivity(new Intent(this, DashboardActivity.class));
+                if (user.isAdmin())
+                    startActivity(new Intent(this, AdminActivity.class));
+                else
+                    startActivity(new Intent(this, DashboardActivity.class));
                 finish();
                 break;
 
             case R.id.button2:
-                startActivity(new Intent(this, CallsActivity.class));
+                if (user.isAdmin())
+                    startActivity(new Intent(this, io.github.sher1234.service.activity.admin.CallsActivity.class));
+                else
+                    startActivity(new Intent(this, CallsActivity.class));
                 finish();
                 break;
 
@@ -163,7 +172,9 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
 
-            case R.id.button4:
+            case R.id.button0:
+                startActivity(new Intent(this, UsersActivity.class));
+                finish();
                 break;
 
             case R.id.button5:

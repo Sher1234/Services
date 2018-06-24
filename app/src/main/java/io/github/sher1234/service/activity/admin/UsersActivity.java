@@ -107,7 +107,6 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
 
         element1 = FormElementTextSingleLine.createInstance().setTitle("Search")
                 .setHint("Enter Search Term").setTag(486901);
-        formItems.add(element1);
         element2 = FormElementPickerSingle.createInstance().setTitle("Sort by")
                 .setOptions(op).setTag(486902);
         formItems.add(element1);

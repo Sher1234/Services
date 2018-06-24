@@ -86,7 +86,7 @@ public class Start4 extends Fragment implements View.OnClickListener {
     }
 
     private boolean isOtpInvalid() {
-        return getString(editText2).length() != 6;
+        return getString(editText2).length() < 3;
     }
 
     private boolean isEmailInvalid() {
