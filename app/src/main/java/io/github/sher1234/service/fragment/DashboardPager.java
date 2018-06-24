@@ -28,8 +28,8 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
     private static final String TAG_ARGS_2 = "SERIALIZABLE-PAGER-MAIN";
 
     private int MODE;
-    private BarData barDataW;
-    private BarData barDataQ;
+    private BarData barDataD;
+    private BarData barDataM;
     private String description;
     private Dashboard dashboard;
 
@@ -76,42 +76,42 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
         barChart.setDoubleTapToZoomEnabled(false);
         barChart.setTouchEnabled(false);
         barChart.setPinchZoom(false);
-        updateBarData(barDataW, "Weekly");
+        updateBarData(barDataD, "Daily");
     }
 
     private void setFields() {
-        List<BarEntry> barEntriesW;
-        List<BarEntry> barEntriesQ;
-        List<String> barLabelsW;
-        List<String> barLabelsQ;
+        List<BarEntry> barEntriesD;
+        List<BarEntry> barEntriesM;
+        List<String> barLabelsD;
+        List<String> barLabelsM;
         if (MODE == 0) {
             description = "Overview of Registrations";
-            barEntriesW = dashboard.getRegsWeekly().getBarEntries();
-            barLabelsW = dashboard.getWeekDates();
-            barEntriesQ = dashboard.getRegsMonthly().getBarEntries();
-            barLabelsQ = dashboard.getQuarterDates();
+            barEntriesD = dashboard.getRegsDaily().getBarEntriesDaily();
+            barLabelsD = dashboard.getDailyDates();
+            barEntriesM = dashboard.getRegsMonthly().getBarEntriesMonthly();
+            barLabelsM = dashboard.getMonthlyDates();
         } else if (MODE == 1) {
             description = "Overview of Visits";
-            barEntriesW = dashboard.getVisitsWeekly().getBarEntries();
-            barLabelsW = dashboard.getWeekDates();
-            barEntriesQ = dashboard.getVisitsMonthly().getBarEntries();
-            barLabelsQ = dashboard.getQuarterDates();
+            barEntriesD = dashboard.getVisitsDaily().getBarEntriesDaily();
+            barLabelsD = dashboard.getDailyDates();
+            barEntriesM = dashboard.getVisitsMonthly().getBarEntriesMonthly();
+            barLabelsM = dashboard.getMonthlyDates();
         } else {
-            barEntriesW = new ArrayList<>();
-            barLabelsW = new ArrayList<>();
-            barEntriesQ = new ArrayList<>();
-            barLabelsQ = new ArrayList<>();
+            barEntriesD = new ArrayList<>();
+            barLabelsD = new ArrayList<>();
+            barEntriesM = new ArrayList<>();
+            barLabelsM = new ArrayList<>();
             barChart.setDescription("Error");
         }
-        BarDataSet barDataSetW = new BarDataSet(barEntriesW, "Weekly");
+        BarDataSet barDataSetW = new BarDataSet(barEntriesD, "Daily");
         barDataSetW.setColors(ColorTemplate.JOYFUL_COLORS);
         barDataSetW.setBarSpacePercent(55);
-        barDataW = new BarData(barLabelsW, barDataSetW);
+        barDataD = new BarData(barLabelsD, barDataSetW);
 
-        BarDataSet barDataSetQ = new BarDataSet(barEntriesQ, "Monthly");
+        BarDataSet barDataSetQ = new BarDataSet(barEntriesM, "Monthly");
         barDataSetQ.setColors(ColorTemplate.JOYFUL_COLORS);
         barDataSetQ.setBarSpacePercent(55);
-        barDataQ = new BarData(barLabelsQ, barDataSetQ);
+        barDataM = new BarData(barLabelsM, barDataSetQ);
     }
 
     private void updateBarData(BarData barData, String s) {
@@ -129,13 +129,13 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
             case R.id.radioButton1:
                 radioButton2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 radioButton1.setTextColor(getResources().getColor(R.color.colorTextLight));
-                updateBarData(barDataW, "Weekly");
+                updateBarData(barDataD, "Daily");
                 break;
 
             case R.id.radioButton2:
                 radioButton1.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 radioButton2.setTextColor(getResources().getColor(R.color.colorTextLight));
-                updateBarData(barDataQ, "Monthly");
+                updateBarData(barDataM, "Monthly");
                 break;
         }
     }

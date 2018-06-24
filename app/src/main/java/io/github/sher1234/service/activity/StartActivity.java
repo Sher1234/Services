@@ -21,6 +21,7 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.R;
+import io.github.sher1234.service.activity.admin.AdminActivity;
 import io.github.sher1234.service.fragment.Start1;
 import io.github.sher1234.service.fragment.Start5;
 import io.github.sher1234.service.model.base.User;
@@ -45,7 +46,10 @@ public class StartActivity extends AppCompatActivity implements NavigationHost, 
         if (preferences.getBoolean("status", false)) {
             if (preferences.getBoolean("exists", false)) {
                 Toast.makeText(this, "Logging in, Please wait", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, DashboardActivity.class));
+                if (preferences.getBoolean("IsAdmin", false))
+                    startActivity(new Intent(this, AdminActivity.class));
+                else
+                    startActivity(new Intent(this, DashboardActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Complete Account Details", Toast.LENGTH_SHORT).show();

@@ -11,11 +11,11 @@ public class Dashboard implements Serializable {
 
     private Response Response;
 
-    private Time RegsWeekly;
+    private Time RegsDaily;
 
     private Time RegsMonthly;
 
-    private Time VisitsWeekly;
+    private Time VisitsDaily;
 
     private Time VisitsMonthly;
 
@@ -23,9 +23,9 @@ public class Dashboard implements Serializable {
 
     private int PendingWithVisit;
 
-    private List<String> WeekDates;
+    private List<String> DailyDates;
 
-    private List<String> QuarterDates;
+    private List<String> MonthlyDates;
 
     public Dashboard() {
 
@@ -37,12 +37,12 @@ public class Dashboard implements Serializable {
         Response = response;
         RegsMonthly = regsMonthly;
         VisitsMonthly = visitsMonthly;
-        RegsWeekly = regsWeekly;
-        VisitsWeekly = visitsWeekly;
+        RegsDaily = regsWeekly;
+        VisitsDaily = visitsWeekly;
         PendingAll = pendingAll;
         PendingWithVisit = pendingWithVisit;
-        WeekDates = weekDates;
-        QuarterDates = quarterDates;
+        DailyDates = weekDates;
+        MonthlyDates = quarterDates;
     }
 
     public Response getResponse() {
@@ -57,12 +57,12 @@ public class Dashboard implements Serializable {
         return VisitsMonthly;
     }
 
-    public Time getRegsWeekly() {
-        return RegsWeekly;
+    public Time getRegsDaily() {
+        return RegsDaily;
     }
 
-    public Time getVisitsWeekly() {
-        return VisitsWeekly;
+    public Time getVisitsDaily() {
+        return VisitsDaily;
     }
 
     public String getPendingAll() {
@@ -73,11 +73,11 @@ public class Dashboard implements Serializable {
         return PendingWithVisit;
     }
 
-    public List<String> getWeekDates() {
-        return WeekDates;
+    public List<String> getDailyDates() {
+        return DailyDates;
     }
 
-    public List<String> getQuarterDates() {
-        return QuarterDates;
+    public List<String> getMonthlyDates() {
+        return MonthlyDates;
     }
 }

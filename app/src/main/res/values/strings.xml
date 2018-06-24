@@ -42,4 +42,6 @@
     <string name="complete_visit">Complete Visit</string>
     <string name="view_in_map">View in Map</string>
     <string name="monthly">Monthly</string>
+    <string name="daily">Daily</string>
+    <string name="employees">Employees</string>
 </resources>

@@ -29,7 +29,7 @@
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:padding="8dp"
-                android:text="@string/weekly"
+                android:text="@string/daily"
                 android:textColor="@color/colorTextLight"
                 android:textSize="12sp" />
 

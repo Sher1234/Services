@@ -3,10 +3,12 @@ package io.github.sher1234.service.api;
 import java.util.Map;
 
 import io.github.sher1234.service.model.response.Dashboard;
+import io.github.sher1234.service.model.response.DashboardWR;
 import io.github.sher1234.service.model.response.Registrations;
 import io.github.sher1234.service.model.response.Responded;
 import io.github.sher1234.service.model.response.ServiceCall;
 import io.github.sher1234.service.model.response.Users;
+import io.github.sher1234.service.model.response.UsersX;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -78,4 +80,17 @@ public interface Api {
     @POST("get/call/")
     @FormUrlEncoded
     Call<ServiceCall> GetServiceCall(@Field("CallNumber") String s);
+
+    @POST("admin/?m=0")
+    @FormUrlEncoded
+    Call<Dashboard> GetDashboard(@Field("DateTime") String dateTime);
+
+    @POST("query/?m=0")
+    @FormUrlEncoded
+    Call<UsersX> GetUsersAdmin(@FieldMap Map<String, String> map);
+
+    @POST("admin/?m=1")
+    @FormUrlEncoded
+    Call<DashboardWR> GetDashboardWR(@Field("Email") String email,
+                                     @Field("DateTime") String dateTime);
 }

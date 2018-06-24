@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.button.MaterialButton
         android:layout_margin="5dp"
@@ -10,6 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dashboard" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/button0"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/employees"
+        android:visibility="gone"
+        app:textAllCaps="false"
+        tools:visibility="visible" />
 
     <android.support.design.button.MaterialButton
         android:layout_margin="5dp"
@@ -45,6 +57,7 @@
         app:textAllCaps="false" />
 
     <android.support.design.button.MaterialButton
+        android:visibility="gone"
         android:id="@+id/button5"
         android:layout_margin="5dp"
         android:enabled="false"

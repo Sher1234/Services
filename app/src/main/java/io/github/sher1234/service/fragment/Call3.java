@@ -1,12 +1,15 @@
 package io.github.sher1234.service.fragment;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.button.MaterialButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +43,9 @@ public class Call3 extends Fragment implements View.OnClickListener {
     private int i;
     private View view;
     private String location;
+    private FormBuilder formBuilder;
     private ServiceCall serviceCall;
-    private FormBuilder mFormBuilder;
+    private MaterialButton materialButton;
 
     public Call3() {
     }
@@ -69,9 +74,11 @@ public class Call3 extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_call_1, container, false);
+        materialButton = view.findViewById(R.id.materialButton);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        mFormBuilder = new FormBuilder(getContext(), recyclerView);
+        formBuilder = new FormBuilder(getContext(), recyclerView);
         view.findViewById(R.id.button).setOnClickListener(this);
+        materialButton.setOnClickListener(this);
         this.view = view.findViewById(R.id.editView);
         return view;
     }
@@ -87,6 +94,15 @@ public class Call3 extends Fragment implements View.OnClickListener {
             onCreateForm();
             view.setVisibility(View.GONE);
             setVisitModel(serviceCall.getVisits().get(i), serviceCall.getRegistration());
+            String s = serviceCall.getVisits().get(i).getImage();
+            if (s == null || s.isEmpty() || serviceCall.getVisitImages() == null ||
+                    serviceCall.getVisitImages().size() == 0)
+                materialButton.setVisibility(View.VISIBLE);
+            else {
+                materialButton.setText("View Images");
+                materialButton.setVisibility(View.GONE);
+                Snackbar.make(view, "Images are currently, Currently Disabled", Snackbar.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -146,7 +162,7 @@ public class Call3 extends Fragment implements View.OnClickListener {
         formItems.add(element2);
         formItems.add(element3);
 
-        mFormBuilder.addFormElements(formItems);
+        formBuilder.addFormElements(formItems);
     }
 
     private void setVisitModel(VisitedCall visitedCall, RegisteredCall registeredCall) {
@@ -253,11 +269,11 @@ public class Call3 extends Fragment implements View.OnClickListener {
         formItems.add(element2);
         formItems.add(element3);
 
-        mFormBuilder.addFormElements(formItems);
+        formBuilder.addFormElements(formItems);
     }
 
     private void setFormValue(int i, String s) {
-        mFormBuilder.getFormElement(i).setValue(s);
+        formBuilder.getFormElement(i).setValue(s);
     }
 
     @Override
@@ -281,12 +297,17 @@ public class Call3 extends Fragment implements View.OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menuLocation && getActivity() != null) {
+        if (item.getItemId() == R.id.menuLocation && getActivity() != null && location != null && !location.isEmpty()) {
             String[] s = location.split("-#-");
             double lat = Double.parseDouble(s[0]);
             double lon = Double.parseDouble(s[1]);
             String q = "geo:" + lat + "," + lon + "?q=" + Uri.encode(lat + "," + lon + "(Service Call)") + "&z=16";
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(q)));
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(q)));
+            } catch (ActivityNotFoundException e) {
+                e.printStackTrace();
+                Toast.makeText(getContext(), "Maps Unavailable", Toast.LENGTH_SHORT).show();
+            }
             return true;
         } else if (item.getItemId() == R.id.menuAdd && getActivity() != null) {
             showDialog();
@@ -304,7 +325,21 @@ public class Call3 extends Fragment implements View.OnClickListener {
             if (getFragmentManager() != null)
                 getFragmentManager().beginTransaction().remove(this).commit();
             startActivity(intent);
+            return;
         }
+
+        String x = serviceCall.getVisits().get(i).getImage();
+        if (view.getId() == R.id.materialButton && (x == null || x.isEmpty())) {
+            String s = "http://sher-sc.000webhostapp.com/v2/image/?vn=" +
+                    serviceCall.getVisits().get(i).getVisitNumber();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+            if (getFragmentManager() != null)
+                getFragmentManager().beginTransaction().remove(this).commit();
+            startActivity(intent);
+        } else if (view.getId() == R.id.materialButton && (x != null && !x.isEmpty())) {
+            Toast.makeText(getContext(), "View Images", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void showDialog() {

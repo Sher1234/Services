@@ -5,19 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:background="@drawable/lt_background"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingTop="10dp">
-
-        <include layout="@layout/menu_layout" />
-
-    </LinearLayout>
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,17 +13,10 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            style="@style/AppTheme.PopupOverlay"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
-            android:paddingStart="12dp"
-            android:paddingLeft="12dp"
-            android:paddingEnd="12dp"
-            android:paddingRight="12dp"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:contentInsetStart="0dp"
-            app:navigationIcon="@drawable/ic_menu"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/app_name" />
 
     </android.support.design.widget.AppBarLayout>
@@ -52,7 +32,7 @@
         app:elevation="8dp"
         tools:visibility="visible">
 
-        <include layout="@layout/content_account" />
+        <include layout="@layout/content_admin_user_db" />
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -86,7 +66,6 @@
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:indeterminate="true" />
-
         </android.support.v7.widget.LinearLayoutCompat>
 
     </FrameLayout>
