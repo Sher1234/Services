@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import io.github.sher1234.service.model.base.RegisteredCall;
-import io.github.sher1234.service.model.base.Response;
+import io.github.sher1234.service.model.base.Responded;
 import io.github.sher1234.service.model.base.VisitImage;
 import io.github.sher1234.service.model.base.VisitedCall;
 
 public class ServiceCall implements Serializable {
 
-    private Response Response;
+    private Responded Response;
     private List<VisitedCall> Visits;
     private RegisteredCall Registration;
     private List<VisitImage> VisitImages;
@@ -19,7 +19,7 @@ public class ServiceCall implements Serializable {
 
     }
 
-    public ServiceCall(Response response, List<VisitedCall> visits,
+    public ServiceCall(Responded response, List<VisitedCall> visits,
                        RegisteredCall registrations, List<VisitImage> visitImages) {
         Response = response;
         this.Visits = visits;
@@ -31,7 +31,7 @@ public class ServiceCall implements Serializable {
         return Registration;
     }
 
-    public Response getResponse() {
+    public Responded getResponse() {
         return Response;
     }
 

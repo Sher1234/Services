@@ -19,7 +19,7 @@ import io.github.sher1234.service.util.NavigationHost;
 public class VisitRecycler extends RecyclerView.Adapter<VisitRecycler.ViewHolder> {
 
     private final FragmentActivity activity;
-    private ServiceCall serviceCall;
+    private final ServiceCall serviceCall;
 
     public VisitRecycler(FragmentActivity activity, ServiceCall serviceCall) {
         this.activity = activity;

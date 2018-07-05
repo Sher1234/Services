@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.api.Api;
+import io.github.sher1234.service.model.base.Responded;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
 import io.github.sher1234.service.util.NavigationHost;
@@ -116,7 +117,7 @@ public class Start3 extends Fragment implements View.OnClickListener {
 
     @SuppressLint("StaticFieldLeak")
     private class RegisterTask extends AsyncTask<Void, Void, Boolean> {
-        private io.github.sher1234.service.model.base.Response response;
+        private Responded response;
         private final User user;
         private int i = 4869;
 

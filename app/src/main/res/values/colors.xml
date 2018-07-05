@@ -3,17 +3,18 @@
     <!--<color name="colorAccent">#D81B60</color>-->
     <!--<color name="colorPrimary">#008577</color>-->
     <!--<color name="colorPrimaryDark">#00574B</color>-->
-    <color name="colorPrimary">#01579b</color>
-    <color name="colorPrimaryDark">#003e64</color>
-    <color name="colorAccent">#ffc107</color>
-    <color name="colorTextLight">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorTextLight">#505050</color>
+    <color name="colorLoadDark">#9a9a9a</color>
+    <color name="colorPrimary">#f0f0f0</color>
+    <color name="colorAccent">#028A3D</color>
     <!-- Form Elements -->
-    <color name="colorHeaderBackground">#DDDDDD</color>
+    <color name="colorHeaderBackground">#DADADA</color>
     <color name="colorHeaderText">#000000</color>
-    <color name="colorElementBackground">#FFFFFF</color>
+    <color name="colorElementBackground">#fafafa</color>
     <color name="colorElementTextTitle">#222222</color>
     <color name="colorElementTextValue">#000000</color>
-    <color name="colorDivider">#DDDDDD</color>
+    <color name="colorDivider">#DADADA</color>
 
     <color name="colorCompleted">#2E7D32</color>
     <color name="colorPending">#850002</color>

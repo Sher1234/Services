@@ -324,13 +324,13 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
             resetFormValue(i);
         mFormBuilder.getFormElement(486910).setValue(s2);
         mFormBuilder.getFormElement(486911).setValue(s1);
-        mFormBuilder.getmFormAdapter().notifyDataSetChanged();
+        mFormBuilder.getFormAdapter().notifyDataSetChanged();
     }
 
     @SuppressLint("StaticFieldLeak")
     class RegCallTask extends AsyncTask<Void, Void, Boolean> {
 
-        private Registration registration;
+        private final Registration registration;
         private Responded responded;
         private int i = 4869;
 

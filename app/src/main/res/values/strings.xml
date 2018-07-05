@@ -17,7 +17,6 @@
     <string name="update_account">Update Account</string>
     <string name="email_as_eid">Use Email as Employee ID</string>
     <string name="dashboard">Dashboard</string>
-    <string name="weekly">Weekly</string>
     <string name="registrations">Registrations</string>
     <string name="refresh">Refresh</string>
     <string name="sign_out">Sign Out</string>
@@ -44,4 +43,9 @@
     <string name="monthly">Monthly</string>
     <string name="daily">Daily</string>
     <string name="employees">Employees</string>
+    <string name="add_images">Add Images</string>
+    <string name="welcome_text">Welcome to Max Automation\'s, \nService Call Panel</string>
+    <string name="acc_disabled">Account is currently inactive. Contact system administrator to activate account or try again after some time.</string>
+    <string name="user_privileges">User Privileges</string>
+    <string name="designed_for_max"><![CDATA[Designed for Max Engineering & Automation (P) Ltd.]]></string>
 </resources>

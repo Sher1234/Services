@@ -31,7 +31,6 @@ import java.util.List;
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.activity.AccountActivity;
-import io.github.sher1234.service.activity.DashboardActivity;
 import io.github.sher1234.service.activity.RegCallActivity;
 import io.github.sher1234.service.activity.StartActivity;
 import io.github.sher1234.service.adapter.RegisterRecycler;
@@ -58,11 +57,9 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
     private RecyclerView recyclerView;
     private View mProgressView;
 
-    private boolean exit = false;
-
-    private QueryTask task;
-
     private FormBuilder formBuilder;
+    private boolean exit = false;
+    private QueryTask task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +68,8 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new NavigationIconClickListener(this,
-                findViewById(R.id.coordinatorLayout),
-                new AccelerateDecelerateInterpolator(),
-                getResources().getDrawable(R.drawable.ic_menu),
-                getResources().getDrawable(R.drawable.ic_close)));
+                findViewById(R.id.coordinatorLayout), new AccelerateDecelerateInterpolator(),
+                R.drawable.ic_menu, R.drawable.ic_close));
 
         findViewById(R.id.button0).setVisibility(View.VISIBLE);
         findViewById(R.id.button2).setVisibility(View.GONE);
@@ -189,7 +184,7 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.button1:
-                startActivity(new Intent(this, DashboardActivity.class));
+                startActivity(new Intent(this, AdminActivity.class));
                 finish();
                 break;
 
@@ -221,7 +216,7 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 resetFormValue(486905, "");
                 resetFormValue(486906, "");
                 resetFormValue(486904, "All");
-                formBuilder.getmFormAdapter().notifyDataSetChanged();
+                formBuilder.getFormAdapter().notifyDataSetChanged();
                 break;
 
             case R.id.navButton2:

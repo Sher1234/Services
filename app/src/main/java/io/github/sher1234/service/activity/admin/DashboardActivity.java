@@ -43,7 +43,6 @@ import retrofit2.Retrofit;
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private boolean exit = false;
     private ViewPager viewPager;
     private TextView textView1;
     private TextView textView2;
@@ -124,9 +123,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    @SuppressLint("SimpleDateFormat")
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuRefresh: {
+                Calendar calendar = Calendar.getInstance();
+                date = new SimpleDateFormat(Strings.DateFormatServer).format(calendar.getTime());
                 if (task != null)
                     task.cancel(true);
                 task = null;
@@ -172,7 +174,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        private DashboardWR dashboard;
+        private final DashboardWR dashboard;
 
         PagerAdapter(FragmentManager fm, DashboardWR dashboard) {
             super(fm);

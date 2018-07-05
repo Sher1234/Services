@@ -4,102 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Start1">
+    tools:background="@drawable/lt_background">
 
-    <LinearLayout
-        android:padding="5dp"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_marginBottom="48dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <android.support.design.widget.TextInputLayout
-            android:hint="@string/email"
-            android:textColorHint="#d9d9d9"
-            android:layout_marginStart="@dimen/fab_margin"
-            android:layout_marginEnd="@dimen/fab_margin"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText1"
-                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
-                android:inputType="textEmailAddress"
-                android:textColor="#ffffffff"
-                android:textSize="15sp"
-                tools:text="agg.hunny2013@gmail.com"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:hint="@string/email"
+                android:textColorHint="@color/colorAccent">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_marginTop="12dp"
-            android:textColorHint="#d9d9d9"
-            app:passwordToggleEnabled="true"
-            android:hint="@string/password"
-            android:layout_marginStart="@dimen/fab_margin"
-            android:layout_marginEnd="@dimen/fab_margin"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText2"
-                android:textColorHint="?colorAccent"
-                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
-                android:inputType="textPassword"
-                android:textSize="15sp"
-                android:textColor="#ffffffff"
-                tools:text="agg.hunny2013@gmail.com"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editText1"
+                    style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:hint="@string/password"
+                android:textColorHint="@color/colorAccent"
+                app:passwordToggleEnabled="true">
 
-    </LinearLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editText2"
+                    style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColorHint="?colorAccent"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
-        android:layout_marginBottom="40dp"
-        android:layout_marginStart="@dimen/fab_margin"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_gravity="bottom"
-        android:gravity="center_vertical|end"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="@dimen/fab_margin">
 
-        <android.support.design.button.MaterialButton
-            android:id="@+id/button1"
-            app:textAllCaps="false"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:strokeWidth="2dp"
-            android:textColor="?colorAccent"
-            android:textSize="13sp"
-            app:strokeColor="?colorAccent"
-            android:text="@string/reset_password"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_gravity="center_horizontal"
-            app:cornerRadius="@dimen/fab_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/button1"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/reset_password"
+                    android:textColor="?colorAccent"
+                    android:textSize="13sp"
+                    app:strokeColor="?colorAccent"
+                    app:strokeWidth="2dp"
+                    app:textAllCaps="false" />
 
-        <android.support.design.button.MaterialButton
-            android:id="@+id/button2"
-            style="@style/Widget.MaterialComponents.Button"
-            app:textAllCaps="false"
-            android:textSize="13sp"
-            android:text="@string/action_sign_in_short"
-            android:layout_gravity="center_horizontal"
-            app:cornerRadius="@dimen/fab_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/button2"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/action_sign_in_short"
+                    android:textSize="13sp"
+                    app:textAllCaps="false" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <FrameLayout
         android:id="@+id/progressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#91000000"
+        android:background="#99ffffff"
         android:visibility="gone"
         tools:visibility="visible">
 

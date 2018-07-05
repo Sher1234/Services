@@ -223,7 +223,7 @@ public class CallsActivity extends AppCompatActivity implements View.OnClickList
                 resetFormValue(486905, "");
                 resetFormValue(486906, "");
                 resetFormValue(486904, "All");
-                formBuilder.getmFormAdapter().notifyDataSetChanged();
+                formBuilder.getFormAdapter().notifyDataSetChanged();
                 break;
 
             case R.id.navButton2:

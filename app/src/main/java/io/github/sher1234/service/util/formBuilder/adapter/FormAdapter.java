@@ -33,7 +33,7 @@ public class FormAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
 
     private final Context mContext;
     private List<BaseFormElement> mDataset;
-    private OnFormElementValueChangedListener mListener;
+    private final OnFormElementValueChangedListener mListener;
 
     public FormAdapter(Context context, OnFormElementValueChangedListener listener) {
         mContext = context;

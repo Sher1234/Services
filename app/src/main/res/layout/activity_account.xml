@@ -28,14 +28,9 @@
             android:id="@+id/toolbar"
             style="@style/AppTheme.PopupOverlay"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?actionBarSize"
             android:background="@color/colorPrimaryDark"
-            android:paddingStart="12dp"
-            android:paddingLeft="12dp"
-            android:paddingEnd="12dp"
-            android:paddingRight="12dp"
             android:theme="@style/AppTheme.AppBarOverlay"
-            app:contentInsetStart="0dp"
             app:navigationIcon="@drawable/ic_menu"
             app:title="@string/app_name" />
 
@@ -46,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:background="#fafdff"
+        android:background="@color/colorPrimaryDark"
         android:clickable="true"
         android:focusable="true"
         app:elevation="8dp"
@@ -60,11 +55,11 @@
         android:id="@+id/progressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#91000000"
+        android:background="#9fffffff"
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="wrap_content"

@@ -24,7 +24,7 @@ import io.github.sher1234.service.util.Strings;
 public class RegisterRecycler extends RecyclerView.Adapter<RegisterRecycler.ViewHolder> {
 
     private final Context context;
-    private List<Registration> registrations;
+    private final List<Registration> registrations;
 
     public RegisterRecycler(Context context, List<Registration> registrations) {
         this.context = context;
@@ -70,6 +70,8 @@ public class RegisterRecycler extends RecyclerView.Adapter<RegisterRecycler.View
 
     @Override
     public int getItemCount() {
+        if (registrations == null)
+            return 0;
         return registrations.size();
     }
 

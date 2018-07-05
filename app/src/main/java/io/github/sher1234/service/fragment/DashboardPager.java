@@ -127,14 +127,14 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
     public void onCheckedChanged(RadioGroup chipGroup, int i) {
         switch (i) {
             case R.id.radioButton1:
-                radioButton2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                radioButton1.setTextColor(getResources().getColor(R.color.colorTextLight));
+                radioButton2.setTextColor(getResources().getColor(R.color.colorAccent));
+                radioButton1.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 updateBarData(barDataD, "Daily");
                 break;
 
             case R.id.radioButton2:
-                radioButton1.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                radioButton2.setTextColor(getResources().getColor(R.color.colorTextLight));
+                radioButton1.setTextColor(getResources().getColor(R.color.colorAccent));
+                radioButton2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 updateBarData(barDataM, "Monthly");
                 break;
         }

@@ -17,6 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPending"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/colorPrimaryDark"
             tools:title="@string/app_name" />
 
     </android.support.design.widget.AppBarLayout>
@@ -33,7 +34,7 @@
         android:id="@+id/progressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#91000000"
+        android:background="#99ffffff"
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
@@ -59,6 +60,7 @@
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:indeterminate="true" />
+
         </android.support.v7.widget.LinearLayoutCompat>
 
     </FrameLayout>

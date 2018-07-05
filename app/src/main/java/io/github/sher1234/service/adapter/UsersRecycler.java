@@ -22,7 +22,7 @@ import io.github.sher1234.service.model.base.UserX;
 public class UsersRecycler extends RecyclerView.Adapter<UsersRecycler.ViewHolder> {
 
     private final Context context;
-    private List<UserX> users;
+    private final List<UserX> users;
 
     public UsersRecycler(Context context, List<UserX> users) {
         this.context = context;

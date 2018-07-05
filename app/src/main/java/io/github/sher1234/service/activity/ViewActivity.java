@@ -92,7 +92,7 @@ public class ViewActivity extends AppCompatActivity implements NavigationHost {
         textView1.setText(string);
         textView2.setText("");
         imageView.setImageResource(R.drawable.ic_pending_2);
-        setStatusBarColor(R.color.colorPrimaryDark);
+        setStatusBarColor(R.color.colorLoadDark);
         if (task != null)
             task.cancel(true);
         task = null;
@@ -134,7 +134,7 @@ public class ViewActivity extends AppCompatActivity implements NavigationHost {
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        private ServiceCall serviceCall;
+        private final ServiceCall serviceCall;
 
         PagerAdapter(FragmentManager fragmentManager, @NotNull ServiceCall serviceCall) {
             super(fragmentManager);
@@ -147,7 +147,9 @@ public class ViewActivity extends AppCompatActivity implements NavigationHost {
                 case 1:
                     if (serviceCall.getVisits() == null || serviceCall.getVisits().size() != 1)
                         return Call2.getInstance(serviceCall);
-                    tabLayout.getTabAt(1).setText("Visit");
+                    TabLayout.Tab tab = tabLayout.getTabAt(1);
+                    assert tab != null;
+                    tab.setText("Visit");
                     return Call3.getInstance(serviceCall, 0);
 
                 default:
@@ -164,7 +166,7 @@ public class ViewActivity extends AppCompatActivity implements NavigationHost {
     @SuppressLint("StaticFieldLeak")
     class CallTask extends AsyncTask<Void, Void, Boolean> {
 
-        private String string;
+        private final String string;
 
         private ServiceCall serviceCall;
         private int i = 4869;

@@ -7,4 +7,11 @@
         android:title="@string/refresh"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/menuUsers"
+        android:enabled="false"
+        android:title="@string/user_privileges"
+        android:visible="false"
+        app:showAsAction="never" />
+
 </menu>

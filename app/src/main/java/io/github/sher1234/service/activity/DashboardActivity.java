@@ -151,16 +151,18 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    @SuppressLint("SimpleDateFormat")
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuRefresh: {
+            case R.id.menuRefresh:
+                Calendar calendar = Calendar.getInstance();
+                date = new SimpleDateFormat(Strings.DateFormatServer).format(calendar.getTime());
                 if (task != null)
                     task.cancel(true);
                 task = null;
                 task = new DashboardTask(user.getEmail(), date);
                 task.execute();
                 return true;
-            }
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -212,7 +214,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        private Dashboard dashboard;
+        private final Dashboard dashboard;
 
         PagerAdapter(FragmentManager fm, Dashboard dashboard) {
             super(fm);

@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String Email;
     private String Phone;
     private String Password;
+    private int IsRegistered;
     private String EmployeeID;
 
     public User() {
@@ -31,8 +32,16 @@ public class User implements Serializable {
         return IsAdmin == 1;
     }
 
+    public boolean isRegistered() {
+        return IsRegistered == 1;
+    }
+
     public String getIsAdmin() {
         return IsAdmin + "";
+    }
+
+    public String getIsRegistered() {
+        return IsRegistered + "";
     }
 
     public int setAdmin(boolean isAdmin) {
@@ -90,6 +99,7 @@ public class User implements Serializable {
         map.put("Name", Name);
         map.put("Password", Password);
         map.put("EmployeeID", EmployeeID);
+        map.put("IsRegistered", getIsRegistered());
         return map;
     }
     public boolean isExists() {

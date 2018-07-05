@@ -1,8 +1,6 @@
 package io.github.sher1234.service.fragment;
 
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +27,7 @@ import io.github.sher1234.service.activity.RegVisitSeActivity;
 import io.github.sher1234.service.model.base.RegisteredCall;
 import io.github.sher1234.service.model.base.VisitedCall;
 import io.github.sher1234.service.model.response.ServiceCall;
+import io.github.sher1234.service.util.DialogX;
 import io.github.sher1234.service.util.Strings;
 import io.github.sher1234.service.util.formBuilder.FormBuilder;
 import io.github.sher1234.service.util.formBuilder.model.BaseFormElement;
@@ -88,7 +87,19 @@ public class Call3 extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         if (serviceCall.getVisits().get(i).isVisitStarted()) {
             onCreateFormStarted();
-            view.setVisibility(View.VISIBLE);
+            Snackbar.make(view, R.string.visit_incomplete, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.complete_visit, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), RegVisitSeActivity.class);
+                            intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                            intent.putExtra(Strings.ExtraString, 1);
+                            if (getFragmentManager() != null)
+                                getFragmentManager().beginTransaction().remove(Call3.this).commit();
+                            startActivity(intent);
+                        }
+                    }).show();
+            view.setVisibility(View.GONE);
             setVisitModelStarted(serviceCall.getVisits().get(i), serviceCall.getRegistration());
         } else {
             onCreateForm();
@@ -97,12 +108,9 @@ public class Call3 extends Fragment implements View.OnClickListener {
             String s = serviceCall.getVisits().get(i).getImage();
             if (s == null || s.isEmpty() || serviceCall.getVisitImages() == null ||
                     serviceCall.getVisitImages().size() == 0)
-                materialButton.setVisibility(View.VISIBLE);
-            else {
-                materialButton.setText("View Images");
                 materialButton.setVisibility(View.GONE);
-                Snackbar.make(view, "Images are currently, Currently Disabled", Snackbar.LENGTH_SHORT).show();
-            }
+            else
+                materialButton.setVisibility(View.GONE);
         }
     }
 
@@ -343,33 +351,35 @@ public class Call3 extends Fragment implements View.OnClickListener {
     }
 
     private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Add Visit").setCancelable(true)
-                .setPositiveButton("Full", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(getActivity(), RegVisitActivity.class);
-                        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
-                        if (getActivity() != null)
-                            getActivity().startActivity(intent);
-                    }
-                })
-                .setNegativeButton("Start", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(getActivity(), RegVisitSeActivity.class);
-                        intent.putExtra(Strings.ExtraServiceCall, serviceCall);
-                        intent.putExtra(Strings.ExtraString, 0);
-                        if (getActivity() != null)
-                            getActivity().startActivity(intent);
-                    }
-                })
-                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-        builder.create().show();
+        assert getContext() != null;
+        final DialogX dialogX = new DialogX(getContext());
+        dialogX.setTitle("Add Visit").setCancelable(true);
+        dialogX.setDescription("Register a service for call number " + serviceCall.getRegistration().getCallNumber());
+        dialogX.positiveButton("Full", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RegVisitActivity.class);
+                intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                if (getActivity() != null)
+                    getActivity().startActivity(intent);
+                dialogX.dismiss();
+            }
+        }).negativeButton("Start", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RegVisitSeActivity.class);
+                intent.putExtra(Strings.ExtraServiceCall, serviceCall);
+                intent.putExtra(Strings.ExtraString, 0);
+                if (getActivity() != null)
+                    getActivity().startActivity(intent);
+                dialogX.dismiss();
+            }
+        }).neutralButton("Cancel", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogX.dismiss();
+            }
+        });
+        dialogX.show();
     }
 }

@@ -9,5 +9,4 @@ public interface Strings {
     String ExtraString = "Extra-String";
     String TAG = "TAG_FRAGMENT_VIEW";
     String Email = "Email";
-    String Phone = "Phone";
 }

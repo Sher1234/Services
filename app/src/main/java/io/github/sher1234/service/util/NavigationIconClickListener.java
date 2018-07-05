@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -15,7 +16,7 @@ import io.github.sher1234.service.R;
 
 public class NavigationIconClickListener implements View.OnClickListener {
     private final AnimatorSet animatorSet = new AnimatorSet();
-    private Context context;
+    private final Context context;
     private View sheet;
     private Interpolator interpolator;
     private int height;
@@ -41,6 +42,13 @@ public class NavigationIconClickListener implements View.OnClickListener {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         height = displayMetrics.heightPixels;
+    }
+
+    public NavigationIconClickListener(Context context, View sheet, @Nullable Interpolator interpolator,
+                                       @DrawableRes int ic_open, @DrawableRes int ic_close) {
+        this(context, sheet, interpolator,
+                context.getResources().getDrawable(ic_open),
+                context.getResources().getDrawable(ic_close));
     }
 
     @Override

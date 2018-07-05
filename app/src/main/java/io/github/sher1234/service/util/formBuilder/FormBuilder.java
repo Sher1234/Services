@@ -47,7 +47,7 @@ public class FormBuilder {
         return this.mFormAdapter.getValueAtTag(tag);
     }
 
-    public FormAdapter getmFormAdapter() {
+    public FormAdapter getFormAdapter() {
         return mFormAdapter;
     }
 

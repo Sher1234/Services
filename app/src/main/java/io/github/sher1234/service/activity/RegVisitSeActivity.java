@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
@@ -65,10 +64,8 @@ public class RegVisitSeActivity extends AppCompatActivity implements OnFormEleme
     private Date date;
     private int m;
 
-    private MaterialButton button1;
     private MaterialButton button2;
     private View mProgressView;
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +74,6 @@ public class RegVisitSeActivity extends AppCompatActivity implements OnFormEleme
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
 
@@ -87,8 +83,6 @@ public class RegVisitSeActivity extends AppCompatActivity implements OnFormEleme
         email = preferences.getString(Strings.Email, null);
 
         button2 = findViewById(R.id.button3);
-        button1 = findViewById(R.id.button1);
-        textView = findViewById(R.id.textView);
         mProgressView = findViewById(R.id.progressView);
         RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
         mFormBuilder = new FormBuilder(this, mRecyclerView, this);
@@ -108,16 +102,16 @@ public class RegVisitSeActivity extends AppCompatActivity implements OnFormEleme
     private void onValidateSaveButton() {
         if (m == 0 && mFormBuilder.isValidForm()) {
             button2.setEnabled(true);
-            button2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-            button2.setStrokeColorResource(R.color.colorPrimaryDark);
+            button2.setTextColor(getResources().getColor(R.color.colorAccent));
+            button2.setStrokeColorResource(R.color.colorAccent);
         } else if (m == 1 && date != null && email.contains("@") && getFormValue(486911).length() > 5 &&
                 getFormValue(486903).length() > 2 && getFormValue(486904).length() == 10 &&
                 getFormValue(486912).length() > 5 && getFormValue(486907).length() > 2 &&
                 getFormValue(486906).length() > 2 && getFormValue(486905).contains("@") &&
                 !getFormValue(486909).isEmpty() && mFormBuilder.isValidForm()) {
             button2.setEnabled(true);
-            button2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-            button2.setStrokeColorResource(R.color.colorPrimaryDark);
+            button2.setTextColor(getResources().getColor(R.color.colorAccent));
+            button2.setStrokeColorResource(R.color.colorAccent);
         } else {
             button2.setEnabled(false);
             button2.setTextColor(getResources().getColor(R.color.colorHeaderBackground));
@@ -407,7 +401,7 @@ public class RegVisitSeActivity extends AppCompatActivity implements OnFormEleme
             mFormBuilder.getFormElement(486902).setValue(s2);
             mFormBuilder.getFormElement(486903).setValue(s1);
         }
-        mFormBuilder.getmFormAdapter().notifyDataSetChanged();
+        mFormBuilder.getFormAdapter().notifyDataSetChanged();
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -415,7 +409,7 @@ public class RegVisitSeActivity extends AppCompatActivity implements OnFormEleme
 
         private Responded responded;
         private int i = 4869;
-        private Map<String, String> map;
+        private final Map<String, String> map;
 
         RegVisitTask(@NotNull Map<String, String> map) {
             this.map = map;

@@ -68,10 +68,8 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new NavigationIconClickListener(this,
-                findViewById(R.id.coordinatorLayout),
-                new AccelerateDecelerateInterpolator(),
-                getResources().getDrawable(R.drawable.ic_menu),
-                getResources().getDrawable(R.drawable.ic_close)));
+                findViewById(R.id.coordinatorLayout), new AccelerateDecelerateInterpolator(),
+                R.drawable.ic_menu, R.drawable.ic_close));
 
         findViewById(R.id.button0).setVisibility(View.GONE);
 
@@ -186,7 +184,7 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
             case R.id.navButton1:
                 resetFormValue(486901);
                 resetFormValue(486902);
-                formBuilder.getmFormAdapter().notifyDataSetChanged();
+                formBuilder.getFormAdapter().notifyDataSetChanged();
                 break;
 
             case R.id.navButton2:
@@ -235,12 +233,12 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
                 "(SELECT COUNT(*) FROM RegisteredCallsX R WHERE (U.Email = R.Email)) as Regs, " +
                 "(SELECT COUNT(*) FROM VisitedCallsX V WHERE (U.Email = V.Email)) as Visits, " +
                 "(SELECT COUNT(*) FROM RegisteredCallsX R WHERE U.Email = R.Email AND R.IsCompleted = '0') as Pending " +
-                "FROM UsersX U";
+                "FROM UsersX U WHERE IsRegistered = 1";
         Query query = new Query();
         query.setQuery(s);
         String search = getFormValue(486901);
         if (search != null && !search.isEmpty())
-            search = " WHERE " +
+            search = " AND " +
                     "(Name LIKE '%" + search + "%'" +
                     " OR Email LIKE '%" + search + "%'" +
                     " OR EmployeeID LIKE '%" + search + "%')";

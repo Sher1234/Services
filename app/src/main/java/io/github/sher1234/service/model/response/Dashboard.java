@@ -3,13 +3,13 @@ package io.github.sher1234.service.model.response;
 import java.io.Serializable;
 import java.util.List;
 
-import io.github.sher1234.service.model.base.Response;
+import io.github.sher1234.service.model.base.Responded;
 import io.github.sher1234.service.model.base.Time;
 
 @SuppressWarnings("All")
 public class Dashboard implements Serializable {
 
-    private Response Response;
+    private Responded Response;
 
     private Time RegsDaily;
 
@@ -31,7 +31,7 @@ public class Dashboard implements Serializable {
 
     }
 
-    public Dashboard(Response response, Time regsMonthly, Time visitsMonthly,
+    public Dashboard(Responded response, Time regsMonthly, Time visitsMonthly,
                      Time regsWeekly, Time visitsWeekly, String pendingAll, int pendingWithVisit,
                      List<String> weekDates, List<String> quarterDates) {
         Response = response;
@@ -45,7 +45,7 @@ public class Dashboard implements Serializable {
         MonthlyDates = quarterDates;
     }
 
-    public Response getResponse() {
+    public Responded getResponse() {
         return Response;
     }
 

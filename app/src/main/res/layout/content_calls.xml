@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:showIn="@layout/activity_calls">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
@@ -17,13 +16,12 @@
 
         <include layout="@layout/menu_layout" />
 
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -36,7 +34,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.design.card.MaterialCardView
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,7 +42,8 @@
         android:background="#fafdff"
         android:clickable="true"
         android:focusable="true"
-        app:elevation="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="2dp"
         tools:visibility="visible">
 
         <android.support.v7.widget.RecyclerView
@@ -52,16 +51,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </android.support.design.card.MaterialCardView>
 
-    <FrameLayout
+    <android.support.v7.widget.CardView
+        android:layout_height="match_parent"
         android:id="@+id/progressView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#91000000"
+        android:visibility="gone"
+        app:cardBackgroundColor="#9fffffff"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
         tools:visibility="visible">
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -81,12 +82,12 @@
 
             <ProgressBar
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="match_parent"
                 android:indeterminate="true" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-    </FrameLayout>
+    </android.support.v7.widget.CardView>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -3,7 +3,6 @@ package io.github.sher1234.service.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,10 +20,11 @@ import org.jetbrains.annotations.NotNull;
 
 import io.github.sher1234.service.AppController;
 import io.github.sher1234.service.R;
-import io.github.sher1234.service.activity.DashboardActivity;
 import io.github.sher1234.service.api.Api;
+import io.github.sher1234.service.model.base.Responded;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
+import io.github.sher1234.service.util.DialogX;
 import io.github.sher1234.service.util.UserPreferences;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -171,7 +171,7 @@ public class Start5 extends Fragment implements View.OnClickListener, CheckBox.O
 
     @SuppressLint("StaticFieldLeak")
     private class UpdateAccountTask extends AsyncTask<Void, Void, Boolean> {
-        private io.github.sher1234.service.model.base.Response response;
+        private Responded response;
         private final User user;
         private int i = 4869;
 
@@ -234,8 +234,16 @@ public class Start5 extends Fragment implements View.OnClickListener, CheckBox.O
         private void onLogin() {
             assert getActivity() != null;
             ((UserPreferences) getActivity()).updateUserPreferences(user);
-            getActivity().startActivity(new Intent(getActivity(), DashboardActivity.class));
-            getActivity().finish();
+            final DialogX dialogX = new DialogX(getActivity()).setTitle("Account Disabled")
+                    .setDescription(R.string.acc_disabled);
+            dialogX.negativeButton(R.string.cancel, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialogX.dismiss();
+                    getActivity().finish();
+                }
+            }).setCancelable(false);
+            dialogX.show();
         }
     }
 }

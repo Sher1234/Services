@@ -3,7 +3,6 @@ package io.github.sher1234.service.service;
 import android.Manifest;
 import android.app.Service;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -15,9 +14,11 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
+
+import io.github.sher1234.service.util.DialogX;
 
 @SuppressWarnings("all")
 public class LocationTrack extends Service implements LocationListener {
@@ -81,30 +82,28 @@ public class LocationTrack extends Service implements LocationListener {
     }
 
     public void showSettingsAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+        final DialogX dialogX = new DialogX(mContext)
                 .setTitle("Enable Location")
-                .setMessage("Set location mode to \"High Accuracy\" to continue using app.")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        mContext.startActivity(intent);
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setDescription("Set location mode to \"High Accuracy\" to continue using app.");
+        dialogX.positiveButton("Yes", new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                mContext.startActivity(intent);
+                dialogX.dismiss();
+            }
+        }).negativeButton("Cancel", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Exiting...", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(mContext, "Exiting...", Toast.LENGTH_SHORT).show();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((AppCompatActivity) mContext).finish();
-                            }
-                        }, 500);
+                    public void run() {
+                        ((AppCompatActivity) mContext).finish();
                     }
-                });
-        builder.create().show();
+                }, 500);
+            }
+        }).setCancelable(false);
+        dialogX.show();
     }
 
     public void stopListener() {

@@ -59,7 +59,7 @@ public class Time implements Serializable {
         barEntries.add(new BarEntry(getT(Time5), 2));
         barEntries.add(new BarEntry(getT(Time4), 3));
         barEntries.add(new BarEntry(getT(Time3), 4));
-        barEntries.add(new BarEntry(getT(Time2), 4));
+        barEntries.add(new BarEntry(getT(Time2), 5));
         barEntries.add(new BarEntry(getT(Time1), 6));
         return barEntries;
     }

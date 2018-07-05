@@ -52,7 +52,6 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     private TextView textView2;
     private View mProgressView;
     private DashboardTask task;
-    private User user;
     private String date;
 
     @Override
@@ -62,10 +61,8 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new NavigationIconClickListener(this,
-                findViewById(R.id.coordinatorLayout),
-                new AccelerateDecelerateInterpolator(),
-                getResources().getDrawable(R.drawable.ic_menu),
-                getResources().getDrawable(R.drawable.ic_close)));
+                findViewById(R.id.coordinatorLayout), new AccelerateDecelerateInterpolator(),
+                R.drawable.ic_menu, R.drawable.ic_close));
 
         findViewById(R.id.button1).setVisibility(View.GONE);
         findViewById(R.id.button0).setVisibility(View.VISIBLE);
@@ -91,7 +88,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     @SuppressLint("SimpleDateFormat")
     protected void onStart() {
         super.onStart();
-        user = getUserFromPreferences();
+        User user = getUserFromPreferences();
         Calendar calendar = Calendar.getInstance();
         date = new SimpleDateFormat(Strings.DateFormatServer).format(calendar.getTime());
         String s = "Welcome back, " + user.getName();
@@ -99,7 +96,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         textView2.setText("0");
         if (task != null)
             task.cancel(true);
-        task = new DashboardTask(user.getEmail(), date);
+        task = new DashboardTask(date);
         task.execute();
     }
 
@@ -117,6 +114,12 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
                 exit = false;
             }
         }, 1500);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menuUsers).setVisible(true).setEnabled(true);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -160,16 +163,22 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    @SuppressLint("SimpleDateFormat")
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuRefresh: {
+            case R.id.menuRefresh:
+                Calendar calendar = Calendar.getInstance();
+                date = new SimpleDateFormat(Strings.DateFormatServer).format(calendar.getTime());
                 if (task != null)
                     task.cancel(true);
                 task = null;
-                task = new DashboardTask(user.getEmail(), date);
+                task = new DashboardTask(date);
                 task.execute();
                 return true;
-            }
+
+            case R.id.menuUsers:
+                startActivity(new Intent(this, UserChangeActivity.class));
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -221,7 +230,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        private Dashboard dashboard;
+        private final Dashboard dashboard;
 
         PagerAdapter(FragmentManager fm, Dashboard dashboard) {
             super(fm);
@@ -242,14 +251,12 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     @SuppressLint("StaticFieldLeak")
     class DashboardTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String email;
         private final String dateTime;
 
         private Dashboard dashboard;
         private int i = 4869;
 
-        DashboardTask(String email, String dateTime) {
-            this.email = email;
+        DashboardTask(String dateTime) {
             this.dateTime = dateTime;
         }
 

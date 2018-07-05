@@ -348,13 +348,13 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
         mFormBuilder.getFormElement(486912).setValue(s2);
         mFormBuilder.getFormElement(486913).setValue(s1);
         mFormBuilder.getFormElement(486914).setValue(s1);
-        mFormBuilder.getmFormAdapter().notifyDataSetChanged();
+        mFormBuilder.getFormAdapter().notifyDataSetChanged();
         if (visit == null)
             return;
         mFormBuilder.getFormElement(486903).setValue(visit.getConcernName());
         mFormBuilder.getFormElement(486904).setValue(visit.getConcernPhone());
         mFormBuilder.getFormElement(486906).setValue(visit.getObservation());
-        mFormBuilder.getmFormAdapter().notifyDataSetChanged();
+        mFormBuilder.getFormAdapter().notifyDataSetChanged();
     }
 
     @SuppressLint("StaticFieldLeak")

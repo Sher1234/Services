@@ -52,6 +52,14 @@ public interface Api {
     @FormUrlEncoded
     Call<Users> UpdateAccount(@FieldMap Map<String, String> map);
 
+    @POST("login/?m=7")
+    @FormUrlEncoded
+    Call<Users> ChangeAccountState(@Field("Email") String email, @Field("Value") String value);
+
+    @POST("login/?m=8")
+    @FormUrlEncoded
+    Call<Users> ChangeAccountPrivilege(@Field("Email") String email, @Field("Value") String value);
+
     @POST("dashboard/")
     @FormUrlEncoded
     Call<Dashboard> GetDashboard(@Field("Email") String email,
@@ -88,6 +96,10 @@ public interface Api {
     @POST("query/?m=0")
     @FormUrlEncoded
     Call<UsersX> GetUsersAdmin(@FieldMap Map<String, String> map);
+
+    @POST("query/?m=0")
+    @FormUrlEncoded
+    Call<Users> GetUsers(@FieldMap Map<String, String> map);
 
     @POST("admin/?m=1")
     @FormUrlEncoded

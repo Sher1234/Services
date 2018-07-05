@@ -3,8 +3,6 @@ package io.github.sher1234.service.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,8 +21,10 @@ import io.github.sher1234.service.R;
 import io.github.sher1234.service.activity.DashboardActivity;
 import io.github.sher1234.service.activity.admin.AdminActivity;
 import io.github.sher1234.service.api.Api;
+import io.github.sher1234.service.model.base.Responded;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.model.response.Users;
+import io.github.sher1234.service.util.DialogX;
 import io.github.sher1234.service.util.NavigationHost;
 import io.github.sher1234.service.util.UserPreferences;
 import retrofit2.Call;
@@ -108,29 +108,28 @@ public class Start2 extends Fragment implements View.OnClickListener {
     }
 
     private void resetPasswordRequest(final String s) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+        assert getContext() != null;
+        final DialogX dialogX = new DialogX(getContext())
                 .setTitle("Reset Password")
-                .setMessage("An OTP will be sent to the given Email. Proceed if required")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (resetTask != null)
-                            resetTask.cancel(true);
-                        if (loginTask != null)
-                            loginTask.cancel(true);
-                        resetTask = new ResetTask(s);
-                        resetTask.execute();
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setNeutralButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setCancelable(true);
-        builder.create().show();
+                .setDescription("An OTP will be sent to the given Email. Proceed if required");
+        dialogX.positiveButton("Yes", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (resetTask != null)
+                    resetTask.cancel(true);
+                if (loginTask != null)
+                    loginTask.cancel(true);
+                resetTask = new ResetTask(s);
+                resetTask.execute();
+                dialogX.dismiss();
+            }
+        }).negativeButton("No", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogX.dismiss();
+            }
+        }).setCancelable(true);
+        dialogX.show();
     }
 
     private void showProgress(final boolean show) {
@@ -147,9 +146,9 @@ public class Start2 extends Fragment implements View.OnClickListener {
 
     @SuppressLint("StaticFieldLeak")
     private class ResetTask extends AsyncTask<Void, Void, Boolean> {
-        private io.github.sher1234.service.model.base.Response response;
+        private final String mEmail;
         private int i = 4869;
-        private String mEmail;
+        private Responded response;
 
         ResetTask(String mEmail) {
             this.mEmail = mEmail;
@@ -213,11 +212,11 @@ public class Start2 extends Fragment implements View.OnClickListener {
 
     @SuppressLint("StaticFieldLeak")
     private class LoginTask extends AsyncTask<Void, Void, Boolean> {
-        private io.github.sher1234.service.model.base.Response response;
+        private final String mEmail;
         private User user;
         private int i = 4869;
-        private String mEmail;
-        private String mPassword;
+        private final String mPassword;
+        private Responded response;
 
         LoginTask(String mEmail, String mPassword) {
             this.mEmail = mEmail;

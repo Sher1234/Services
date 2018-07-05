@@ -21,8 +21,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -51,46 +50,61 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <android.support.design.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                app:cardBackgroundColor="#00000000"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp">
 
-            <android.support.v7.widget.LinearLayoutCompat
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:layout_weight="0"
-                android:gravity="end"
-                android:paddingStart="@dimen/fab_margin"
-                android:paddingEnd="@dimen/fab_margin">
+                android:paddingBottom="3dp"
+                app:cardCornerRadius="0dp">
 
-                <android.support.design.button.MaterialButton
-                    android:id="@+id/button7"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/reset"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12.5sp"
-                    app:rippleColor="@color/colorPrimary" />
+                    android:gravity="end"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
-                <android.support.design.button.MaterialButton
-                    android:id="@+id/button8"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_call"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12.5sp"
-                    app:rippleColor="@color/colorPrimary"
-                    app:strokeColor="@color/colorPrimaryDark"
-                    app:strokeWidth="1dp" />
+                    <android.support.design.button.MaterialButton
+                        android:id="@+id/button7"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/reset"
+                        android:textSize="12.5sp"
+                        app:rippleColor="@color/colorAccent" />
 
-            </android.support.v7.widget.LinearLayoutCompat>
+                    <android.support.design.button.MaterialButton
+                        android:id="@+id/button8"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_call"
+                        android:textSize="12.5sp"
+                        app:rippleColor="@color/colorAccent"
+                        app:strokeColor="@color/colorAccent"
+                        app:strokeWidth="1.5dp" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.design.card.MaterialCardView>
 
         </android.support.v7.widget.LinearLayoutCompat>
 

@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 import io.github.sher1234.service.model.base.Registration;
-import io.github.sher1234.service.model.base.Response;
+import io.github.sher1234.service.model.base.Responded;
 
 public class Registrations implements Serializable {
 
-    private Response Response;
+    private Responded Response;
     private List<Registration> Registrations;
 
     public Registrations() {
 
     }
 
-    public Registrations(Response response, List<Registration> registrations) {
+    public Registrations(Responded response, List<Registration> registrations) {
         Response = response;
         Registrations = registrations;
     }
@@ -24,15 +24,7 @@ public class Registrations implements Serializable {
         return Registrations;
     }
 
-    public void setRegistrations(List<Registration> registrations) {
-        Registrations = registrations;
-    }
-
-    public Response getResponse() {
+    public Responded getResponse() {
         return Response;
-    }
-
-    public void setResponse(Response response) {
-        Response = response;
     }
 }
