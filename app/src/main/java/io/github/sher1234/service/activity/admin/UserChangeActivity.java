@@ -61,7 +61,7 @@ public class UserChangeActivity extends AppCompatActivity implements UserChangeC
             task.cancel(true);
         task = null;
         changeTask = null;
-        task = new QueryTask(onFilter());
+        task = new QueryTask(getQuery());
         task.execute();
     }
 
@@ -92,8 +92,7 @@ public class UserChangeActivity extends AppCompatActivity implements UserChangeC
     }
 
     @NonNull
-    @SuppressLint("SimpleDateFormat")
-    private Query onFilter() {
+    private Query getQuery() {
         SharedPreferences preferences = getSharedPreferences(Strings.UserPreferences, MODE_PRIVATE);
         String e = preferences.getString(Strings.Email, null);
         String s = "SELECT * FROM UsersX WHERE Email <> '" + e + "'";
@@ -125,7 +124,7 @@ public class UserChangeActivity extends AppCompatActivity implements UserChangeC
             task.cancel(true);
         task = null;
         changeTask = null;
-        changeTask = new ChangeTask(email, value, true);
+        changeTask = new ChangeTask(email, value, 0);
         changeTask.execute();
     }
 
@@ -137,7 +136,19 @@ public class UserChangeActivity extends AppCompatActivity implements UserChangeC
             task.cancel(true);
         task = null;
         changeTask = null;
-        changeTask = new ChangeTask(email, value, false);
+        changeTask = new ChangeTask(email, value, 1);
+        changeTask.execute();
+    }
+
+    @Override
+    public void onAccountDelete(@NotNull String email) {
+        if (changeTask != null)
+            changeTask.cancel(true);
+        if (task != null)
+            task.cancel(true);
+        task = null;
+        changeTask = null;
+        changeTask = new ChangeTask(email, -1);
         changeTask.execute();
     }
 
@@ -212,14 +223,20 @@ public class UserChangeActivity extends AppCompatActivity implements UserChangeC
 
         private final String email;
         private final String value;
-        private final boolean type;
+        private final int type;
         private int i = 4869;
         private Users users;
 
-        ChangeTask(String email, int value, boolean type) {
+        ChangeTask(String email, int value, int type) {
             this.type = type;
             this.email = email;
             this.value = value + "";
+        }
+
+        ChangeTask(String email, int type) {
+            this.type = type;
+            this.value = null;
+            this.email = email;
         }
 
         @Override
@@ -233,10 +250,12 @@ public class UserChangeActivity extends AppCompatActivity implements UserChangeC
             Retrofit retrofit = AppController.getRetrofit(Api.BASE_URL);
             Api api = retrofit.create(Api.class);
             Call<Users> call;
-            if (type)
+            if (type == 0)
                 call = api.ChangeAccountPrivilege(email, value);
-            else
+            else if (type == 1)
                 call = api.ChangeAccountState(email, value);
+            else
+                call = api.DeleteAccount(email);
             call.enqueue(new Callback<Users>() {
                 @Override
                 public void onResponse(@NonNull Call<Users> call, @NonNull Response<Users> response) {

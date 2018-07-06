@@ -161,7 +161,8 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.button2:
-                //CallsActivity
+                startActivity(new Intent(this, CallsActivity.class));
+                finish();
                 break;
 
             case R.id.button3:

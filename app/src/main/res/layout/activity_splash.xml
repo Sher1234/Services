@@ -22,11 +22,23 @@
             android:contentDescription="@string/app_name"
             android:src="@raw/logo" />
 
+        <View
+            android:layout_width="150dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray" />
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:src="@raw/logo_p" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="55dp"
+            android:layout_marginBottom="50dp"
             android:text="@string/welcome_text"
             android:textAlignment="center"
             android:textColor="@color/colorTextLight"

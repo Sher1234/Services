@@ -224,8 +224,8 @@ public class RegCallActivity extends AppCompatActivity implements OnFormElementV
                 getFormValue(486903).length() > 2 && getFormValue(486904).length() == 10 &&
                 mFormBuilder.isValidForm()) {
             button.setEnabled(true);
-            button.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-            button.setStrokeColorResource(R.color.colorPrimaryDark);
+            button.setTextColor(getResources().getColor(R.color.colorAccent));
+            button.setStrokeColorResource(R.color.colorAccent);
         } else {
             button.setEnabled(false);
             button.setTextColor(getResources().getColor(R.color.colorHeaderBackground));

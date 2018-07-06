@@ -60,6 +60,10 @@ public interface Api {
     @FormUrlEncoded
     Call<Users> ChangeAccountPrivilege(@Field("Email") String email, @Field("Value") String value);
 
+    @POST("login/?m=9")
+    @FormUrlEncoded
+    Call<Users> DeleteAccount(@Field("Email") String email);
+
     @POST("dashboard/")
     @FormUrlEncoded
     Call<Dashboard> GetDashboard(@Field("Email") String email,

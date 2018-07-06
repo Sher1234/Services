@@ -104,8 +104,8 @@ public class RegVisitActivity extends AppCompatActivity implements OnFormElement
                 getFormValue(486906).length() > 2 && getFormValue(486905).contains("@") &&
                 !getFormValue(486909).isEmpty() && mFormBuilder.isValidForm()) {
             button2.setEnabled(true);
-            button2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-            button2.setStrokeColorResource(R.color.colorPrimaryDark);
+            button2.setTextColor(getResources().getColor(R.color.colorAccent));
+            button2.setStrokeColorResource(R.color.colorAccent);
         } else {
             button2.setEnabled(false);
             button2.setTextColor(getResources().getColor(R.color.colorHeaderBackground));

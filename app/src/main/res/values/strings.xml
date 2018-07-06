@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Service Call</string>
+    <string name="app_name">Max Services</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -44,8 +44,8 @@
     <string name="daily">Daily</string>
     <string name="employees">Employees</string>
     <string name="add_images">Add Images</string>
-    <string name="welcome_text">Welcome to Max Automation\'s, \nService Call Panel</string>
+    <string name="welcome_text">Welcome to Max Group\'s, \nService Call Panel</string>
     <string name="acc_disabled">Account is currently inactive. Contact system administrator to activate account or try again after some time.</string>
     <string name="user_privileges">User Privileges</string>
-    <string name="designed_for_max"><![CDATA[Designed for Max Engineering & Automation (P) Ltd.]]></string>
+    <string name="designed_for_max"><![CDATA[Designed for Max Group (P) Ltd.]]></string>
 </resources>

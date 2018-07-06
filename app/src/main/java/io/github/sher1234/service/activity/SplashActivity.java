@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -37,6 +36,8 @@ import retrofit2.Retrofit;
 
 public class SplashActivity extends AppCompatActivity implements UserPreferences {
 
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,17 +47,12 @@ public class SplashActivity extends AppCompatActivity implements UserPreferences
 
     private void onCheckUser() {
         SharedPreferences preferences = getSharedPreferences(Strings.UserPreferences, MODE_PRIVATE);
-        User user = getUserFromPreferences(preferences);
+        user = getUserFromPreferences(preferences);
         if (user.isExists()) {
             new LoginTask(user.getEmail(), user.getPassword()).execute();
         } else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(SplashActivity.this, StartActivity.class));
-                    finish();
-                }
-            }, 650);
+            startActivity(new Intent(SplashActivity.this, StartActivity.class));
+            finish();
         }
     }
 

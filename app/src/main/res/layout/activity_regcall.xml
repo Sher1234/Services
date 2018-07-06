@@ -110,15 +110,17 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <FrameLayout
+    <android.support.design.card.MaterialCardView
         android:id="@+id/progressView"
+        app:cardBackgroundColor="#99ffffff"
+        app:cardCornerRadius="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#91000000"
+        app:cardElevation="4dp"
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -143,6 +145,6 @@
 
         </android.support.v7.widget.LinearLayoutCompat>
 
-    </FrameLayout>
+    </android.support.design.card.MaterialCardView>
 
 </android.support.design.widget.CoordinatorLayout>

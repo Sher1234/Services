@@ -2,6 +2,7 @@ package io.github.sher1234.service.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,7 @@ public class UsersRecyclerX extends RecyclerView.Adapter<UsersRecyclerX.ViewHold
                     final DialogX dialogX = new DialogX(context).setTitle("Change Privileges")
                             .setDescription("Change Account Privileges of " + user.getName());
                     if (user.isAdmin())
-                        dialogX.positiveButton("Dismiss Admin", new View.OnClickListener() {
+                        dialogX.neutralButton("Dismiss Admin", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 ((UserChangeClick) context).onAdminChange(user.getEmail(), 0);
@@ -74,7 +75,7 @@ public class UsersRecyclerX extends RecyclerView.Adapter<UsersRecyclerX.ViewHold
                             }
                         });
                     else
-                        dialogX.positiveButton("Add Admin", new View.OnClickListener() {
+                        dialogX.neutralButton("Add Admin", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 ((UserChangeClick) context).onAdminChange(user.getEmail(), 1);
@@ -97,7 +98,14 @@ public class UsersRecyclerX extends RecyclerView.Adapter<UsersRecyclerX.ViewHold
                                 dialogX.dismiss();
                             }
                         });
-                    dialogX.show();
+                    dialogX.positiveButton("Delete Account", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((UserChangeClick) context).onAccountDelete(user.getEmail());
+                            dialogX.dismiss();
+                        }
+                    });
+                    dialogX.setButtonOrientation(LinearLayoutCompat.VERTICAL).show();
                 }
             });
         } catch (NullPointerException e) {

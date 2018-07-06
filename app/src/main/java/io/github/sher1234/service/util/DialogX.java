@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class DialogX extends Dialog {
     private TextView textViewTitle;
     private TextView textViewDescription;
     private ImageView imageView;
+    private LinearLayoutCompat linearLayout;
 
     private View viewDivider;
 
@@ -38,6 +40,7 @@ public class DialogX extends Dialog {
         textViewTitle = findViewById(R.id.textViewTitle);
         textViewDescription = findViewById(R.id.textViewDescription);
 
+        linearLayout = findViewById(R.id.linearLayoutButton);
         buttonPositive = findViewById(R.id.buttonPositive);
         buttonNegative = findViewById(R.id.buttonNegative);
         buttonNeutral = findViewById(R.id.buttonNeutral);
@@ -117,6 +120,11 @@ public class DialogX extends Dialog {
 
     public DialogX setDescriptionGravity(int i) {
         textViewDescription.setGravity(i);
+        return this;
+    }
+
+    public DialogX setButtonOrientation(int orientation) {
+        linearLayout.setOrientation(orientation);
         return this;
     }
 }
