@@ -9,7 +9,7 @@ import io.github.sher1234.service.util.formBuilder.model.BaseFormElement;
 
 public class BaseViewHolder extends RecyclerView.ViewHolder implements BaseViewHolderInterface {
 
-    public BaseViewHolder(View itemView) {
+    BaseViewHolder(View itemView) {
         super(itemView);
     }
 

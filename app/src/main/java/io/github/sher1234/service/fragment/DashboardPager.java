@@ -4,38 +4,32 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import io.github.sher1234.service.R;
+import io.github.sher1234.service.adapter.ProgressRecycler;
 import io.github.sher1234.service.model.response.Dashboard;
+import io.github.sher1234.service.util.Strings;
 
 public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChangeListener {
 
-    private static final String TAG_ARGS_1 = "INTEGER-PAGER-MAIN";
-    private static final String TAG_ARGS_2 = "SERIALIZABLE-PAGER-MAIN";
-
     private int MODE;
-    private BarData barDataD;
-    private BarData barDataM;
-    private String description;
     private Dashboard dashboard;
+    private RadioGroup radioGroup;
+    private AppCompatTextView textView4, textView5;
+    private TextView textView1, textView2, textView3;
 
-    private RadioButton radioButton1;
-    private RadioButton radioButton2;
-    private BarChart barChart;
+    private RecyclerView recyclerView;
 
     public DashboardPager() {
     }
@@ -43,8 +37,8 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
     public static DashboardPager getInstance(int i, Dashboard dashboard) {
         DashboardPager dashboardPager = new DashboardPager();
         Bundle bundle = new Bundle();
-        bundle.putInt(TAG_ARGS_1, i);
-        bundle.putSerializable(TAG_ARGS_2, dashboard);
+        bundle.putInt(Strings.ExtraString, i);
+        bundle.putSerializable(Strings.ExtraData, dashboard);
         dashboardPager.setArguments(bundle);
         return dashboardPager;
     }
@@ -53,18 +47,21 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         assert getArguments() != null;
-        MODE = getArguments().getInt(TAG_ARGS_1, 0);
-        dashboard = (Dashboard) getArguments().getSerializable(TAG_ARGS_2);
+        MODE = getArguments().getInt(Strings.ExtraString, 0);
+        dashboard = (Dashboard) getArguments().getSerializable(Strings.ExtraData);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
-        radioButton1 = view.findViewById(R.id.radioButton1);
-        radioButton2 = view.findViewById(R.id.radioButton2);
-        barChart = view.findViewById(R.id.barChart);
+        radioGroup = view.findViewById(R.id.radioGroup);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        textView5 = view.findViewById(R.id.textView5);
+        textView4 = view.findViewById(R.id.textView4);
+        textView3 = view.findViewById(R.id.textView3);
+        textView2 = view.findViewById(R.id.textView2);
+        textView1 = view.findViewById(R.id.textView1);
         radioGroup.setOnCheckedChangeListener(this);
         return view;
     }
@@ -72,70 +69,64 @@ public class DashboardPager extends Fragment implements RadioGroup.OnCheckedChan
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setFields();
-        barChart.setDoubleTapToZoomEnabled(false);
-        barChart.setTouchEnabled(false);
-        barChart.setPinchZoom(false);
-        updateBarData(barDataD, "Daily");
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        radioGroup.check(R.id.radioButton1);
     }
 
-    private void setFields() {
-        List<BarEntry> barEntriesD;
-        List<BarEntry> barEntriesM;
-        List<String> barLabelsD;
-        List<String> barLabelsM;
+    private void setFields(int i) {
         if (MODE == 0) {
-            description = "Overview of Registrations";
-            barEntriesD = dashboard.getRegsDaily().getBarEntriesDaily();
-            barLabelsD = dashboard.getDailyDates();
-            barEntriesM = dashboard.getRegsMonthly().getBarEntriesMonthly();
-            barLabelsM = dashboard.getMonthlyDates();
-        } else if (MODE == 1) {
-            description = "Overview of Visits";
-            barEntriesD = dashboard.getVisitsDaily().getBarEntriesDaily();
-            barLabelsD = dashboard.getDailyDates();
-            barEntriesM = dashboard.getVisitsMonthly().getBarEntriesMonthly();
-            barLabelsM = dashboard.getMonthlyDates();
+            if (i == 0)
+                onUpdateView(dashboard.rDaily.getDailyList(), dashboard.dDates);
+            else
+                onUpdateView(dashboard.rMonthly.getMonthlyList(), dashboard.mDates);
         } else {
-            barEntriesD = new ArrayList<>();
-            barLabelsD = new ArrayList<>();
-            barEntriesM = new ArrayList<>();
-            barLabelsM = new ArrayList<>();
-            barChart.setDescription("Error");
+            if (i == 0)
+                onUpdateView(dashboard.vDaily.getDailyList(), dashboard.dDates);
+            else
+                onUpdateView(dashboard.vMonthly.getMonthlyList(), dashboard.mDates);
         }
-        BarDataSet barDataSetW = new BarDataSet(barEntriesD, "Daily");
-        barDataSetW.setColors(ColorTemplate.JOYFUL_COLORS);
-        barDataSetW.setBarSpacePercent(55);
-        barDataD = new BarData(barLabelsD, barDataSetW);
-
-        BarDataSet barDataSetQ = new BarDataSet(barEntriesM, "Monthly");
-        barDataSetQ.setColors(ColorTemplate.JOYFUL_COLORS);
-        barDataSetQ.setBarSpacePercent(55);
-        barDataM = new BarData(barLabelsM, barDataSetQ);
     }
 
-    private void updateBarData(BarData barData, String s) {
-        s = s + " " + description;
-        barChart.setDescription(s);
-        barChart.setData(barData);
-        barChart.notifyDataSetChanged();
-        barChart.animateY(2100);
-        barChart.invalidate();
+    private void onUpdateView(List<Integer> integers, List<String> strings) {
+        ProgressRecycler progressRecycler = (ProgressRecycler) recyclerView.getAdapter();
+        if (progressRecycler != null) {
+            progressRecycler.setIntegers(integers);
+            progressRecycler.setStrings(strings);
+            progressRecycler.notifyDataSetChanged();
+        } else {
+            progressRecycler = new ProgressRecycler(getContext(), integers, strings);
+            recyclerView.setAdapter(progressRecycler);
+        }
+        String s = strings.get(0) + " - " + strings.get(strings.size() - 1);
+        textView1.setText(String.valueOf(progressRecycler.max));
+        textView3.setText(String.valueOf(0));
+        int m = progressRecycler.max / 2;
+        textView2.setText(String.valueOf(m));
+        textView5.setText(s);
     }
 
     @Override
     public void onCheckedChanged(RadioGroup chipGroup, int i) {
+        String s;
         switch (i) {
             case R.id.radioButton1:
-                radioButton2.setTextColor(getResources().getColor(R.color.colorAccent));
-                radioButton1.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                updateBarData(barDataD, "Daily");
+                setFields(0);
+                if (MODE == 0)
+                    s = "Daily " + getResources().getString(R.string.registrations);
+                else
+                    s = "Daily " + getResources().getString(R.string.visits);
+                textView4.setText(s);
                 break;
 
             case R.id.radioButton2:
-                radioButton1.setTextColor(getResources().getColor(R.color.colorAccent));
-                radioButton2.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                updateBarData(barDataM, "Monthly");
+                setFields(1);
+                if (MODE == 0)
+                    s = "Monthly " + getResources().getString(R.string.registrations);
+                else
+                    s = "Monthly " + getResources().getString(R.string.visits);
+                textView4.setText(s);
                 break;
         }
     }

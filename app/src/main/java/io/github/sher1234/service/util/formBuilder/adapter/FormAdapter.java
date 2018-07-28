@@ -32,33 +32,33 @@ import io.github.sher1234.service.util.formBuilder.viewholder.FormElementTextSin
 public class FormAdapter extends RecyclerView.Adapter<BaseViewHolder> implements ReloadListener {
 
     private final Context mContext;
-    private List<BaseFormElement> mDataset;
+    private List<BaseFormElement> elements;
     private final OnFormElementValueChangedListener mListener;
 
     public FormAdapter(Context context, OnFormElementValueChangedListener listener) {
         mContext = context;
         mListener = listener;
-        mDataset = new ArrayList<>();
+        elements = new ArrayList<>();
     }
 
     public void addElements(List<BaseFormElement> formObjects) {
-        this.mDataset = formObjects;
+        this.elements = formObjects;
         notifyDataSetChanged();
     }
 
     public void addElement(BaseFormElement formObject) {
-        this.mDataset.add(formObject);
+        this.elements.add(formObject);
         notifyDataSetChanged();
     }
 
     public void setValueAtIndex(int position, String value) {
-        BaseFormElement baseFormElement = mDataset.get(position);
+        BaseFormElement baseFormElement = elements.get(position);
         baseFormElement.setValue(value);
         notifyDataSetChanged();
     }
 
     public void setValueAtTag(int tag, String value) {
-        for (BaseFormElement f : this.mDataset) {
+        for (BaseFormElement f : this.elements) {
             if (f.getTag() == tag) {
                 f.setValue(value);
                 return;
@@ -68,11 +68,11 @@ public class FormAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
     }
 
     public BaseFormElement getValueAtIndex(int index) {
-        return (mDataset.get(index));
+        return (elements.get(index));
     }
 
     public BaseFormElement getValueAtTag(int tag) {
-        for (BaseFormElement f : this.mDataset) {
+        for (BaseFormElement f : this.elements) {
             if (f.getTag() == tag) {
                 return f;
             }
@@ -81,8 +81,8 @@ public class FormAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
         return null;
     }
 
-    public List<BaseFormElement> getDataset() {
-        return mDataset;
+    public List<BaseFormElement> getElements() {
+        return elements;
     }
 
     public OnFormElementValueChangedListener getValueChangeListener() {
@@ -91,12 +91,12 @@ public class FormAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return elements.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return mDataset.get(position).getType();
+        return elements.get(position).getType();
     }
 
     @NonNull
@@ -152,15 +152,15 @@ public class FormAdapter extends RecyclerView.Adapter<BaseViewHolder> implements
         if (holder.getListener() != null) {
             holder.getListener().updatePosition(holder.getAdapterPosition());
         }
-        BaseFormElement currentObject = mDataset.get(position);
+        BaseFormElement currentObject = elements.get(position);
         holder.bind(position, currentObject, mContext);
     }
 
     @Override
     public void updateValue(int position, String updatedValue) {
-        mDataset.get(position).setValue(updatedValue);
+        elements.get(position).setValue(updatedValue);
         notifyDataSetChanged();
         if (mListener != null)
-            mListener.onValueChanged(mDataset.get(position));
+            mListener.onValueChanged(elements.get(position));
     }
 }

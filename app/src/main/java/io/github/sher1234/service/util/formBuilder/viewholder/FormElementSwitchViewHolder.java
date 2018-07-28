@@ -13,10 +13,10 @@ import io.github.sher1234.service.util.formBuilder.model.FormElementSwitch;
 
 public class FormElementSwitchViewHolder extends BaseViewHolder {
 
-    public AppCompatTextView mTextViewTitle, mTextViewPositive, mTextViewNegative;
-    public Switch mSwitch;
-    private ReloadListener mReloadListener;
+    private final Switch mSwitch;
+    private final ReloadListener mReloadListener;
     private BaseFormElement mFormElement;
+    private final AppCompatTextView mTextViewTitle, mTextViewPositive, mTextViewNegative;
     private FormElementSwitch mFormElementSwitch;
     private int mPosition;
 

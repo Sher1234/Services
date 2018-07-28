@@ -9,7 +9,7 @@ import io.github.sher1234.service.util.formBuilder.model.BaseFormElement;
 public class FormItemEditTextListener implements TextWatcher {
 
     private int position;
-    private FormAdapter formAdapter;
+    private final FormAdapter formAdapter;
 
     public FormItemEditTextListener(FormAdapter formAdapter) {
         this.formAdapter = formAdapter;
@@ -27,7 +27,7 @@ public class FormItemEditTextListener implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-        BaseFormElement baseFormElement = formAdapter.getDataset().get(position);
+        BaseFormElement baseFormElement = formAdapter.getElements().get(position);
         String currentValue = baseFormElement.getValue();
         String newValue = charSequence.toString();
 

@@ -2,7 +2,7 @@ package io.github.sher1234.service.util.formBuilder.model;
 
 public class FormElementTextSingleLine extends BaseFormElement {
 
-    public FormElementTextSingleLine() {
+    private FormElementTextSingleLine() {
     }
 
     public static FormElementTextSingleLine createInstance() {

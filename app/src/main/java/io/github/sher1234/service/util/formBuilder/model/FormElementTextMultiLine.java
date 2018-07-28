@@ -2,7 +2,7 @@ package io.github.sher1234.service.util.formBuilder.model;
 
 public class FormElementTextMultiLine extends BaseFormElement {
 
-    public FormElementTextMultiLine() {
+    private FormElementTextMultiLine() {
     }
 
     public static FormElementTextMultiLine createInstance() {

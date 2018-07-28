@@ -1,7 +1,7 @@
 package io.github.sher1234.service.util.formBuilder.viewholder;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.InputType;
 import android.view.View;
@@ -13,19 +13,19 @@ import io.github.sher1234.service.util.formBuilder.model.BaseFormElement;
 
 public class FormElementTextMultiLineViewHolder extends BaseViewHolder {
 
-    public AppCompatTextView mTextViewTitle;
-    public AppCompatEditText mEditTextValue;
-    public FormItemEditTextListener mFormCustomEditTextListener;
+    private final AppCompatTextView textView;
+    private final TextInputEditText editText;
+    private final FormItemEditTextListener mFormCustomEditTextListener;
 
     public FormElementTextMultiLineViewHolder(View v, FormItemEditTextListener listener) {
         super(v);
-        mTextViewTitle = v.findViewById(R.id.formElementTitle);
-        mEditTextValue = v.findViewById(R.id.formElementValue);
+        textView = v.findViewById(R.id.textView);
+        editText = v.findViewById(R.id.editText);
         mFormCustomEditTextListener = listener;
-        mEditTextValue.addTextChangedListener(mFormCustomEditTextListener);
-        mEditTextValue.setMaxLines(4);
-        mEditTextValue.setSingleLine(false);
-        mEditTextValue.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        editText.addTextChangedListener(mFormCustomEditTextListener);
+        editText.setMaxLines(4);
+        editText.setSingleLine(false);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
     }
 
     @Override
@@ -35,19 +35,19 @@ public class FormElementTextMultiLineViewHolder extends BaseViewHolder {
 
     @Override
     public void bind(int position, BaseFormElement formElement, final Context context) {
-        mTextViewTitle.setText(formElement.getTitle());
-        mEditTextValue.setText(formElement.getValue());
-        mEditTextValue.setHint(formElement.getHint());
-        mEditTextValue.setEnabled(formElement.isEnabled());
-        mTextViewTitle.setEnabled(formElement.isEnabled());
+        editText.setHint(formElement.getHint());
+        textView.setText(formElement.getTitle());
+        editText.setText(formElement.getValue());
+        textView.setFocusableInTouchMode(formElement.isEnabled());
+        editText.setFocusableInTouchMode(formElement.isEnabled());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEditTextValue.requestFocus();
+                editText.requestFocus();
                 InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
                 assert imm != null;
-                imm.showSoftInput(mEditTextValue, InputMethodManager.SHOW_IMPLICIT);
+                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
             }
         });
     }

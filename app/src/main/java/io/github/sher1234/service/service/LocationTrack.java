@@ -18,7 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import io.github.sher1234.service.util.DialogX;
+import io.github.sher1234.service.util.MaterialDialog;
 
 @SuppressWarnings("all")
 public class LocationTrack extends Service implements LocationListener {
@@ -82,14 +82,14 @@ public class LocationTrack extends Service implements LocationListener {
     }
 
     public void showSettingsAlert() {
-        final DialogX dialogX = new DialogX(mContext)
+        final MaterialDialog materialDialog = new MaterialDialog(mContext)
                 .setTitle("Enable Location")
                 .setDescription("Set location mode to \"High Accuracy\" to continue using app.");
-        dialogX.positiveButton("Yes", new View.OnClickListener() {
+        materialDialog.positiveButton("Yes", new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 mContext.startActivity(intent);
-                dialogX.dismiss();
+                materialDialog.dismiss();
             }
         }).negativeButton("Cancel", new View.OnClickListener() {
             @Override
@@ -103,7 +103,7 @@ public class LocationTrack extends Service implements LocationListener {
                 }, 500);
             }
         }).setCancelable(false);
-        dialogX.show();
+        materialDialog.show();
     }
 
     public void stopListener() {

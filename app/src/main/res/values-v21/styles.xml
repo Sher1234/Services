@@ -3,18 +3,16 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="android:statusBarColor">@android:color/darker_gray</item>
-        <item name="android:navigationBarColor">@android:color/white</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/gWhite</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/gBlue</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/darker_gray</item>
-        <item name="android:navigationBarColor">@android:color/white</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/gWhite</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/gBlue</item>
     </style>
 
     <style name="AppTheme.NoActionBar.View" parent="AppTheme.NoActionBar" />

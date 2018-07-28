@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/calls"
+        android:icon="@drawable/ic_file"
+        android:title="@string/service_calls" />
+
+    <item
+        android:id="@+id/dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/dashboard" />
+
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/ic_detail"
+        android:title="@string/account_details" />
+
+</menu>

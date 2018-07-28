@@ -9,7 +9,7 @@ import io.github.sher1234.service.util.formBuilder.model.BaseFormElement;
 
 public class FormElementHeader extends BaseViewHolder {
 
-    public AppCompatTextView mTextViewTitle;
+    private final AppCompatTextView mTextViewTitle;
 
     public FormElementHeader(View v) {
         super(v);

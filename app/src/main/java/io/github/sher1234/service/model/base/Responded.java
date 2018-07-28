@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Responded implements Serializable {
 
-    private String Message;
-    private int Code;
+    public String Message;
+    public int Code;
 
     public Responded() {
 

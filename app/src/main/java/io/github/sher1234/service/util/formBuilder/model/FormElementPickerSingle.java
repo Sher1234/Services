@@ -3,20 +3,19 @@ package io.github.sher1234.service.util.formBuilder.model;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("all")
 public class FormElementPickerSingle extends BaseFormElement {
 
     private String pickerTitle;
     private List<String> mOptions;
     private List<String> mOptionsSelected;
 
-    public FormElementPickerSingle() {
+    private FormElementPickerSingle() {
     }
 
     public static FormElementPickerSingle createInstance() {
-        FormElementPickerSingle formElementPickerSingle = new FormElementPickerSingle();
-        formElementPickerSingle.setType(BaseFormElement.TYPE_PICKER_SINGLE);
-        formElementPickerSingle.setPickerTitle("Pick one");
-        return formElementPickerSingle;
+        return new FormElementPickerSingle()
+                .setType(BaseFormElement.TYPE_PICKER_SINGLE).setPickerTitle();
     }
 
     public FormElementPickerSingle setTag(int mTag) {
@@ -65,8 +64,8 @@ public class FormElementPickerSingle extends BaseFormElement {
         return this.pickerTitle;
     }
 
-    public FormElementPickerSingle setPickerTitle(String title) {
-        this.pickerTitle = title;
+    private FormElementPickerSingle setPickerTitle() {
+        this.pickerTitle = "Pick one";
         return this;
     }
 

@@ -2,19 +2,21 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_gravity="center">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/formElementTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorHeaderBackground"
-        android:paddingStart="14dp"
-        android:paddingTop="18dp"
-        android:paddingEnd="14dp"
-        android:paddingBottom="15dp"
-        android:textColor="@color/colorHeaderText"
-        android:textSize="@dimen/headerTextSize"
-        tools:text="Personal Info" />
+        android:background="#99dadada"
+        android:paddingStart="16dp"
+        android:id="@+id/formElementTitle"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="14dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+        android:textColor="@color/gPurpleDark"
+        android:textSize="15sp"
+        tools:text="@string/app_name" />
 
 </android.support.design.widget.CoordinatorLayout>

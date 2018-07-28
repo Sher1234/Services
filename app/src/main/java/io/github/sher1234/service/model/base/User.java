@@ -7,12 +7,13 @@ import java.util.Map;
 public class User implements Serializable {
 
     private int IsAdmin;
-    private String Name;
-    private String Email;
-    private String Phone;
-    private String Password;
+    public String Name;
+    public String Email;
+    public String Phone;
+    public String JoinDate;
+    public String Password;
     private int IsRegistered;
-    private String EmployeeID;
+    public String EmployeeID;
 
     public User() {
 
@@ -20,94 +21,53 @@ public class User implements Serializable {
 
     public User(boolean isAdmin, String name, String phone, String email,
                 String password, String employeeID) {
-        IsAdmin = setAdmin(isAdmin);
+        setAdmin(isAdmin);
         Name = name;
         Phone = phone;
         Email = email;
         Password = password;
         EmployeeID = employeeID;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        if (isAdmin)
+            IsAdmin = 1;
+        else
+            IsAdmin = 0;
     }
 
     public boolean isAdmin() {
         return IsAdmin == 1;
     }
 
+    public void setRegistered(boolean isRegistered) {
+        if (isRegistered)
+            IsRegistered = 1;
+        else
+            IsRegistered = 0;
+    }
+
     public boolean isRegistered() {
         return IsRegistered == 1;
     }
 
-    public String getIsAdmin() {
-        return IsAdmin + "";
-    }
-
-    public String getIsRegistered() {
-        return IsRegistered + "";
-    }
-
-    public int setAdmin(boolean isAdmin) {
-        if (isAdmin)
-            return 1;
-        return  0;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getEmployeeID() {
-        return EmployeeID;
-    }
-
-    public void setEmployeeID(String employeeID) {
-        EmployeeID = employeeID;
-    }
-
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
     public Map<String, String> getUserMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("IsAdmin", getIsAdmin());
-        map.put("Phone", Phone);
-        map.put("Email", Email);
         map.put("Name", Name);
+        map.put("Email", Email);
+        map.put("Phone", Phone);
         map.put("Password", Password);
         map.put("EmployeeID", EmployeeID);
-        map.put("IsRegistered", getIsRegistered());
+        map.put("IsAdmin", isAdmin() + "");
+        map.put("IsRegistered", isRegistered() + "");
         return map;
     }
+
     public boolean isExists() {
-        return  getName() != null && getName().length() > 0
-                && getEmail() != null && getEmail().length() > 0
-                && !getIsAdmin().isEmpty() && getIsAdmin().length() > 0
-                && getPassword() != null && getPassword().length() > 0
-                && getEmployeeID() != null && getEmployeeID().length() > 0
-                && getPhone() != null && getPhone().length() > 0;
+        return Name != null && Name.length() > 1
+                && Email != null && Email.length() > 3
+                && Phone != null && Phone.length() == 10
+                && Password != null && Password.length() > 7
+                && EmployeeID != null && EmployeeID.length() > 9;
     }
 }

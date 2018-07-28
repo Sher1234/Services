@@ -12,15 +12,15 @@ public class Visit extends Base implements Serializable {
     private int Visit;
     private String Image;
     private String EndTime;
-    private String Feedback;
+    public String Feedback;
     private String Location;
     private String Signature;
     private String StartTime;
-    private String VisitNumber;
-    private String ActionTaken;
-    private String Observation;
-    private String ConcernEmail;
-    private String CustomerSatisfaction;
+    public String VisitNumber;
+    public String ActionTaken;
+    public String Observation;
+    public String ConcernEmail;
+    public String CustomerSatisfaction;
 
     public Visit() {
 
@@ -67,6 +67,18 @@ public class Visit extends Base implements Serializable {
         Observation = observation;
         ConcernEmail = concernEmail;
         EndTime = setDateTime(endTime);
+        CustomerSatisfaction = customerSatisfaction;
+    }
+
+    public Visit(String visitNumber, String concernName, String concernPhone, String concernEmail,
+                 String observation, String actionTaken, String customerSatisfaction,
+                 String feedback) {
+        super(null, null, concernName, concernPhone, false);
+        Feedback = feedback;
+        VisitNumber = visitNumber;
+        ActionTaken = actionTaken;
+        Observation = observation;
+        ConcernEmail = concernEmail;
         CustomerSatisfaction = customerSatisfaction;
     }
 
@@ -204,7 +216,7 @@ public class Visit extends Base implements Serializable {
         return StartTime != null && (EndTime == null || EndTime.length() < 2);
     }
 
-    public Map<String, String> getVisitMap() {
+    public Map<String, String> getMap() {
         Map<String, String> map = new HashMap<>();
         map.put("Email", getEmail());
         map.put("CallNumber", getCallNumber());
@@ -226,7 +238,20 @@ public class Visit extends Base implements Serializable {
         return map;
     }
 
-    public Map<String, String> getVisitStartMap() {
+    public Map<String, String> getEditMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("ConcernName", getConcernName());
+        map.put("Feedback", getFeedback());
+        map.put("ConcernPhone", getConcernPhone());
+        map.put("VisitNumber", getVisitNumber());
+        map.put("ActionTaken", getActionTaken());
+        map.put("Observation", getObservation());
+        map.put("ConcernEmail", getConcernEmail());
+        map.put("CustomerSatisfaction", getCustomerSatisfaction());
+        return map;
+    }
+
+    public Map<String, String> getStartMap() {
         Map<String, String> map = new HashMap<>();
         map.put("Email", getEmail());
         map.put("CallNumber", getCallNumber());
@@ -237,7 +262,7 @@ public class Visit extends Base implements Serializable {
         return map;
     }
 
-    public Map<String, String> getVisitEndMap() {
+    public Map<String, String> getEndMap() {
         Map<String, String> map = new HashMap<>();
         map.put("CallNumber", getCallNumber());
         map.put("EndTime", getEndTimeString());

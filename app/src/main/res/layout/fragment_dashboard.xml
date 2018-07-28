@@ -1,60 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_height="wrap_content"
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
-        android:background="#fafafa"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:alpha="0.08"
+        android:padding="60dp"
+        android:src="@raw/logo" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:padding="8dp"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+        android:textColor="@color/gPurpleDark"
+        android:textSize="18sp"
+        tools:text="Daily Registrations" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="@color/gPurpleDark"
+        android:textSize="15sp"
+        tools:text="21 Jun - 28 Jun" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="55dp">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.5"
+                    android:background="@android:color/darker_gray"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="top|end"
+                    android:padding="5dp"
+                    android:textColor="@color/gPurpleDark"
+                    android:textSize="12sp"
+                    tools:text="999" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|end"
+                    android:padding="5dp"
+                    android:textColor="@color/gPurpleDark"
+                    android:textSize="12sp"
+                    tools:text="500" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom|end"
+                    android:padding="5dp"
+                    android:textColor="@color/gPurpleDark"
+                    android:textSize="12sp"
+                    tools:text="0" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.5"
+                    android:background="@android:color/darker_gray" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:visibility="invisible" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:alpha="0.5"
+                android:background="@android:color/darker_gray" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:fadeScrollbars="true"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="4dp">
+            android:paddingStart="0dp"
+            android:paddingEnd="12dp"
+            android:scrollbars="horizontal"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            tools:listitem="@layout/recycler_item_4" />
 
-            <RadioButton
-                android:id="@+id/radioButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/chip_background"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:button="@android:color/transparent"
-                android:text="@string/daily"
-                android:textColor="#ffffff"
-                android:checked="true"
-                android:padding="8dp"
-                android:textSize="12sp" />
+    </android.support.v7.widget.LinearLayoutCompat>
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:background="@drawable/chip_background"
-                android:button="@android:color/transparent"
-                android:padding="8dp"
-                android:text="@string/monthly"
-                android:textSize="12sp" />
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|end"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
-        </RadioGroup>
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chip_left"
+            android:button="@android:color/transparent"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="@string/daily"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@drawable/chip_text"
+            android:textSize="13sp" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="10dp" />
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-2dp"
+            android:background="@drawable/chip_right"
+            android:button="@android:color/transparent"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="@string/monthly"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@drawable/chip_text"
+            android:textSize="13sp"
+            tools:checked="true" />
 
-    </LinearLayout>
+    </RadioGroup>
 
-</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

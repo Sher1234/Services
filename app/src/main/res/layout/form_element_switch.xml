@@ -7,15 +7,15 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorElementBackground">
+        android:layout_height="wrap_content">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:background="@color/colorDivider" />
+            android:alpha="0.5"
+            android:background="@android:color/darker_gray" />
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -23,13 +23,13 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/formElementTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/gPurpleDark"
+                android:id="@+id/formElementTitle"
                 android:layout_weight="0"
                 android:padding="14dp"
-                android:textColor="@color/colorElementTextTitle"
-                android:textSize="@dimen/elementTextTitleSize"
+                android:textSize="14sp"
                 tools:text="Personal Info" />
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -44,11 +44,11 @@
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/formElementNegativeText"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/gTextDark"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:textColor="#000000"
                     tools:text="No" />
 
                 <Switch
@@ -63,7 +63,7 @@
                     android:gravity="center"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/gTextDark"
                     tools:text="Yes" />
 
             </android.support.v7.widget.LinearLayoutCompat>

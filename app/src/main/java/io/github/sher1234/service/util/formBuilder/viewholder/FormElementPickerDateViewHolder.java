@@ -2,7 +2,7 @@ package io.github.sher1234.service.util.formBuilder.viewholder;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.DatePicker;
@@ -16,16 +16,18 @@ import io.github.sher1234.service.util.formBuilder.listener.ReloadListener;
 import io.github.sher1234.service.util.formBuilder.model.BaseFormElement;
 import io.github.sher1234.service.util.formBuilder.model.FormElementPickerDate;
 
+@SuppressWarnings("all")
 public class FormElementPickerDateViewHolder extends BaseViewHolder {
 
-    private AppCompatTextView mTextViewTitle;
-    private AppCompatEditText mEditTextValue;
+    private final ReloadListener reloadListener;
     private DatePickerDialog mDatePickerDialog;
+    private final AppCompatTextView textView;
+    private final TextInputEditText editText;
     private Calendar mCalendarCurrentDate;
-    private ReloadListener mReloadListener;
     private BaseFormElement mFormElement;
     private int mPosition;
-    private DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+    private final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             mCalendarCurrentDate.set(Calendar.YEAR, year);
@@ -40,7 +42,7 @@ public class FormElementPickerDateViewHolder extends BaseViewHolder {
             ((FormElementPickerDate) mFormElement).setDate(mCalendarCurrentDate.getTime());
 
             if (!currentValue.equals(newValue)) {
-                mReloadListener.updateValue(mPosition, newValue);
+                reloadListener.updateValue(mPosition, newValue);
                 ((FormElementPickerDate) mFormElement).setDate(mCalendarCurrentDate.getTime());
             }
         }
@@ -49,9 +51,9 @@ public class FormElementPickerDateViewHolder extends BaseViewHolder {
 
     public FormElementPickerDateViewHolder(View v, Context context, ReloadListener reloadListener) {
         super(v);
-        mTextViewTitle = v.findViewById(R.id.formElementTitle);
-        mEditTextValue = v.findViewById(R.id.formElementValue);
-        mReloadListener = reloadListener;
+        this.reloadListener = reloadListener;
+        editText = v.findViewById(R.id.editText);
+        textView = v.findViewById(R.id.textView);
         mCalendarCurrentDate = Calendar.getInstance();
     }
 
@@ -66,21 +68,21 @@ public class FormElementPickerDateViewHolder extends BaseViewHolder {
                 mCalendarCurrentDate.get(Calendar.MONTH),
                 mCalendarCurrentDate.get(Calendar.DAY_OF_MONTH));
 
-        mTextViewTitle.setText(formElement.getTitle());
-        mTextViewTitle.setEnabled(formElement.isEnabled());
-        mEditTextValue.setText(formElement.getValue());
-        mEditTextValue.setHint(formElement.getHint());
-        mEditTextValue.setEnabled(formElement.isEnabled());
-        mEditTextValue.setFocusableInTouchMode(false);
+        editText.setHint(formElement.getHint());
+        editText.setFocusableInTouchMode(false);
+        textView.setText(formElement.getTitle());
+        editText.setText(formElement.getValue());
+        textView.setEnabled(formElement.isEnabled());
+        editText.setEnabled(formElement.isEnabled());
 
-        mEditTextValue.setOnClickListener(new View.OnClickListener() {
+        editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDatePickerDialog.show();
             }
         });
 
-        mTextViewTitle.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDatePickerDialog.show();

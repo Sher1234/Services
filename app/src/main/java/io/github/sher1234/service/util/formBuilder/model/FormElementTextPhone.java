@@ -2,7 +2,7 @@ package io.github.sher1234.service.util.formBuilder.model;
 
 public class FormElementTextPhone extends BaseFormElement {
 
-    public FormElementTextPhone() {
+    private FormElementTextPhone() {
     }
 
     public static FormElementTextPhone createInstance() {

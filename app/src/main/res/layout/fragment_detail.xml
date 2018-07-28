@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/app_name"
+                android:padding="10dp"
+                android:tint="@color/gBlue"
+                app:srcCompat="@drawable/ic_person" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                    android:textColor="@color/gGreen"
+                    android:textSize="15sp"
+                    tools:text="Android Studio" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="@color/gRed"
+                    android:textSize="14sp"
+                    tools:text="Android Studio" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:alpha="0.25"
+            android:background="@android:color/darker_gray" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/contact_details"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:textColor="?colorAccent"
+            android:textSize="15sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="26dp"
+            android:hint="@string/phone"
+            android:textColorHint="?colorAccent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_call"
+                android:drawablePadding="10dp"
+                android:focusableInTouchMode="false"
+                android:foreground="?attr/selectableItemBackground"
+                android:inputType="phone"
+                android:linksClickable="true"
+                android:padding="12dp"
+                android:textColor="?android:attr/textColorPrimaryNoDisable"
+                android:textColorLink="?android:attr/textColorPrimaryNoDisable"
+                android:textIsSelectable="false"
+                android:textSize="13sp"
+                tools:text="@android:string/emptyPhoneNumber" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="26dp"
+            android:hint="@string/email"
+            android:textColorHint="?colorAccent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="email"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:focusableInTouchMode="false"
+                android:foreground="?attr/selectableItemBackground"
+                android:inputType="textEmailAddress"
+                android:linksClickable="true"
+                android:padding="12dp"
+                android:textColor="?android:attr/textColorPrimaryNoDisable"
+                android:textColorLink="?android:attr/textColorPrimaryNoDisable"
+                android:textIsSelectable="false"
+                android:textSize="13sp"
+                tools:text="@android:string/emptyPhoneNumber" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:alpha="0.25"
+            android:background="@android:color/darker_gray" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/work_detail"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:textColor="?colorAccent"
+            android:textSize="15sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="26dp"
+            android:hint="@string/employee_id"
+            android:textColorHint="?colorAccent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="none"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_id"
+                android:drawablePadding="10dp"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="?android:attr/textColorPrimaryNoDisable"
+                android:textIsSelectable="false"
+                android:textSize="13sp"
+                tools:text="@android:string/emptyPhoneNumber" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="8dp"
+            android:hint="@string/join_date"
+            android:textColorHint="?colorAccent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="none"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="10dp"
+                android:focusableInTouchMode="false"
+                android:inputType="date"
+                android:padding="12dp"
+                android:textColor="?android:attr/textColorPrimaryNoDisable"
+                android:textIsSelectable="false"
+                android:textSize="13sp"
+                tools:text="@android:string/emptyPhoneNumber" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</ScrollView>

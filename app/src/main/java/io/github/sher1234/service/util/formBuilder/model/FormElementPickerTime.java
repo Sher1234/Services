@@ -3,11 +3,12 @@ package io.github.sher1234.service.util.formBuilder.model;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+@SuppressWarnings("all")
 public class FormElementPickerTime extends BaseFormElement {
 
     private String timeFormat;
 
-    public FormElementPickerTime() {
+    private FormElementPickerTime() {
     }
 
     public static FormElementPickerTime createInstance() {
@@ -45,7 +46,7 @@ public class FormElementPickerTime extends BaseFormElement {
         return this.timeFormat;
     }
 
-    public FormElementPickerTime setTimeFormat(String format) {
+    private FormElementPickerTime setTimeFormat(String format) {
         checkValidTimeFormat(format);
         this.timeFormat = format;
         return this;

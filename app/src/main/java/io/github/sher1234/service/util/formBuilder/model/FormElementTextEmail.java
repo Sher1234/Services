@@ -2,7 +2,7 @@ package io.github.sher1234.service.util.formBuilder.model;
 
 public class FormElementTextEmail extends BaseFormElement {
 
-    public FormElementTextEmail() {
+    private FormElementTextEmail() {
     }
 
     public static FormElementTextEmail createInstance() {

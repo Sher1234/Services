@@ -1,26 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:openDrawer="end">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/content_calls" />
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigationView"
-        style="@style/Widget.MaterialComponents.NavigationView"
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:clickable="false"
-        android:focusable="false"
-        app:elevation="12dp">
+        android:background="#f5f5f5" />
 
-        <include layout="@layout/nav_filter" />
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.05"
+        android:padding="60dp"
+        android:src="@raw/logo" />
 
-    </android.support.design.widget.NavigationView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="?attr/actionBarSize"
+        tools:listitem="@layout/recycler_item_1" />
 
-</android.support.v4.widget.DrawerLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bar_shadow" />
+
+    <android.support.design.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.BottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        app:cardBackgroundColor="@color/gWhite"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp" />
+
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:theme="@style/AppTheme.BottomBar"
+        app:backgroundTint="@color/gWhite"
+        app:navigationIcon="@drawable/ic_menu" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@color/gBlue"
+        app:backgroundTint="@color/gWhite"
+        app:fabSize="mini"
+        app:layout_anchor="@id/bottomAppBar"
+        app:layout_anchorGravity="center|top"
+        app:srcCompat="@drawable/ic_add" />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:cardBackgroundColor="#aafafafa"
+        app:cardElevation="8dp"
+        tools:visibility="gone">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/loading"
+                android:textColor="?colorAccent" />
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:indeterminate="true" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.design.card.MaterialCardView>
+
+</android.support.design.widget.CoordinatorLayout>

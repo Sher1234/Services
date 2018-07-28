@@ -1,8 +1,9 @@
 package io.github.sher1234.service.util.formBuilder.model;
 
+@SuppressWarnings("all")
 public class FormElementTextPassword extends BaseFormElement {
 
-    public FormElementTextPassword() {
+    private FormElementTextPassword() {
     }
 
     public static FormElementTextPassword createInstance() {

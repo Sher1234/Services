@@ -1,12 +1,13 @@
 package io.github.sher1234.service.util.formBuilder.model;
 
+@SuppressWarnings("all")
 public class FormElementSwitch extends BaseFormElement {
 
     private boolean checked;
     private String positiveText;
     private String negativeText;
 
-    public FormElementSwitch() {
+    private FormElementSwitch() {
     }
 
     public static FormElementSwitch createInstance() {

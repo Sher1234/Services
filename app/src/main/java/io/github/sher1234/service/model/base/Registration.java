@@ -6,17 +6,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("all")
 public class Registration extends Base implements Serializable {
 
     private String DateTime;
-    private int NumberOfVisits;
-    private String SiteDetails;
-    private String CustomerName;
-    private String NatureOfSite;
-    private String ProductDetail;
-    private String ProductNumber;
-    private String ComplaintType;
-    private String WarrantyStatus;
+    public String AllottedTo;
+    public int NumberOfVisits;
+    public String SiteDetails;
+    public String CustomerName;
+    public String NatureOfSite;
+    public String ProductDetail;
+    public String ProductNumber;
+    public String ComplaintType;
+    public String WarrantyStatus;
 
     public Registration() {
 
@@ -26,7 +28,7 @@ public class Registration extends Base implements Serializable {
                         String natureOfSite, String productDetail, String productNumber,
                         String complaintType, String warrantyStatus, Date dateTime, String email,
                         String callNumber, String concernName, String concernPhone,
-                        boolean isCompleted) {
+                        boolean isCompleted, String allottedTo) {
         super(email, callNumber, concernName, concernPhone, isCompleted);
         NumberOfVisits = numberOfVisits;
         SiteDetails = siteDetails;
@@ -37,6 +39,24 @@ public class Registration extends Base implements Serializable {
         ComplaintType = complaintType;
         WarrantyStatus = warrantyStatus;
         DateTime = setDateTime(dateTime);
+        AllottedTo = allottedTo;
+    }
+
+    public Registration(String customerName, String siteDetails, String concernName,
+                        String concernPhone, String productDetail, String productNumber,
+                        String natureOfSite, String complaintType, String warrantyStatus,
+                        boolean isCompleted, String callNumber) {
+        super(null, callNumber, concernName, concernPhone, isCompleted);
+        NumberOfVisits = 0;
+        SiteDetails = siteDetails;
+        CustomerName = customerName;
+        NatureOfSite = natureOfSite;
+        ProductDetail = productDetail;
+        ProductNumber = productNumber;
+        ComplaintType = complaintType;
+        WarrantyStatus = warrantyStatus;
+        DateTime = null;
+        AllottedTo = null;
     }
 
     public String setDateTime(Date date) {
@@ -128,7 +148,7 @@ public class Registration extends Base implements Serializable {
         NumberOfVisits = numberOfVisits;
     }
 
-    public Map<String, String> getRegistrationMap() {
+    public Map<String, String> getMap() {
         Map<String, String> map = new HashMap<>();
         map.put("Email", getEmail());
         map.put("CallNumber", getCallNumber());
@@ -147,19 +167,19 @@ public class Registration extends Base implements Serializable {
         return map;
     }
 
-    public Query getQuery() {
-        Query query = new Query();
-        String s = "INSERT INTO `RegisteredCallsX` (`CallNumber`, `ComplaintType`, `ConcernName`, " +
-                "`ConcernPhone`, `CustomerName`, `DateTime`, `IsCompleted`, `NatureOfSite`, " +
-                "`NumberOfVisits`, `ProductNumber`, `ProductDetail`, `SiteDetails`, `Email`, " +
-                "`WarrantyStatus`) VALUES ('" + getCallNumber() + "', '" + getComplaintType() +
-                "', '" + getConcernName() + "', '" + getConcernPhone() + "', '" + getCustomerName() +
-                "', '" + getDateTimeString() + "', '" + getIsCompleted() + "', '" + getNatureOfSite() +
-                "', '" + getNumberOfVisitsString() + "', '" + getProductNumber() + "', '" +
-                getProductDetail() + "', '" + getSiteDetails() + "', '" + getEmail() + "', '" +
-                getWarrantyStatus() + "');";
-        query.setQuery(s);
-        query.setTable("None");
-        return query;
+    public Map<String, String> getEditMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("CallNumber", getCallNumber());
+        map.put("ConcernName", getConcernName());
+        map.put("IsCompleted", getIsCompleted());
+        map.put("SiteDetails", getSiteDetails());
+        map.put("CustomerName", getCustomerName());
+        map.put("NatureOfSite", getNatureOfSite());
+        map.put("ConcernPhone", getConcernPhone());
+        map.put("ComplaintType", getComplaintType());
+        map.put("ProductDetail", getProductDetail());
+        map.put("ProductNumber", getProductNumber());
+        map.put("WarrantyStatus", getWarrantyStatus());
+        return map;
     }
 }

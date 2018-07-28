@@ -6,15 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 import io.github.sher1234.service.R;
-import io.github.sher1234.service.fragment.Call3;
-import io.github.sher1234.service.model.base.VisitedCall;
+import io.github.sher1234.service.activity.common.ViewCall;
+import io.github.sher1234.service.fragment.ViewVisit;
+import io.github.sher1234.service.model.base.Visit;
+import io.github.sher1234.service.model.base.VisitX;
 import io.github.sher1234.service.model.response.ServiceCall;
-import io.github.sher1234.service.util.NavigationHost;
 
 public class VisitRecycler extends RecyclerView.Adapter<VisitRecycler.ViewHolder> {
 
@@ -30,7 +32,7 @@ public class VisitRecycler extends RecyclerView.Adapter<VisitRecycler.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.recycler_item_2, parent, false);
+        View view = inflater.inflate(R.layout.recycler_item_1, parent, false);
         return new ViewHolder(view);
     }
 
@@ -41,24 +43,28 @@ public class VisitRecycler extends RecyclerView.Adapter<VisitRecycler.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull VisitRecycler.ViewHolder holder, int position) {
-        final int i = position;
-        final VisitedCall visitedCall = serviceCall.getVisits().get(i);
+        final Visit visit = serviceCall.visits.get(position).visit;
+        final VisitX visitX = serviceCall.visits.get(position);
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(visitedCall.getStartTime());
-        holder.textView0.setText(visitedCall.getVisitString());
-        holder.textView1.setText(visitedCall.getStartTimeView());
-        holder.textView2.setText(visitedCall.getVisitNumber());
+        calendar.setTime(visit.getStartTime());
+        if (visit.isVisitStarted())
+            holder.imageView.setImageResource(R.drawable.ic_pending);
+        else
+            holder.imageView.setImageResource(R.drawable.ic_completed);
+        holder.textView1.setText(visit.getStartTimeView());
+        holder.textView2.setText(visit.getVisitNumber());
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((NavigationHost) activity).navigateTo(Call3.getInstance(serviceCall, i), true);
+                ((ViewCall) activity).navigateToFragment(ViewVisit
+                        .getInstance(serviceCall.registration, visitX));
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return serviceCall.getVisits().size();
+        return serviceCall.visits.size();
     }
 
     @Override
@@ -67,7 +73,7 @@ public class VisitRecycler extends RecyclerView.Adapter<VisitRecycler.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView textView0;
+        final ImageView imageView;
         final TextView textView1;
         final TextView textView2;
         final View layout;
@@ -75,9 +81,9 @@ public class VisitRecycler extends RecyclerView.Adapter<VisitRecycler.ViewHolder
         ViewHolder(View view) {
             super(view);
             layout = view;
-            textView0 = layout.findViewById(R.id.textView0);
             textView1 = layout.findViewById(R.id.textView1);
             textView2 = layout.findViewById(R.id.textView2);
+            imageView = layout.findViewById(R.id.imageView);
         }
     }
 }

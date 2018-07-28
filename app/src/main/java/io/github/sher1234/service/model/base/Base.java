@@ -1,24 +1,23 @@
 package io.github.sher1234.service.model.base;
 
-import android.annotation.SuppressLint;
-
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import io.github.sher1234.service.util.Strings;
 
 @SuppressWarnings("all")
 public class Base implements Serializable {
 
-    private String Email;
+    public String Email;
     private int IsCompleted;
-    private String CallNumber;
-    private String ConcernName;
-    private String ConcernPhone;
+    public String CallNumber;
+    public String ConcernName;
+    public String ConcernPhone;
 
-    public Base() {
+    Base() {
 
     }
 
@@ -32,15 +31,13 @@ public class Base implements Serializable {
     }
 
     @NotNull
-    @SuppressLint("SimpleDateFormat")
     protected SimpleDateFormat getDateFormat() {
-        return new SimpleDateFormat(Strings.DateFormatServer);
+        return new SimpleDateFormat(Strings.DateServer, Locale.US);
     }
 
     @NotNull
-    @SuppressLint("SimpleDateFormat")
     protected SimpleDateFormat getDateFormatView() {
-        return new SimpleDateFormat(Strings.DateFormatView);
+        return new SimpleDateFormat(Strings.DateTimeView, Locale.US);
     }
 
     public boolean isCompleted() {

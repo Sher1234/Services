@@ -27,7 +27,7 @@ public class BaseFormElement {
         return this.mTag;
     }
 
-    public BaseFormElement setTag(int mTag) {
+    BaseFormElement setTag(int mTag) {
         this.mTag = mTag;
         return this;
     }
@@ -36,7 +36,7 @@ public class BaseFormElement {
         return this.mType;
     }
 
-    public BaseFormElement setType(int mType) {
+    BaseFormElement setType(int mType) {
         this.mType = mType;
         return this;
     }
@@ -45,7 +45,7 @@ public class BaseFormElement {
         return this.mTitle;
     }
 
-    public BaseFormElement setTitle(String mTitle) {
+    BaseFormElement setTitle(String mTitle) {
         this.mTitle = mTitle;
         return this;
     }
@@ -72,7 +72,7 @@ public class BaseFormElement {
         return this.mRequired;
     }
 
-    public BaseFormElement setRequired(boolean required) {
+    BaseFormElement setRequired(boolean required) {
         this.mRequired = required;
         return this;
     }

@@ -1,8 +1,9 @@
 package io.github.sher1234.service.util.formBuilder.model;
 
+@SuppressWarnings("all")
 public class FormElementTextNumber extends BaseFormElement {
 
-    public FormElementTextNumber() {
+    private FormElementTextNumber() {
     }
 
     public static FormElementTextNumber createInstance() {

@@ -3,6 +3,7 @@ package io.github.sher1234.service.util.formBuilder.model;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("all")
 public class FormElementPickerMulti extends BaseFormElement {
 
     private String pickerTitle;
@@ -11,7 +12,7 @@ public class FormElementPickerMulti extends BaseFormElement {
     private String positiveText = "Ok";
     private String negativeText = "Cancel";
 
-    public FormElementPickerMulti() {
+    private FormElementPickerMulti() {
     }
 
     public static FormElementPickerMulti createInstance() {

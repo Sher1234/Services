@@ -1,67 +1,44 @@
 package io.github.sher1234.service.model.base;
 
-import com.github.mikephil.charting.data.BarEntry;
-
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("all")
 public class Time implements Serializable {
 
-    private String Total;
-    private String Time1;
-    private String Time2;
-    private String Time3;
-    private String Time4;
-    private String Time5;
-    private String Time6;
-    private String Time7;
-    private String Time8;
-    private String Time9;
-    private String Time10;
-    private String Time11;
-    private String Time12;
+    private int Total;
+    private int Time1;
+    private int Time2;
+    private int Time3;
+    private int Time4;
+    private int Time5;
+    private int Time6;
+    private int Time7;
+    private int Time8;
+    private int Time9;
+    private int Time10;
+    private int Time11;
+    private int Time12;
 
-    Time(String total, String time1, String time2, String time3, String time4) {
-        Total = total;
-        Time1 = time1;
-        Time2 = time2;
-        Time3 = time3;
-        Time4 = time4;
+    Time() {
     }
 
-    public float getT(String s) {
-        return Float.parseFloat(s + "f");
+    public Integer[] getDaily() {
+        return new Integer[]{Time1, Time2, Time3, Time4, Time5, Time6, Time7};
     }
 
-    public List<BarEntry> getBarEntriesMonthly() {
-        List<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(getT(Time12), 0));
-        barEntries.add(new BarEntry(getT(Time11), 1));
-        barEntries.add(new BarEntry(getT(Time10), 2));
-        barEntries.add(new BarEntry(getT(Time9), 3));
-        barEntries.add(new BarEntry(getT(Time8), 4));
-        barEntries.add(new BarEntry(getT(Time7), 5));
-        barEntries.add(new BarEntry(getT(Time6), 6));
-        barEntries.add(new BarEntry(getT(Time5), 7));
-        barEntries.add(new BarEntry(getT(Time4), 8));
-        barEntries.add(new BarEntry(getT(Time3), 9));
-        barEntries.add(new BarEntry(getT(Time2), 10));
-        barEntries.add(new BarEntry(getT(Time1), 11));
-        return barEntries;
+    public Integer[] getMonthly() {
+        return new Integer[]{Time1, Time2, Time3, Time4, Time5, Time6, Time7, Time8, Time9, Time10,
+                Time11, Time12};
     }
 
-    public List<BarEntry> getBarEntriesDaily() {
-        List<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(getT(Time7), 0));
-        barEntries.add(new BarEntry(getT(Time6), 1));
-        barEntries.add(new BarEntry(getT(Time5), 2));
-        barEntries.add(new BarEntry(getT(Time4), 3));
-        barEntries.add(new BarEntry(getT(Time3), 4));
-        barEntries.add(new BarEntry(getT(Time2), 5));
-        barEntries.add(new BarEntry(getT(Time1), 6));
-        return barEntries;
+    public List<Integer> getDailyList() {
+        return Arrays.asList(getDaily());
+    }
+
+    public List<Integer> getMonthlyList() {
+        return Arrays.asList(getMonthly());
     }
 }
 

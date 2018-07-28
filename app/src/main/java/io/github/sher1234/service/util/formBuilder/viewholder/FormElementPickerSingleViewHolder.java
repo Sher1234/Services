@@ -2,8 +2,8 @@ package io.github.sher1234.service.util.formBuilder.viewholder;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
@@ -14,58 +14,57 @@ import io.github.sher1234.service.util.formBuilder.model.FormElementPickerSingle
 
 public class FormElementPickerSingleViewHolder extends BaseViewHolder {
 
-    private AppCompatTextView mTextViewTitle;
-    private AppCompatEditText mEditTextValue;
-    private ReloadListener mReloadListener;
-    private BaseFormElement mFormElement;
-    private FormElementPickerSingle mFormElementPickerSingle;
     private int mPosition;
+    private final TextInputEditText editText;
+    private final AppCompatTextView textView;
+    private final ReloadListener reloadListener;
+    private BaseFormElement element;
+    private FormElementPickerSingle formElementPickerSingle;
 
     public FormElementPickerSingleViewHolder(View v, Context context, ReloadListener reloadListener) {
         super(v);
-        mTextViewTitle = v.findViewById(R.id.formElementTitle);
-        mEditTextValue = v.findViewById(R.id.formElementValue);
-        mReloadListener = reloadListener;
+        this.reloadListener = reloadListener;
+        editText = v.findViewById(R.id.editText);
+        textView = v.findViewById(R.id.textView);
     }
 
     @Override
     public void bind(final int position, BaseFormElement formElement, final Context context) {
-        mFormElement = formElement;
+        element = formElement;
         mPosition = position;
-        mFormElementPickerSingle = (FormElementPickerSingle) mFormElement;
+        formElementPickerSingle = (FormElementPickerSingle) element;
 
-        mTextViewTitle.setText(formElement.getTitle());
-        mEditTextValue.setText(formElement.getValue());
-        mEditTextValue.setHint(formElement.getHint());
-        mEditTextValue.setFocusableInTouchMode(false);
-        mEditTextValue.setEnabled(formElement.isEnabled());
-        mTextViewTitle.setEnabled(formElement.isEnabled());
+        editText.setHint(formElement.getHint());
+        editText.setFocusableInTouchMode(false);
+        textView.setText(formElement.getTitle());
+        editText.setText(formElement.getValue());
+        textView.setEnabled(formElement.isEnabled());
+        editText.setEnabled(formElement.isEnabled());
 
-        // reformat the options in format needed
-        final CharSequence[] options = new CharSequence[mFormElementPickerSingle.getOptions().size()];
-        for (int i = 0; i < mFormElementPickerSingle.getOptions().size(); i++) {
-            options[i] = mFormElementPickerSingle.getOptions().get(i);
+        final CharSequence[] options = new CharSequence[formElementPickerSingle.getOptions().size()];
+        for (int i = 0; i < formElementPickerSingle.getOptions().size(); i++) {
+            options[i] = formElementPickerSingle.getOptions().get(i);
         }
 
         final AlertDialog dialog = new AlertDialog.Builder(context)
-                .setTitle(mFormElementPickerSingle.getPickerTitle())
+                .setTitle(formElementPickerSingle.getPickerTitle())
                 .setItems(options, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        mEditTextValue.setText(options[which]);
-                        mFormElementPickerSingle.setValue(options[which].toString());
-                        mReloadListener.updateValue(position, options[which].toString());
+                        editText.setText(options[which]);
+                        formElementPickerSingle.setValue(options[which].toString());
+                        reloadListener.updateValue(position, options[which].toString());
                     }
                 })
                 .create();
 
-        mEditTextValue.setOnClickListener(new View.OnClickListener() {
+        editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();
             }
         });
 
-        mTextViewTitle.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();

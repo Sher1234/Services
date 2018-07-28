@@ -5,39 +5,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fafafa" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.05"
+        android:padding="60dp"
+        android:src="@raw/logo" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="?attr/actionBarSize" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bar_shadow"
+        android:rotation="180" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        style="@style/Widget.MaterialComponents.TabLayout.Colored"
+        android:background="@color/gRed"
+        app:tabIndicatorColor="@color/gWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="3dp"
+        app:tabSelectedTextColor="@color/gWhite">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registration" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/visits" />
+
+    </android.support.design.widget.TabLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignBottom="@id/toolbar"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bar_shadow" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/gRed">
+
+        <android.support.design.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:theme="@style/AppTheme.BottomBar.Dark"
+            app:backgroundTint="@android:color/transparent"
+            app:contentInsetEnd="24dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPending"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:titleTextColor="@color/colorPrimaryDark"
-            tools:title="@string/app_name" />
+            app:contentInsetStart="24dp"
+            app:fabAlignmentMode="end"
+            app:fabAttached="true" />
 
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_view" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <FrameLayout
+        android:layout_marginBottom="?attr/actionBarSize"
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize" />
+        tools:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/progressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#99ffffff"
+        android:background="#9fffffff"
+        android:id="@+id/progressView"
+        android:visibility="gone"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
         tools:visibility="gone">
 
         <android.support.v7.widget.LinearLayoutCompat

@@ -2,8 +2,8 @@ package io.github.sher1234.service.util.formBuilder.viewholder;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
@@ -17,42 +17,42 @@ import io.github.sher1234.service.util.formBuilder.model.FormElementPickerMulti;
 
 public class FormElementPickerMultiViewHolder extends BaseViewHolder {
 
-    private AppCompatTextView mTextViewTitle;
-    private AppCompatEditText mEditTextValue;
-    private ReloadListener mReloadListener;
-    private BaseFormElement mFormElement;
-    private FormElementPickerMulti mFormElementPickerMulti;
     private int mPosition;
+    private final TextInputEditText editText;
+    private final AppCompatTextView textView;
+    private final ReloadListener reloadListener;
+    private BaseFormElement element;
+    private FormElementPickerMulti formElementPickerMulti;
 
     public FormElementPickerMultiViewHolder(View v, Context context, ReloadListener reloadListener) {
         super(v);
-        mTextViewTitle = v.findViewById(R.id.formElementTitle);
-        mEditTextValue = v.findViewById(R.id.formElementValue);
-        mReloadListener = reloadListener;
+        this.reloadListener = reloadListener;
+        editText = v.findViewById(R.id.editText);
+        textView = v.findViewById(R.id.textView);
     }
 
     @Override
     public void bind(final int position, BaseFormElement formElement, final Context context) {
-        mFormElement = formElement;
+        element = formElement;
         mPosition = position;
-        mFormElementPickerMulti = (FormElementPickerMulti) mFormElement;
+        formElementPickerMulti = (FormElementPickerMulti) element;
 
-        mTextViewTitle.setText(formElement.getTitle());
-        mEditTextValue.setText(formElement.getValue());
-        mEditTextValue.setHint(formElement.getHint());
-        mEditTextValue.setFocusableInTouchMode(false);
-        mEditTextValue.setEnabled(formElement.isEnabled());
-        mTextViewTitle.setEnabled(formElement.isEnabled());
+        editText.setHint(formElement.getHint());
+        textView.setText(formElement.getTitle());
+        editText.setFocusableInTouchMode(false);
+        editText.setText(formElement.getValue());
+        textView.setEnabled(formElement.isEnabled());
+        editText.setEnabled(formElement.isEnabled());
 
         // reformat the options in format needed
-        final CharSequence[] options = new CharSequence[mFormElementPickerMulti.getOptions().size()];
-        final boolean[] optionsSelected = new boolean[mFormElementPickerMulti.getOptions().size()];
+        final CharSequence[] options = new CharSequence[formElementPickerMulti.getOptions().size()];
+        final boolean[] optionsSelected = new boolean[formElementPickerMulti.getOptions().size()];
         final List<Integer> mSelectedItems = new ArrayList<>();
 
-        for (int i = 0; i < mFormElementPickerMulti.getOptions().size(); i++) {
-            options[i] = mFormElementPickerMulti.getOptions().get(i);
+        for (int i = 0; i < formElementPickerMulti.getOptions().size(); i++) {
+            options[i] = formElementPickerMulti.getOptions().get(i);
             optionsSelected[i] = false;
-            if (mFormElementPickerMulti.getOptionsSelected().contains(options[i].toString())) {
+            if (formElementPickerMulti.getOptionsSelected().contains(options[i].toString())) {
                 optionsSelected[i] = true;
                 mSelectedItems.add(i);
             }
@@ -60,7 +60,7 @@ public class FormElementPickerMultiViewHolder extends BaseViewHolder {
 
         // prepare the dialog
         final AlertDialog dialog = new AlertDialog.Builder(context)
-                .setTitle(mFormElementPickerMulti.getPickerTitle())
+                .setTitle(formElementPickerMulti.getPickerTitle())
                 .setMultiChoiceItems(options, optionsSelected,
                         new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
@@ -75,7 +75,7 @@ public class FormElementPickerMultiViewHolder extends BaseViewHolder {
                             }
                         })
                 // Set the action buttons
-                .setPositiveButton(mFormElementPickerMulti.getPositiveText(), new DialogInterface.OnClickListener() {
+                .setPositiveButton(formElementPickerMulti.getPositiveText(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         StringBuilder s = new StringBuilder();
@@ -86,21 +86,21 @@ public class FormElementPickerMultiViewHolder extends BaseViewHolder {
                                 s.append(", ");
                             }
                         }
-                        mEditTextValue.setText(s.toString());
-                        mReloadListener.updateValue(position, s.toString());
+                        editText.setText(s.toString());
+                        reloadListener.updateValue(position, s.toString());
                     }
                 })
-                .setNegativeButton(mFormElementPickerMulti.getNegativeText(), null)
+                .setNegativeButton(formElementPickerMulti.getNegativeText(), null)
                 .create();
 
-        mEditTextValue.setOnClickListener(new View.OnClickListener() {
+        editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();
             }
         });
 
-        mTextViewTitle.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();
