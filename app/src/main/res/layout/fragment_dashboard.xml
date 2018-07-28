@@ -42,6 +42,7 @@
         tools:text="21 Jun - 28 Jun" />
 
     <android.support.v7.widget.LinearLayoutCompat
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="72dp"

@@ -12,14 +12,14 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:layout_marginBottom="55dp" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="68dp"
         android:layout_gravity="bottom"
+        android:layout_height="64dp"
         android:background="@drawable/bar_shadow" />
 
     <android.support.design.widget.BottomNavigationView

@@ -22,9 +22,9 @@
         android:paddingTop="4dp" />
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
         android:background="@drawable/bar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
         android:rotation="180" />
 
     <android.support.design.widget.CoordinatorLayout
@@ -33,10 +33,10 @@
         android:layout_gravity="end">
 
         <View
+            android:layout_height="76dp"
             android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:layout_gravity="end"
             android:background="@drawable/bar_shadow"
+            android:layout_gravity="end"
             android:rotation="180" />
 
         <TextView
@@ -85,9 +85,9 @@
     </android.support.design.widget.TabLayout>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="64dp"
         android:layout_gravity="bottom"
+        android:layout_width="match_parent"
         android:background="@drawable/bar_shadow" />
 
     <android.support.design.card.MaterialCardView

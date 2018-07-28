@@ -7,8 +7,8 @@ android {
         applicationId "io.github.sher1234.service"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 21
-        versionName "0.2.1-rc"
+        versionCode 23
+        versionName "0.2.3-release"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

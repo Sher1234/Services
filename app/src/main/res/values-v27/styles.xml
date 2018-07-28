@@ -3,6 +3,7 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimaryDark">@color/gWhite</item>
+        <item name="android:navigationBarColor">@color/gWhite</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -11,6 +12,7 @@
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/gWhite</item>
+        <item name="android:navigationBarColor">@color/gWhite</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -18,6 +20,7 @@
     </style>
 
     <style name="AppTheme.NoActionBar.View" parent="AppTheme.NoActionBar">
+        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 

@@ -10,11 +10,10 @@
         android:layout_width="match_parent"
         android:background="#f6f6f6" />
 
-    <ImageView
-        android:layout_width="match_parent"
+    <android.support.v7.widget.AppCompatImageView
         android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:alpha="0.05"
-        android:contentDescription="@string/app_name"
         android:padding="60dp"
         android:src="@raw/logo" />
 
@@ -28,9 +27,9 @@
         tools:listitem="@layout/form_element" />
 
     <View
-        android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_gravity="bottom"
+        android:layout_width="match_parent"
         android:background="@drawable/bar_shadow" />
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -67,8 +66,8 @@
     </android.support.v7.widget.LinearLayoutCompat>
 
     <View
+        android:layout_height="48dp"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
         android:background="@drawable/bar_shadow"
         android:rotation="180" />
 

@@ -21,7 +21,7 @@
     </ScrollView>
 
     <View
-        android:layout_height="68dp"
+        android:layout_height="64dp"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:background="@drawable/bar_shadow" />

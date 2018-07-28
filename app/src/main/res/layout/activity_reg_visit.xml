@@ -12,16 +12,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="46dp"
         android:layout_marginTop="39dp"
         android:background="@drawable/bar_shadow"
         android:rotation="180" />
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.05"
-        android:contentDescription="@string/app_name"
         android:padding="50dp"
         android:src="@raw/logo" />
 
@@ -92,7 +91,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="@drawable/bar_shadow"
         android:rotation="180" />
 

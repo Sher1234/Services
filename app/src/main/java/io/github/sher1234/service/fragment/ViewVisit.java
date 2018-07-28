@@ -132,7 +132,7 @@ public class ViewVisit extends Fragment implements View.OnClickListener {
                 double lat = Double.parseDouble(s[0]);
                 double lon = Double.parseDouble(s[1]);
                 String q = "geo:" + lat + "," + lon + "?q=" + Uri.encode(lat + "," + lon +
-                        "(Service Call)") + "&z=16";
+                        "(Max Services)") + "&z=16";
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(q)));
                 } catch (ActivityNotFoundException e) {
