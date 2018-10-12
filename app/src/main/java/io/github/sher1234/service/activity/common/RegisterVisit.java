@@ -173,7 +173,7 @@ public class RegisterVisit extends AppCompatActivity implements OnFormElementVal
                 .setHint("Enter Observation").setRequired(true).setTag(486906);
         if (visit != null)
             element1.setValue(visit.getObservation());
-        element2 = FormElementTextSingleLine.createInstance().setTitle("Action Taken*")
+        element2 = FormElementTextMultiLine.createInstance().setTitle("Action Taken*")
                 .setHint("Enter Action Taken").setRequired(true).setTag(486907);
         formItems.add(element0);
         formItems.add(element1);

@@ -60,7 +60,7 @@ public class Employees extends AppCompatActivity
         findViewById(R.id.floatingActionButton).setVisibility(View.GONE);
         bottomAppBar.setOnMenuItemClickListener(this);
         bottomAppBar.replaceMenu(R.menu.calls);
-        bottomAppBar.setFabAttached(false);
+        // bottomAppBar.setFabAttached(false);
 
         filterEmployees = FilterEmployees.newInstance();
         mProgressView = findViewById(R.id.progressView);

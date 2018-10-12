@@ -131,7 +131,7 @@ public class EndVisit extends AppCompatActivity
         element0 = FormHeader.createInstance("Visit Details");
         element1 = FormElementTextMultiLine.createInstance().setTitle("Observation*")
                 .setHint("Enter Observation").setRequired(true).setTag(486906);
-        element2 = FormElementTextSingleLine.createInstance().setTitle("Action Taken*")
+        element2 = FormElementTextMultiLine.createInstance().setTitle("Action Taken*")
                 .setHint("Enter Action Taken").setRequired(true).setTag(486907);
         formItems.add(element0);
         formItems.add(element1);

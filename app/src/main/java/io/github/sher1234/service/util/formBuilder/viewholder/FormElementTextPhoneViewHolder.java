@@ -22,9 +22,10 @@ public class FormElementTextPhoneViewHolder extends BaseViewHolder {
         textListener = listener;
         textView = v.findViewById(R.id.textView);
         editText = v.findViewById(R.id.editText);
-        editText.addTextChangedListener(textListener);
-        editText.setInputType(InputType.TYPE_CLASS_PHONE | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         editText.setRawInputType(InputType.TYPE_CLASS_PHONE | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        editText.setInputType(InputType.TYPE_CLASS_PHONE | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        editText.addTextChangedListener(textListener);
+        editText.setMaxLines(1);
     }
 
     @Override

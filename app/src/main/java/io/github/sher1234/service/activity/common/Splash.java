@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialogFragment;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,7 @@ public class Splash extends AppCompatActivity
 
     private LoginTask task;
     private View mButtonView;
+    private Snackbar snackbar;
     private View mProgressView;
 
     @Override
@@ -163,6 +165,8 @@ public class Splash extends AppCompatActivity
     }
 
     private void onCheckUser() {
+        if (snackbar != null)
+            snackbar.dismiss();
         User user = AppController.getUserFromPrefs();
         if (user.EmployeeID != null && user.Password != null) {
             if (task != null)
@@ -241,12 +245,20 @@ public class Splash extends AppCompatActivity
                 Toast.makeText(Splash.this, user_r.Message, Toast.LENGTH_SHORT).show();
                 if (user_r.Code == 1)
                     onLogin(user_r.User);
-            } else if (i == 306)
-                Toast.makeText(Splash.this, "Content parse error...", Toast.LENGTH_SHORT).show();
-            else if (i == 307)
-                Toast.makeText(Splash.this, "Network failure, try again...", Toast.LENGTH_SHORT).show();
-            else if (i == 308)
-                Toast.makeText(Splash.this, "Request cancelled...", Toast.LENGTH_SHORT).show();
+            } else {
+                if (i == 306)
+                    snackbar = Snackbar.make(mProgressView, "Content parse error...", Snackbar.LENGTH_INDEFINITE);
+                else if (i == 307)
+                    snackbar = Snackbar.make(mProgressView, "Network failure...", Snackbar.LENGTH_INDEFINITE);
+                else if (i == 308)
+                    snackbar = Snackbar.make(mProgressView, "Request cancelled...", Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onCheckUser();
+                    }
+                }).show();
+            }
         }
 
         private void onLogin(User user) {

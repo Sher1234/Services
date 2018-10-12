@@ -75,9 +75,7 @@
             app:contentInsetEnd="24dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:contentInsetStart="24dp"
-            app:fabAlignmentMode="end"
-            app:fabAttached="true" />
+            app:contentInsetStart="24dp" />
 
     </android.support.design.widget.CoordinatorLayout>
 

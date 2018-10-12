@@ -23,7 +23,7 @@ public class FormElementTextMultiLineViewHolder extends BaseViewHolder {
         editText = v.findViewById(R.id.editText);
         mFormCustomEditTextListener = listener;
         editText.addTextChangedListener(mFormCustomEditTextListener);
-        editText.setMaxLines(4);
+        editText.setMaxLines(8);
         editText.setSingleLine(false);
         editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
     }

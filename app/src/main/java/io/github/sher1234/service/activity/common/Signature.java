@@ -81,8 +81,7 @@ public class Signature extends AppCompatActivity implements View.OnClickListener
         Bitmap bitmap = Bitmap.createBitmap(frameLayout.getDrawingCache());
         frameLayout.setDrawingCacheEnabled(false);
         try {
-            File file = File.createTempFile("Sign-" + string, ".jpg",
-                    getCacheDir());
+            File file = File.createTempFile("Sign-" + string, ".jpg", getCacheDir());
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
             fileOutputStream.flush();

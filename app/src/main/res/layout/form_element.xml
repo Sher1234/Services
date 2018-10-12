@@ -40,7 +40,6 @@
             android:background="@android:color/transparent"
             android:gravity="end|center"
             android:imeOptions="actionNext"
-            android:maxLines="1"
             android:paddingStart="12dp"
             android:paddingTop="15dp"
             android:paddingEnd="12sp"

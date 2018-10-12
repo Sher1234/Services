@@ -170,7 +170,7 @@ public class EditVisit extends AppCompatActivity implements OnFormElementValueCh
         element0 = FormHeader.createInstance("Visit Details");
         element1 = FormElementTextMultiLine.createInstance().setTitle("Observation*")
                 .setHint("Enter Observation").setRequired(true).setTag(486908);
-        element2 = FormElementTextSingleLine.createInstance().setTitle("Action Taken*")
+        element2 = FormElementTextMultiLine.createInstance().setTitle("Action Taken*")
                 .setHint("Enter Action Taken").setRequired(true).setTag(486909);
         formItems.add(element0);
         formItems.add(element1);
