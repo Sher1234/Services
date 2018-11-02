@@ -4,12 +4,13 @@ import java.io.Serializable;
 
 public class Employee implements Serializable {
 
-    public int TotalP;
-    public int TotalR;
-    public int TotalV;
+    public int Calls;
+    public int Visits;
+    public int Pending;
     public String Name;
     public String Email;
     public String Phone;
+    public String UserID;
     public String EmployeeID;
 
     public Employee() {

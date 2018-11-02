@@ -1,36 +1,33 @@
 <resources>
     <string name="app_name">Max Services</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="email">Email*</string>
+    <string name="email">Email</string>
     <string name="password">Password*</string>
-    <string name="reset_password">Reset Password</string>
     <string name="loading">Loading…</string>
 
-    <string name="new_password">New Password*</string>
+    <string name="new_password">New Password</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
-    <string name="employee_id">Employee ID*</string>
-    <string name="update_account">Update account</string>
+    <string name="employee_id">Employee ID</string>
     <string name="dashboard">Dashboard</string>
     <string name="registrations">Registrations</string>
     <string name="refresh">Refresh</string>
     <string name="sign_out">Sign Out</string>
-    <string name="account_settings">Account Settings</string>
+    <string name="account_settings">My Account</string>
     <string name="all_calls">All Calls</string>
     <string name="visits">Visits</string>
     <string name="register_call">Register Call</string>
     <string name="filters">Filters</string>
-    <string name="change_password">Change password</string>
-    <string name="old_password">Current Password*</string>
+    <string name="change_password">Change Password</string>
     <string name="cancel">Cancel</string>
     <string name="filter">Filter</string>
     <string name="reset">Reset</string>
     <string name="register_visit">Register Visit</string>
-    <string name="select_person">Select employee</string>
+    <string name="select_person">*Select an employee</string>
     <string name="registration">Registration</string>
-    <string name="no_visits">No visits available</string>
-    <string name="no_calls">No calls available</string>
+    <string name="no_visits">No visits available.</string>
+    <string name="no_calls">No calls available.</string>
     <string name="add_visit">Add Visit</string>
     <string name="visit_incomplete">Visit is not yet completed, complete this visit to continue further.</string>
     <string name="complete_visit">Complete Visit</string>
@@ -38,41 +35,80 @@
     <string name="monthly">Monthly</string>
     <string name="daily">Daily</string>
     <string name="employees">Employees</string>
-    <string name="welcome_text">Welcome to Max Group\'s, \nService Call Panel</string>
+    <string name="welcome_text"><![CDATA[Welcome to Max Group (P)Ltd.\nServices Panel]]></string>
     <string name="acc_disabled">Account is currently inactive. Contact system administrator to activate account or try again after some time.</string>
-    <string name="user_privileges">User Privileges</string>
+    <string name="admin_dismiss">Dismiss account as administrator.</string>
+    <string name="admin_add">Add account as administrator.</string>
+    <string name="disable_acc">Disable Account</string>
+    <string name="acc_disable">Disable account from accessing the application.</string>
+    <string name="dismiss_admin">Dismiss Admin</string>
+    <string name="add_admin">Add Admin</string>
+    <string name="offline_access">Cannot process your request due to some server issue.\nPlease try again later.</string>
+    <string name="user_privileges">Privileges</string>
     <string name="designed_for_max"><![CDATA[Designed for Max Group (P) Ltd.]]></string>
     <string name="email_or_id">Email/Employee ID*</string>
-    <string name="account_details">Account details</string>
     <string name="pending_calls">Pending Calls</string>
-    <string name="view_more">View All</string>
-    <string name="no_pending_calls">No pending calls…\n\nTap View All to view all service calls.</string>
+    <string name="delete_acc">Delete Account</string>
+    <string name="acc_delete">Delete account from the application database.</string>
+    <string name="no_pending_calls">No pending calls available.</string>
     <string name="search">Search</string>
-    <string name="from_date">From Date</string>
-    <string name="to_date">To Date</string>
-    <string name="status">Status</string>
-    <string name="warranty">Warranty</string>
-    <string name="nature_of_site">Nature of Site</string>
-    <string name="sort_by">Sort by</string>
-    <string name="service_calls">Service Calls</string>
-    <string name="contact_details">Contact details</string>
-    <string name="work_detail">Work detail</string>
-    <string name="join_date">Join date</string>
     <string name="visit">Visit</string>
     <string name="edit_call">Edit Call</string>
     <string name="edit_visit">Edit Visit</string>
     <string name="delete">Delete</string>
     <string name="delete_call">Delete Call</string>
     <string name="delete_visit">Delete Visit</string>
-    <string name="allot_call">Allot call</string>
-    <string name="add_signature">Add signature</string>
+    <string name="allot_call">Allot Call</string>
+    <string name="add_signature">Add Signature</string>
     <string name="no_signature">No signature added, add signature to complete visit.</string>
-    <string name="sign_next">Customer signature will be added after saving full visit report.</string>
     <string name="delete_call_text">The given service call will be deleted along with all the visit details related to this call. This action can\'t be undone, tap delete to continue else, cancel.</string>
     <string name="delete_visit_text">The given service visit will be deleted. This action can\'t be undone, tap delete to continue else, cancel.</string>
     <string name="start_visit">Start Visit</string>
     <string name="end_visit">End Visit</string>
     <string name="view_pdf">View in PDF</string>
     <string name="save">Save Changes</string>
-    <string name="signature">Signature</string>
+    <string name="overall_summary">Overall summary</string>
+    <string name="home">Home</string>
+    <string name="records">Records</string>
+    <string name="my_profile">My Profile</string>
+    <string name="monthly_emp">Monthly Employees Record</string>
+    <string name="download">Download</string>
+    <string name="select_month">Select Month</string>
+    <string name="select_year">Select Year</string>
+    <string name="not_admin">Not an Admin</string>
+    <string name="registered">Registered</string>
+    <string name="unregistered">Unregistered</string>
+    <string name="admin">Administrator</string>
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password_text">Change your account password</string>
+    <string name="sign_out_text">Sign out from the application</string>
+    <string name="current_password">Current Password</string>
+    <string name="retype_new_password">Retype New Password</string>
+    <string name="overview">Overview</string>
+    <string name="calls">Calls</string>
+    <string name="recent_login">Recent Login</string>
+    <string name="quick_access">Quick Access</string>
+    <string name="call_details">Call Details</string>
+    <string name="visit_details">Visit Details</string>
+    <string name="completed">Completed</string>
+    <string name="pending">Pending</string>
+    <string name="sign_visit">Sign Visit</string>
+    <string name="enable_acc">Enable Account</string>
+    <string name="acc_enable">Enable account for accessing the application.</string>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 </resources>

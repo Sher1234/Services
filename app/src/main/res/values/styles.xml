@@ -1,38 +1,74 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-        <item name="colorPrimaryDark">@color/gWhite</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/gBlue</item>
+        <item name="android:statusBarColor">@color/textLight</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorAccent">@color/blue</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimaryDark">@color/gWhite</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/gBlue</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar.View" parent="AppTheme.NoActionBar" />
-
-    <style name="AppTheme.BottomBar.Dark" parent="AppTheme.BottomBar">
-        <item name="android:textColorSecondary">@color/gWhite</item>
-    </style>
-
-    <style name="AppTheme.BottomBar" parent="ThemeOverlay.MaterialComponents.Light">
-        <item name="android:textColorSecondary">@color/gBlue</item>
+        <item name="android:statusBarColor">@color/textLight</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorAccent">@color/blue</item>
     </style>
 
     <style name="AppTheme.Dialog" parent="Theme.MaterialComponents.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="colorAccent">@color/gBlue</item>
+        <item name="colorAccent">@color/blue</item>
     </style>
 
     <style name="AppTheme.Progress" parent="Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="colorAccent">@color/gBlue</item>
+        <item name="colorAccent">@color/blue</item>
     </style>
 
-    <style name="AppTheme.Progress.Green" parent="AppTheme.Progress">
-        <item name="colorAccent">@color/gGreen</item>
+    <style name="AppTheme.Red" parent="AppTheme">
+        <item name="colorAccent">@color/red</item>
+    </style>
+
+    <style name="AppTheme.White" parent="AppTheme">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:tint">@color/blue</item>
+    </style>
+
+    <style name="AppTheme.Green" parent="AppTheme">
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="AppTheme.Black" parent="AppTheme">
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+    <style name="AppTheme.Blue" parent="AppTheme">
+        <item name="colorAccent">@color/blue</item>
+    </style>
+
+    <style name="TextAppearance.Navigation.Text" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">14.5sp</item>
+    </style>
+
+    <style name="TextAppearance.TabLayout.Text" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">sans-serif-smallcaps</item>
+        <item name="android:textSize">16.5sp</item>
+    </style>
+
+    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/textLight</item>
+        <item name="fontFamily">sans-serif-smallcaps</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.RatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/rating_bar</item>
+        <item name="android:progressDrawable">@drawable/rating_bar</item>
+        <item name="android:isIndicator">false</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:maxHeight">24dp</item>
+        <item name="android:thumb">@null</item>
     </style>
 
 </resources>

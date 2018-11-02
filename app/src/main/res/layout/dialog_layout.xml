@@ -1,97 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="40dp"
+    android:layout_marginEnd="40dp"
+    app:cardBackgroundColor="@color/white"
     android:layout_gravity="center"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp"
-    app:cardBackgroundColor="#ffffff"
     android:layout_weight="1"
-    android:minWidth="300dp"
     app:cardCornerRadius="6dp">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:minWidth="300dp"
         android:orientation="vertical">
 
-        <android.support.design.widget.CoordinatorLayout
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:lines="1"
+            android:padding="13dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="17.5sp" />
 
-            <ImageView
-                android:id="@+id/imageViewBanner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#fafafa"
-                android:lines="1"
-                android:maxLines="4"
-                android:paddingStart="14dp"
-                android:paddingTop="16dp"
-                android:paddingEnd="14dp"
-                android:paddingBottom="16dp"
-                android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                android:textColor="#383838"
-                android:textSize="20sp" />
-
-        </android.support.design.widget.CoordinatorLayout>
-
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="6dp"
             android:id="@+id/textViewDescription"
             android:layout_marginEnd="20dp"
             android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
+            android:alpha="0.95"
             android:gravity="start|center_vertical"
-            android:maxLines="16"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="@color/gTextDark"
-            android:textSize="14sp"
-            android:minLines="1"
+            android:fontFamily="sans-serif"
+            android:maxLines="24"
+            android:textColor="@color/textLight"
+            android:textSize="14.5sp"
             tools:text="@string/account_settings" />
 
-        <View
-            android:layout_height="0.5dp"
-            android:id="@+id/viewDivider"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="5dp"
-            android:alpha="0.40"
-            android:layout_width="match_parent"
-            android:background="@android:color/darker_gray" />
-
-        <android.support.v7.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:gravity="end"
             android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:gravity="end"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp">
 
-            <android.support.design.button.MaterialButton
+            <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonNeutral"
                 android:layout_width="wrap_content"
-                android:textSize="13sp"
+                android:textAllCaps="false"
                 android:visibility="gone"
-                app:textAllCaps="false"
+                android:textSize="12.5sp"
+                tools:text="Cancel"
                 tools:visibility="visible" />
 
             <View
@@ -100,30 +73,32 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <android.support.design.button.MaterialButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonNegative"
                 style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:textSize="13sp"
+                android:layout_marginEnd="2dp"
+                android:textAllCaps="false"
+                android:textSize="12.5sp"
                 android:visibility="gone"
-                app:textAllCaps="false"
+                tools:text="No"
                 tools:visibility="visible" />
 
-            <android.support.design.button.MaterialButton
+            <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
                 android:layout_height="wrap_content"
-                android:id="@+id/buttonPositive"
                 android:layout_width="wrap_content"
-                android:layout_marginStart="1dp"
+                android:id="@+id/buttonPositive"
+                android:layout_marginStart="2dp"
                 android:visibility="gone"
-                android:textSize="13sp"
-                app:textAllCaps="false"
+                android:textAllCaps="false"
+                android:textSize="12.5sp"
+                tools:text="Yes"
                 tools:visibility="visible" />
 
-        </android.support.v7.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </android.support.v7.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-</android.support.design.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>

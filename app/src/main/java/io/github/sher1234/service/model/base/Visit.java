@@ -1,85 +1,93 @@
 package io.github.sher1234.service.model.base;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-@SuppressWarnings("All")
-public class Visit extends Base implements Serializable {
+import androidx.annotation.NonNull;
+import io.github.sher1234.service.util.Strings;
 
-    private int Visit;
-    private String Image;
-    private String EndTime;
+public class Visit implements Serializable {
+
+    public String Name;
+    public String Email;
+    public String Phone;
+    public String CallID;
+    public String Action;
+    public String VisitID;
+    public String Location;
+    public int Satisfaction;
+    public String Signature;
     public String Feedback;
-    private String Location;
-    private String Signature;
-    private String StartTime;
-    public String VisitNumber;
-    public String ActionTaken;
+    private String ID;
+    private String End;
+    private String Start;
+    private int IsCompleted;
     public String Observation;
-    public String ConcernEmail;
-    public String CustomerSatisfaction;
 
     public Visit() {
 
     }
 
-    public Visit(Date startTime, Date endTime, String email, String callNumber, String concernName,
-                 String concernPhone, boolean isCompleted, int visit, String image, String feedback,
-                 String location, String signature, String visitNumber, String actionTaken,
-                 String observation, String concernEmail, String customerSatisfaction) {
-        super(email, callNumber, concernName, concernPhone, isCompleted);
-        Visit = visit;
-        Image = image;
-        Feedback = feedback;
+    public Visit(String id, String name, Date end, String email, String phone, String callID,
+                 Date start, String action, String visitID, String feedback, String location,
+                 String observation, int satisfaction, int isCompleted) {
+        Satisfaction = satisfaction;
+        Start = setDateTime(start);
+        Observation = observation;
+        IsCompleted = isCompleted;
+        End = setDateTime(end);
         Location = location;
-        Signature = signature;
-        VisitNumber = visitNumber;
-        ActionTaken = actionTaken;
-        Observation = observation;
-        ConcernEmail = concernEmail;
-        EndTime = setDateTime(endTime);
-        StartTime = setDateTime(startTime);
-        CustomerSatisfaction = customerSatisfaction;
+        Feedback = feedback;
+        VisitID = visitID;
+        Action = action;
+        CallID = callID;
+        Email = email;
+        Phone = phone;
+        Name = name;
+        ID = id;
     }
 
-    public Visit(String visitNumber, String callNumber, int visit, Date startTime,
-                 String email, String location) {
-        super(email, callNumber, null, null, false);
-        Visit = visit;
+    public Visit(String visitID, String callID, Date start, String id, String location) {
+        Start = setDateTime(start);
         Location = location;
-        VisitNumber = visitNumber;
-        StartTime = setDateTime(startTime);
+        VisitID = visitID;
+        CallID = callID;
+        ID = id;
     }
 
-    public Visit(String visitNumber, String callNumber, boolean isCompleted, String actionTaken,
-                 String observation, String concernName, String concernPhone, String concernEmail,
-                 String customerSatisfaction, Date endTime, String feedback, String image,
-                 String signature) {
-        super(null, callNumber, concernName, concernPhone, isCompleted);
-        Image = image;
-        Feedback = feedback;
-        Signature = signature;
-        VisitNumber = visitNumber;
-        ActionTaken = actionTaken;
+    public Visit(String visitID, String callID, String action, String observation,
+                 String name, String phone, String email, int satisfaction,
+                 Date end, String feedback, int isCompleted) {
+        Satisfaction = satisfaction;
         Observation = observation;
-        ConcernEmail = concernEmail;
-        EndTime = setDateTime(endTime);
-        CustomerSatisfaction = customerSatisfaction;
+        IsCompleted = isCompleted;
+        End = setDateTime(end);
+        Feedback = feedback;
+        VisitID = visitID;
+        Action = action;
+        CallID = callID;
+        Email = email;
+        Phone = phone;
+        Name = name;
     }
 
-    public Visit(String visitNumber, String concernName, String concernPhone, String concernEmail,
-                 String observation, String actionTaken, String customerSatisfaction,
-                 String feedback) {
-        super(null, null, concernName, concernPhone, false);
-        Feedback = feedback;
-        VisitNumber = visitNumber;
-        ActionTaken = actionTaken;
+    public Visit(String visitID, String name, String phone, String email, String observation,
+                 String action, int satisfaction, String feedback) {
+        Satisfaction = satisfaction;
         Observation = observation;
-        ConcernEmail = concernEmail;
-        CustomerSatisfaction = customerSatisfaction;
+        Feedback = feedback;
+        VisitID = visitID;
+        Action = action;
+        Email = email;
+        Phone = phone;
+        Name = name;
     }
 
     private String setDateTime(Date date) {
@@ -87,197 +95,156 @@ public class Visit extends Base implements Serializable {
     }
 
     public String getStartTimeView() {
-        return getDateFormatView().format(getStartTime());
+        return getTimeFormatView().format(getStart());
+    }
+
+    public String getStartDateView() {
+        return getDateFormatView().format(getStart());
     }
 
     public String getEndTimeView() {
-        return getDateFormatView().format(getEndTime());
+        return getTimeFormatView().format(getEnd());
     }
 
-    public Date getStartTime() {
+    public String getSatisfaction() {
+        return Satisfaction > 3 ? "Good" : Satisfaction > 2 ? "Average" : "Poor";
+    }
+
+    public Date getStart() {
         try {
-            return getDateFormat().parse(StartTime);
+            return getDateFormat().parse(Start);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void setStart(Date date) {
+        Start = setDateTime(date);
     }
 
     public void setStartTime(Date startTime) {
-        StartTime = setDateTime(startTime);
+        Start = setDateTime(startTime);
     }
 
-    public String getStartTimeString() {
-        return StartTime;
+    public String getStartServer() {
+        return Start;
     }
 
-    public Date getEndTime() {
+    public Date getEnd() {
         try {
-            return getDateFormat().parse(EndTime);
+            return getDateFormat().parse(End);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
         }
     }
 
+    public void setEnd(Date date) {
+        End = setDateTime(date);
+    }
+
     public void setEndTime(Date endTime) {
-        EndTime = setDateTime(endTime);
+        End = setDateTime(endTime);
     }
 
-    public String getEndTimeString() {
-        return EndTime;
+    public String getEndServer() {
+        return End;
     }
 
-    public String getCustomerSatisfaction() {
-        return CustomerSatisfaction;
-    }
-
-    public void setCustomerSatisfaction(String customerSatisfaction) {
-        CustomerSatisfaction = customerSatisfaction;
-    }
-
-    public String getConcernEmail() {
-        return ConcernEmail;
-    }
-
-    public void setConcernEmail(String concernEmail) {
-        ConcernEmail = concernEmail;
-    }
-
-    public String getObservation() {
-        return Observation;
-    }
-
-    public void setObservation(String observation) {
-        Observation = observation;
-    }
-
-    public String getActionTaken() {
-        return ActionTaken;
-    }
-
-    public void setActionTaken(String actionTaken) {
-        ActionTaken = actionTaken;
-    }
-
-    public String getVisitNumber() {
-        return VisitNumber;
-    }
-
-    public void setVisitNumber(String visitNumber) {
-        VisitNumber = visitNumber;
-    }
-
-    public String getSignature() {
-        return Signature;
-    }
-
-    public void setSignature(String signature) {
-        Signature = signature;
-    }
-
-    public String getLocation() {
-        return Location;
-    }
-
-    public void setLocation(String location) {
-        Location = location;
-    }
-
-    public String getFeedback() {
-        return Feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        Feedback = feedback;
-    }
-
-    public String getImage() {
-        return Image;
-    }
-
-    public void setImage(String image) {
-        Image = image;
-    }
-
-    public int getVisit() {
-        return Visit;
-    }
-
-    public String getVisitString() {
-        return getVisit() + "";
-    }
-
-    public void setVisit(int visit) {
-        Visit = visit;
-    }
-
-    public boolean isVisitStarted() {
-        return StartTime != null && (EndTime == null || EndTime.length() < 2);
+    public boolean isIncomplete() {
+        return Start != null && (End == null || End.length() < 2);
     }
 
     public Map<String, String> getMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("Email", getEmail());
-        map.put("CallNumber", getCallNumber());
-        map.put("EndTime", getEndTimeString());
-        map.put("StartTime", getStartTimeString());
-        map.put("ConcernName", getConcernName());
-        map.put("IsCompleted", getIsCompleted());
-        map.put("Visit", getVisitString());
-        map.put("Image", getImage());
-        map.put("Feedback", getFeedback());
-        map.put("ConcernPhone", getConcernPhone());
-        map.put("Location", getLocation());
-        map.put("Signature", getSignature());
-        map.put("VisitNumber", getVisitNumber());
-        map.put("ActionTaken", getActionTaken());
-        map.put("Observation", getObservation());
-        map.put("ConcernEmail", getConcernEmail());
-        map.put("CustomerSatisfaction", getCustomerSatisfaction());
+        map.put("Satisfaction", Satisfaction + "");
+        map.put("IsCompleted", IsCompleted + "");
+        map.put("Observation", Observation);
+        map.put("Start", getStartServer());
+        map.put("End", getEndServer());
+        map.put("Location", Location);
+        map.put("Feedback", Feedback);
+        map.put("VisitID", VisitID);
+        map.put("CallID", CallID);
+        map.put("Action", Action);
+        map.put("Email", Email);
+        map.put("Phone", Phone);
+        map.put("Name", Name);
+        map.put("ID", ID);
         return map;
     }
 
     public Map<String, String> getEditMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("ConcernName", getConcernName());
-        map.put("Feedback", getFeedback());
-        map.put("ConcernPhone", getConcernPhone());
-        map.put("VisitNumber", getVisitNumber());
-        map.put("ActionTaken", getActionTaken());
-        map.put("Observation", getObservation());
-        map.put("ConcernEmail", getConcernEmail());
-        map.put("CustomerSatisfaction", getCustomerSatisfaction());
+        map.put("Satisfaction", Satisfaction + "");
+        map.put("Observation", Observation);
+        map.put("Feedback", Feedback);
+        map.put("VisitID", VisitID);
+        map.put("Action", Action);
+        map.put("Email", Email);
+        map.put("Phone", Phone);
+        map.put("Name", Name);
         return map;
     }
 
     public Map<String, String> getStartMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("Email", getEmail());
-        map.put("CallNumber", getCallNumber());
-        map.put("StartTime", getStartTimeString());
-        map.put("Visit", getVisitString());
-        map.put("Location", getLocation());
-        map.put("VisitNumber", getVisitNumber());
+        map.put("Start", getStartServer());
+        map.put("Location", Location);
+        map.put("VisitID", VisitID);
+        map.put("CallID", CallID);
+        map.put("ID", ID);
         return map;
     }
 
     public Map<String, String> getEndMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("CallNumber", getCallNumber());
-        map.put("EndTime", getEndTimeString());
-        map.put("ConcernName", getConcernName());
-        map.put("IsCompleted", getIsCompleted());
-        map.put("Image", getImage());
-        map.put("Feedback", getFeedback());
-        map.put("ConcernPhone", getConcernPhone());
-        map.put("Signature", getSignature());
-        map.put("VisitNumber", getVisitNumber());
-        map.put("ActionTaken", getActionTaken());
-        map.put("Observation", getObservation());
-        map.put("ConcernEmail", getConcernEmail());
-        map.put("CustomerSatisfaction", getCustomerSatisfaction());
+        map.put("Satisfaction", Satisfaction + "");
+        map.put("IsCompleted", IsCompleted + "");
+        map.put("Observation", Observation);
+        map.put("End", getEndServer());
+        map.put("Feedback", Feedback);
+        map.put("VisitID", VisitID);
+        map.put("CallID", CallID);
+        map.put("Action", Action);
+        map.put("Email", Email);
+        map.put("Phone", Phone);
+        map.put("Name", Name);
         return map;
     }
 
+    @NotNull
+    private SimpleDateFormat getDateFormat() {
+        return new SimpleDateFormat(Strings.DateTimeServer, Locale.US);
+    }
+
+    @NotNull
+    private SimpleDateFormat getTimeFormatView() {
+        return new SimpleDateFormat(Strings.DateTimeView, Locale.US);
+    }
+
+    @NotNull
+    private SimpleDateFormat getDateFormatView() {
+        return new SimpleDateFormat(Strings.DateView, Locale.US);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Satisfaction: " + Satisfaction + "\n" +
+                "IsCompleted: " + IsCompleted + "\n" +
+                "Observation: " + Observation + "\n" +
+                "Start: " + getStartServer() + "\n" +
+                "End: " + getEndServer() + "\n" +
+                "Location: " + Location + "\n" +
+                "Feedback: " + Feedback + "\n" +
+                "VisitID: " + VisitID + "\n" +
+                "CallID: " + CallID + "\n" +
+                "Action: " + Action + "\n" +
+                "Email: " + Email + "\n" +
+                "Phone: " + Phone + "\n" +
+                "Name: " + Name + "\n" +
+                "ID: " + ID;
+    }
 }

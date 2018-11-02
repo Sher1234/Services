@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/c_content" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        android:focusable="true"
+        android:scrollbars="none"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        app:headerLayout="@layout/nav_header"
+        app:itemBackground="@drawable/navigation_item"
+        app:itemIconTint="@color/navigation_item"
+        app:itemTextAppearance="@style/TextAppearance.Navigation.Text"
+        app:itemTextColor="@color/navigation_item"
+        tools:menu="@menu/a_board" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/filterView"
+        android:layout_width="wrap_content"
+        android:layout_gravity="end"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:focusable="true"
+        app:headerLayout="@layout/nav_filter"
+        app:itemHorizontalPadding="18dp"
+        app:itemIconTint="@color/navigation_item"
+        app:itemTextAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:itemTextColor="@color/navigation_item" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

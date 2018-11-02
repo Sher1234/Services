@@ -9,15 +9,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import io.github.sher1234.service.util.MaterialDialog;
 
 @SuppressWarnings("all")
@@ -28,9 +26,9 @@ public class LocationTrack extends Service implements LocationListener {
     private final Context mContext;
     public LocationManager locationManager;
     private boolean gpsAvailable = false;
+    private Location networkLocation;
     private boolean networkAvailable = false;
     private Location gpsLocation;
-    private Location networkLocation;
 
     public LocationTrack() {
         mContext = this;
@@ -82,28 +80,26 @@ public class LocationTrack extends Service implements LocationListener {
     }
 
     public void showSettingsAlert() {
-        final MaterialDialog materialDialog = new MaterialDialog(mContext)
+        MaterialDialog dialog = MaterialDialog.Dialog(mContext)
                 .setTitle("Enable Location")
-                .setDescription("Set location mode to \"High Accuracy\" to continue using app.");
-        materialDialog.positiveButton("Yes", new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
-                materialDialog.dismiss();
-            }
-        }).negativeButton("Cancel", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(mContext, "Exiting...", Toast.LENGTH_SHORT).show();
-                new Handler().postDelayed(new Runnable() {
+                .setDescription("Set location mode to \"High Accuracy\" to continue using application.")
+                .positiveButton("Yes", new MaterialDialog.ButtonClick() {
                     @Override
-                    public void run() {
-                        ((AppCompatActivity) mContext).finish();
+                    public void onClick(MaterialDialog dialog, View v) {
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        mContext.startActivity(intent);
+                        dialog.dismiss();
                     }
-                }, 500);
-            }
-        }).setCancelable(false);
-        materialDialog.show();
+                })
+                .negativeButton("Exit", new MaterialDialog.ButtonClick() {
+                    @Override
+                    public void onClick(MaterialDialog dialog, View v) {
+                        ((AppCompatActivity) mContext).finish();
+                        dialog.dismiss();
+                    }
+                });
+        dialog.setCancelable(false);
+        dialog.show();
     }
 
     public void stopListener() {

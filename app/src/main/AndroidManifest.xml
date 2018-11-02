@@ -26,7 +26,7 @@
         <service android:name=".service.LocationTrack" />
 
         <activity
-            android:name=".activity.common.Splash"
+            android:name=".ui.a.Splash"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
@@ -38,98 +38,98 @@
         </activity>
 
         <activity
+            android:name=".ui.g.Profile"
             android:label="@string/app_name"
-            android:name=".activity.common.AccountSettings"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.b.Board"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.DashBoard"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".ui.c.CallList"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:label="@string/app_name"
+            android:name=".ui.f.Privileges"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:label="@string/app_name"
+            android:name=".ui.e.EmployeeList"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:label="@string/app_name"
+            android:name=".ui.h.EmployeeBoard"
+            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:name=".ui.i.Show"
             android:label="@string/app_name"
-            android:name=".activity.common.Calls"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.admin.UserPrivileges"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".ui.d.AddCall"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.admin.Employees"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".ui.d.AllotCall"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:label="@string/app_name"
-            android:name=".activity.admin.UserDash"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.ViewCall"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar.View" />
+            android:name=".ui.j.AddVisit"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.RegisterCall"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:name=".ui.j.StartVisit"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.RegisterVisit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:name=".ui.j.EndVisit"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.StartVisit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:name=".ui.d.EditCall"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.EndVisit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:name=".ui.j.EditVisit"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".activity.common.EditCall"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity
-            android:label="@string/app_name"
-            android:name=".activity.common.EditVisit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity
-            android:label="@string/app_name"
-            android:name=".activity.common.Signature"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".ui.j.SignVisit"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

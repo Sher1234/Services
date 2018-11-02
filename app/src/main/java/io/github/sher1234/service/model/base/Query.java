@@ -14,7 +14,7 @@ public class Query implements Serializable {
         Table = "";
     }
 
-    public Map<String, String> getQueryMap() {
+    public Map<String, String> getMap() {
         Map<String, String> map = new HashMap<>();
         map.put("Query", Query);
         map.put("Table", Table);

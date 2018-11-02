@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gRed">#ea4335</color>
-    <color name="gBlue">#4285f4</color>
-    <color name="gGreen">#34a853</color>
-    <color name="gWhite">#ffffff</color>
-    <color name="gYellow">#fbbc05</color>
-    <color name="gTextDark">#505050</color>
-    <color name="gPurpleDark">#1c0040</color>
-    <color name="colorPrimary">#f0f0f0</color>
-    <color name="gGreenLight">#1f34a853</color>
+    <color name="red">#ea4335</color>
+    <color name="blue">#4285f4</color>
+    <color name="green">#34a853</color>
+    <color name="yellow">#FFAB00</color>
+
+    <!--Colors-->
+    <!--<color name="red">#B71C1C</color>-->
+    <!--<color name="blue">#0D47A1</color>-->
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <!--<color name="green">#1B5E20</color>-->
+    <!--<color name="yellow">#F57F17</color>-->
+
+    <!-- Text Colors-->
+    <color name="textLight">#1B1B1B</color>
+    <color name="textDisabled">#949494</color>
+
+    <!-- Ripple Colors-->
+    <color name="redRipple">#30B71C1C</color>
+    <color name="blueRipple">#300D47A1</color>
+    <color name="blackRipple">#30000000</color>
+    <color name="greenRipple">#301B5E20</color>
+    <color name="yellowRipple">#30F57F17</color>
+
+    <!-- Extreme Ripple Colors-->
+    <color name="redLight">#15B71C1C</color>
 </resources>

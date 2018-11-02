@@ -32,7 +32,7 @@ public class Base implements Serializable {
 
     @NotNull
     protected SimpleDateFormat getDateFormat() {
-        return new SimpleDateFormat(Strings.DateServer, Locale.US);
+        return new SimpleDateFormat(Strings.DateTimeServer, Locale.US);
     }
 
     @NotNull
