@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    tools:strokeColor="@color/yellow"
+    android:layout_margin="4dp"
+    android:id="@+id/cardView"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:background="?attr/selectableItemBackground"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="4dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textAppearance="?textAppearanceHeadline6"
+                tools:text="@tools:sample/us_zipcodes"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:id="@+id/textView1"
+                android:paddingBottom="3dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textAppearance="?textAppearanceBody1"
+                tools:text="@tools:sample/date/ddmmyy"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:id="@+id/textView2"
+                android:paddingBottom="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:textSize="13sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textAppearance="?textAppearanceBody1"
+            android:textColor="@android:color/white"
+            tools:text="@tools:sample/date/ddmmyy"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            tools:background="@color/yellow"
+            android:textAlignment="center"
+            android:paddingBottom="12dp"
+            android:id="@+id/textView3"
+            android:paddingTop="8dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>

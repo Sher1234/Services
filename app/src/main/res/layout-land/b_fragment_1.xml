@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    app:strokeColor="@color/green"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="2dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textAppearance="?textAppearanceHeadline6"
+            tools:text="@tools:sample/full_names"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:paddingStart="12dp"
+            android:id="@+id/textView"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:padding="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/item_4"
+            android:id="@+id/recyclerView"
+            android:fadeScrollbars="true"
+            android:layout_height="0dp"
+            android:paddingStart="20dp"
+            android:layout_weight="1"
+            android:paddingEnd="20dp"
+            android:gravity="center"
+            tools:itemCount="4"
+            app:spanCount="4" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:gravity="end">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_height="match_parent"
+                android:layout_width="24dp"
+                android:padding="4dp"
+                android:src="#7B1FA2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textAppearance="?textAppearanceBody2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/requests"
+                android:textColor="#7B1FA2"
+                android:textSize="11sp"
+                tools:ignore="SmallSp"
+                android:padding="4dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_height="match_parent"
+                android:layout_width="24dp"
+                android:padding="4dp"
+                android:src="#E64A19" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textAppearance="?textAppearanceBody2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/visits"
+                android:textColor="#E64A19"
+                android:textSize="11sp"
+                tools:ignore="SmallSp"
+                android:padding="4dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RadioGroup
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroup"
+            android:gravity="center">
+
+            <RadioButton
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textColor="@color/checked_item_green"
+                android:background="@drawable/radio_button"
+                android:layout_height="match_parent"
+                android:text="@string/daily"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/radio1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:padding="18dp"
+                android:button="@null"
+                android:checked="true" />
+
+            <RadioButton
+                android:textAppearance="?textAppearanceHeadline6"
+                android:textColor="@color/checked_item_green"
+                android:background="@drawable/radio_button"
+                android:layout_height="match_parent"
+                android:text="@string/monthly"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/radio2"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:padding="18dp"
+                android:button="@null" />
+
+        </RadioGroup>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>

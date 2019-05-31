@@ -29,8 +29,7 @@
             android:layout_margin="6dp"
             android:text="@string/reset"
             android:textAllCaps="false"
-            android:textSize="13sp"
-            android:theme="@style/AppTheme.Red" />
+            android:textSize="13sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button2"

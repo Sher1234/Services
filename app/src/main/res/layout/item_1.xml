@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_width="match_parent"
+    android:layout_marginBottom="4dp"
+    tools:strokeColor="@color/yellow"
+    android:layout_marginTop="4dp"
+    android:id="@+id/cardView"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:background="?attr/selectableItemBackground"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:foreground="?attr/selectableItemBackground"
-        android:paddingStart="16dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="8dp"
-        tools:targetApi="m">
+        android:layout_width="match_parent"
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:textAppearance="?textAppearanceHeadline6"
+                tools:text="@tools:sample/us_zipcodes"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textColor="@color/textLight"
-                android:textSize="14sp"
-                tools:text="@tools:sample/us_zipcodes" />
+                android:paddingBottom="3dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
+                android:textAppearance="?textAppearanceBody1"
+                tools:text="@tools:sample/date/ddmmyy"
                 android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:gravity="center_vertical"
-                android:padding="6dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:textColor="@color/textLight"
-                android:textSize="13.5sp"
-                tools:text="@tools:sample/date/ddmmyy" />
+                android:id="@+id/textView2"
+                android:paddingBottom="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:textSize="13sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageView"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textAppearance="?textAppearanceBody1"
+            android:textColor="@android:color/white"
+            tools:text="@tools:sample/date/ddmmyy"
+            android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            tools:srcCompat="@drawable/completed" />
+            tools:background="@color/yellow"
+            android:gravity="center_vertical"
+            android:id="@+id/textView3"
+            android:paddingStart="12dp"
+            android:paddingEnd="18dp"
+            android:padding="6dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_gravity="bottom"
-        android:alpha="0.3"
-        android:background="@color/black" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</com.google.android.material.card.MaterialCardView>

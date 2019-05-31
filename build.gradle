@@ -5,7 +5,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0-alpha02'
+        classpath 'com.android.tools.build:gradle:3.5.0-beta02'
+        classpath 'com.google.gms:google-services:4.2.0'
     }
 }
 

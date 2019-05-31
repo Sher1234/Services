@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:title="@string/quick_access">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/home"
+                    android:icon="@drawable/home"
+                    android:title="@string/home"
+                    tools:checked="true" />
+
+                <item
+                    android:id="@+id/calls"
+                    android:icon="@drawable/list"
+                    android:title="@string/all_calls" />
+
+                <item
+                    android:id="@+id/add"
+                    android:icon="@drawable/ic_add"
+                    android:title="@string/register_call" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/account_settings">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/account"
+                    android:icon="@drawable/user"
+                    android:title="@string/profile" />
+
+                <item
+                    android:id="@+id/exit"
+                    android:icon="@drawable/exit"
+                    android:title="@string/sign_out" />
+
+            </group>
+        </menu>
+    </item>
+
+</menu>

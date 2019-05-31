@@ -4,24 +4,25 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
+
+import org.jetbrains.annotations.NotNull;
+
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.model.base.User;
-import io.github.sher1234.service.ui.a.Splash;
-import io.github.sher1234.service.ui.b.Board;
-import io.github.sher1234.service.ui.c.CallList;
-import io.github.sher1234.service.ui.d.AddCall;
-import io.github.sher1234.service.ui.e.EmployeeList;
-import io.github.sher1234.service.ui.f.Privileges;
-import io.github.sher1234.service.ui.g.Profile;
+import io.github.sher1234.service.ui.v1.a.Splash;
+import io.github.sher1234.service.ui.v1.b.Board;
+import io.github.sher1234.service.ui.v1.c.CallList;
+import io.github.sher1234.service.ui.v1.d.AddCall;
+import io.github.sher1234.service.ui.v1.e.EmployeeList;
+import io.github.sher1234.service.ui.v1.f.Privileges;
+import io.github.sher1234.service.ui.v1.g.Profile;
 
 public class Navigate implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -126,9 +127,9 @@ public class Navigate implements NavigationView.OnNavigationItemSelectedListener
         textB.setText(user.Phone);
         textA.setText(user.Name);
         if (user.isAdmin())
-            navView.inflateMenu(R.menu.a_board);
+            navView.inflateMenu(R.menu.admin);
         else
-            navView.inflateMenu(R.menu.u_board);
+            navView.inflateMenu(R.menu.user);
         this.navView.setNavigationItemSelectedListener(this);
         onResumeActivity();
     }

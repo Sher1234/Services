@@ -4,11 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.model.base.Employee;
 
@@ -94,7 +95,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
             textView2 = layout.findViewById(R.id.textView2);
             textView3 = layout.findViewById(R.id.textView3);
             textView4 = layout.findViewById(R.id.textView4);
-            textView5 = layout.findViewById(R.id.textView5);
+            textView5 = layout.findViewById(R.id.textView4);
         }
     }
 }

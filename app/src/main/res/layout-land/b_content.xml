@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:showIn="@layout/b_activity">
+
+    <fragment
+        android:name="io.github.sher1234.service.ui.v2.b.fragment.graph.Graph"
+        android:layout_height="match_parent"
+        tools:layout="@layout/b_fragment_1"
+        android:layout_marginBottom="72dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="240dp"
+        android:id="@+id/fragment1" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:layout_width="0dp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <fragment
+                android:name="io.github.sher1234.service.ui.v2.b.fragment.pending.Pending"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                tools:layout="@layout/b_fragment_2"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/fragment2" />
+
+            <fragment
+                android:name="io.github.sher1234.service.ui.v2.b.fragment.recent.Recent"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                tools:layout="@layout/b_fragment_2"
+                android:layout_marginBottom="96dp"
+                android:layout_marginTop="8dp"
+                android:id="@+id/fragment3" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

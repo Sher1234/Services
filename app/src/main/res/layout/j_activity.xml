@@ -22,7 +22,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            app:navigationIcon="@drawable/back"
+            app:navigationIcon="@drawable/ic_back"
             app:title="@null">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -95,8 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/reset"
-                android:textAllCaps="false"
-                android:theme="@style/AppTheme.Red" />
+                android:textAllCaps="false" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button2"
@@ -105,8 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:text="@string/add_signature"
-                android:textAllCaps="false"
-                android:theme="@style/AppTheme.Green" />
+                android:textAllCaps="false" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

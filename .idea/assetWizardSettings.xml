@@ -144,7 +144,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android%20Studio/studio/plugins/android/lib/android.jar!/images/material_design_icons/toggle/ic_star_half_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_settings_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -154,7 +154,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_star_half_black" />
+                            <entry key="outputName" value="ic_settings" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\agghu\Desktop\#Others\horribles\download.svg" />
                           </map>

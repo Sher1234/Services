@@ -22,7 +22,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/menu"
+            app:navigationIcon="@drawable/ic_menu"
             app:title="@null">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -248,8 +248,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:text="@string/sign_out"
-                    android:textAllCaps="false"
-                    android:theme="@style/AppTheme.Red" />
+                    android:textAllCaps="false" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

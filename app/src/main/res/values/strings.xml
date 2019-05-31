@@ -35,7 +35,7 @@
     <string name="monthly">Monthly</string>
     <string name="daily">Daily</string>
     <string name="employees">Employees</string>
-    <string name="welcome_text"><![CDATA[Welcome to Max Group (P)Ltd.\nServices Panel]]></string>
+    <string name="welcome_text"><![CDATA[Welcome to Max Group (P)Ltd.\nSmart Employee]]></string>
     <string name="acc_disabled">Account is currently inactive. Contact system administrator to activate account or try again after some time.</string>
     <string name="admin_dismiss">Dismiss account as administrator.</string>
     <string name="admin_add">Add account as administrator.</string>
@@ -43,14 +43,15 @@
     <string name="acc_disable">Disable account from accessing the application.</string>
     <string name="dismiss_admin">Dismiss Admin</string>
     <string name="add_admin">Add Admin</string>
-    <string name="offline_access">Cannot process your request due to some server issue.\nPlease try again later.</string>
+    <string name="offline_access">Cannot process your request due to network issues.\nPlease try again later.</string>
     <string name="user_privileges">Privileges</string>
     <string name="designed_for_max"><![CDATA[Designed for Max Group (P) Ltd.]]></string>
-    <string name="email_or_id">Email/Employee ID*</string>
+    <string name="email_mandatory">Email*</string>
     <string name="pending_calls">Pending Calls</string>
     <string name="delete_acc">Delete Account</string>
     <string name="acc_delete">Delete account from the application database.</string>
-    <string name="no_pending_calls">No pending calls available.</string>
+    <string name="no_pending_requests">You\'ve finished!\nNo pending requests available.</string>
+    <string name="no_recent_requests">Empty!\nNo requests available.</string>
     <string name="search">Search</string>
     <string name="visit">Visit</string>
     <string name="edit_call">Edit Call</string>
@@ -96,6 +97,17 @@
     <string name="sign_visit">Sign Visit</string>
     <string name="enable_acc">Enable Account</string>
     <string name="acc_enable">Enable account for accessing the application.</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="create_account">Create account</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="country_code">Country Code</string>
+    <string name="in_91">IN (+91)</string>
+    <string name="pending_requests">Pending Requests</string>
+    <string name="requests">Requests</string>
+    <string name="disabled">Disabled</string>
+    <string name="complete_account">Complete Account Setup</string>
+    <string name="recent_requests">Recent Requests</string>
 
     <string-array name="months">
         <item>January</item>

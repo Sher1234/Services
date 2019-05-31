@@ -117,8 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:text="@string/cancel"
-                android:textAllCaps="false"
-                android:theme="@style/AppTheme.Red" />
+                android:textAllCaps="false" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button2"

@@ -13,120 +13,109 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
-        android:label="@string/app_name"
-        android:name=".AppController"
-        android:supportsRtl="true"
-        android:icon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme"
         android:roundIcon="@mipmap/ic_launcher_round"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:theme="@style/Application"
+        android:icon="@mipmap/ic_launcher"
+        android:name=".AppController"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:allowBackup="true">
 
         <service android:name=".service.LocationTrack" />
 
-        <activity
-            android:name=".ui.a.Splash"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name">
+        <activity android:name=".ui.v2.a.Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.v2.b.Board" />
+
         <activity
-            android:name=".ui.g.Profile"
+            android:name=".ui.v1.g.Profile"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.b.Board"
             android:label="@string/app_name"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:label="@string/app_name"
-            android:name=".ui.c.CallList"
+            android:name=".ui.v1.c.CallList"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.f.Privileges"
+            android:name=".ui.v1.f.Privileges"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.e.EmployeeList"
+            android:name=".ui.v1.e.EmployeeList"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.h.EmployeeBoard"
+            android:name=".ui.v1.h.EmployeeBoard"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.i.Show"
+            android:name=".ui.v1.i.Show"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.d.AddCall"
+            android:name=".ui.v1.d.AddCall"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.d.AllotCall"
+            android:name=".ui.v1.d.AllotCall"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.j.AddVisit"
+            android:name=".ui.v1.j.AddVisit"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.j.StartVisit"
+            android:name=".ui.v1.j.StartVisit"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.j.EndVisit"
+            android:name=".ui.v1.j.EndVisit"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.d.EditCall"
+            android:name=".ui.v1.d.EditCall"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.j.EditVisit"
+            android:name=".ui.v1.j.EditVisit"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:label="@string/app_name"
-            android:name=".ui.j.SignVisit"
+            android:name=".ui.v1.j.SignVisit"
             android:screenOrientation="landscape"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-    <include layout="@layout/c_content" />
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_gravity="start"
-        android:background="@color/white"
-        android:focusable="true"
-        android:scrollbars="none"
+    <View
         android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        app:headerLayout="@layout/nav_header"
-        app:itemBackground="@drawable/navigation_item"
-        app:itemIconTint="@color/navigation_item"
-        app:itemTextAppearance="@style/TextAppearance.Navigation.Text"
-        app:itemTextColor="@color/navigation_item"
-        tools:menu="@menu/a_board" />
+        android:layout_width="match_parent"
+        android:background="@color/white" />
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/filterView"
-        android:layout_width="wrap_content"
-        android:layout_gravity="end"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:focusable="true"
-        app:headerLayout="@layout/nav_filter"
-        app:itemHorizontalPadding="18dp"
-        app:itemIconTint="@color/navigation_item"
-        app:itemTextAppearance="@style/TextAppearance.MaterialComponents.Body2"
-        app:itemTextColor="@color/navigation_item" />
+        android:layout_width="match_parent"
+        tools:listitem="@layout/item_2"
+        android:id="@+id/recyclerView"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="16dp" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_menu"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="end"
+        android:id="@+id/toolbar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:srcCompat="@drawable/ic_filter"
+        app:layout_anchor="@id/toolbar"
+        android:tint="@color/white"
+        android:id="@+id/fab" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

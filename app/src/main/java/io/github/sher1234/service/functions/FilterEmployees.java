@@ -2,6 +2,10 @@ package io.github.sher1234.service.functions;
 
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -11,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import io.github.sher1234.service.R;
 import io.github.sher1234.service.model.base.Query;
 import io.github.sher1234.service.util.Strings;
@@ -35,7 +36,7 @@ public class FilterEmployees implements View.OnClickListener {
 
     public FilterEmployees(@NotNull AppCompatActivity activity, TaskEmployeeList.TaskUpdate taskUpdate) {
         this.drawerLayout = activity.findViewById(R.id.drawerLayout);
-        this.navView = activity.findViewById(R.id.filterView);
+        this.navView = activity.findViewById(R.id.navigationView);
         this.taskUpdate = taskUpdate;
         this.activity = activity;
         setNavigationView();

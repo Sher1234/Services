@@ -2,16 +2,23 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="android:statusBarColor">@color/textLight</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorAccent">@color/blue</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="Application" parent="Theme.MaterialComponents.Light">
+        <item name="android:statusBarColor">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Application.Error" parent="Application">
+        <item name="colorAccent">@color/red</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor">@color/textLight</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorAccent">@color/blue</item>
+        <item name="colorAccent">@color/green</item>
     </style>
 
     <style name="AppTheme.Dialog" parent="Theme.MaterialComponents.Dialog.Alert">
@@ -19,30 +26,35 @@
         <item name="colorAccent">@color/blue</item>
     </style>
 
+    <style name="Application.Dialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+
     <style name="AppTheme.Progress" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="colorAccent">@color/blue</item>
     </style>
 
-    <style name="AppTheme.Red" parent="AppTheme">
-        <item name="colorAccent">@color/red</item>
-    </style>
+<!--    <style name="AppTheme.Red" parent="AppTheme">-->
+<!--        <item name="colorAccent">@color/red</item>-->
+<!--    </style>-->
 
-    <style name="AppTheme.White" parent="AppTheme">
-        <item name="colorAccent">@color/white</item>
-        <item name="android:tint">@color/blue</item>
-    </style>
+<!--    <style name="AppTheme.White" parent="AppTheme">-->
+<!--        <item name="colorAccent">@color/white</item>-->
+<!--        <item name="android:tint">@color/blue</item>-->
+<!--    </style>-->
 
-    <style name="AppTheme.Green" parent="AppTheme">
-        <item name="colorAccent">@color/green</item>
-    </style>
+<!--    <style name="AppTheme.Green" parent="AppTheme">-->
+<!--        <item name="colorAccent">@color/green</item>-->
+<!--    </style>-->
 
-    <style name="AppTheme.Black" parent="AppTheme">
-        <item name="colorAccent">@color/black</item>
-    </style>
+<!--    <style name="AppTheme.Black" parent="AppTheme">-->
+<!--        <item name="colorAccent">@color/black</item>-->
+<!--    </style>-->
 
-    <style name="AppTheme.Blue" parent="AppTheme">
-        <item name="colorAccent">@color/blue</item>
-    </style>
+<!--    <style name="AppTheme.Blue" parent="AppTheme">-->
+<!--        <item name="colorAccent">@color/blue</item>-->
+<!--    </style>-->
 
     <style name="TextAppearance.Navigation.Text" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">sans-serif-condensed</item>

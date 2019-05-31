@@ -22,6 +22,6 @@
         app:itemIconTint="@color/navigation_item"
         app:itemTextAppearance="@style/TextAppearance.Navigation.Text"
         app:itemTextColor="@color/navigation_item"
-        tools:menu="@menu/a_board" />
+        tools:menu="@menu/admin" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

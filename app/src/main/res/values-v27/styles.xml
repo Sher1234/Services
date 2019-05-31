@@ -5,18 +5,14 @@
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorAccent">@color/blue</item>
+        <item name="colorAccent">@color/green</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorAccent">@color/blue</item>
+        <item name="colorAccent">@color/green</item>
     </style>
 
 </resources>

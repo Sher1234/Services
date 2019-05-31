@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
-import androidx.appcompat.widget.LinearLayoutCompat;
+
 import io.github.sher1234.service.R;
 
 @SuppressWarnings("all")
@@ -19,18 +19,16 @@ public class MaterialDialog extends Dialog {
     private TextView textViewTitle;
 
     // Dialog Layout
-    private View view;
     private Button buttonNeutral;
     private Button buttonNegative;
     private Button buttonPositive;
     private TextView textViewDescription;
-    private LinearLayoutCompat linearLayout;
 
     // Progress Layout
     private ProgressBar progressBar;
 
     public MaterialDialog(@NonNull Context context) {
-        super(context, R.style.AppTheme_Dialog);
+        super(context, R.style.Application_Dialog);
     }
 
     public static MaterialDialog Progress(Context context) {
@@ -55,12 +53,10 @@ public class MaterialDialog extends Dialog {
     }
 
     private void setDialogView() {
-        view = findViewById(R.id.view);
         textViewTitle = findViewById(R.id.textViewTitle);
         buttonNeutral = findViewById(R.id.buttonNeutral);
         buttonPositive = findViewById(R.id.buttonPositive);
         buttonNegative = findViewById(R.id.buttonNegative);
-        linearLayout = findViewById(R.id.linearLayoutButton);
         textViewDescription = findViewById(R.id.textViewDescription);
         buttonPositive.setVisibility(View.GONE);
         buttonNegative.setVisibility(View.GONE);
@@ -94,6 +90,7 @@ public class MaterialDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 buttonClick.onClick(MaterialDialog.this, v);
+                dismiss();
             }
         });
         buttonPositive.setVisibility(View.VISIBLE);
@@ -106,6 +103,7 @@ public class MaterialDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 buttonClick.onClick(MaterialDialog.this, v);
+                dismiss();
             }
         });
         buttonNegative.setVisibility(View.VISIBLE);
@@ -118,6 +116,7 @@ public class MaterialDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 buttonClick.onClick(MaterialDialog.this, v);
+                dismiss();
             }
         });
         buttonNegative.setVisibility(View.VISIBLE);
@@ -165,13 +164,6 @@ public class MaterialDialog extends Dialog {
 
     public MaterialDialog setDescription(@StringRes int i) {
         textViewDescription.setText(i);
-        return this;
-    }
-
-    public MaterialDialog setButtonOrientation(int orientation) {
-        linearLayout.setOrientation(orientation);
-        if (orientation == LinearLayoutCompat.VERTICAL)
-            view.setVisibility(View.GONE);
         return this;
     }
 

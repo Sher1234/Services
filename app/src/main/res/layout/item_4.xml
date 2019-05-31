@@ -1,63 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:foreground="?selectableItemBackground">
-
-    <View
-        android:layout_width="0.1dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:alpha="0.1"
-        android:background="@color/black" />
+    android:layout_width="match_parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:background="?selectableItemBackground"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="4dp"
-            android:padding="5dp"
-            android:textColor="@color/textLight"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:text="999" />
+        android:layout_width="match_parent">
 
         <ProgressBar
-            android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="32dp"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:progressDrawable="@drawable/progress_bar_blue"
+            android:progressDrawable="@drawable/progress_bar_gradient_a"
+            tools:progress="@tools:sample/us_zipcodes"
             android:theme="@style/AppTheme.Progress"
-            tools:max="100000"
-            tools:progress="@tools:sample/us_zipcodes" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="@color/textLight"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:text="Tue,\nOct 30" />
+            android:id="@+id/progressBarA"
+            android:paddingStart="4dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingEnd="0dp"
+            tools:max="200000" />
+
+        <ProgressBar
+            android:progressDrawable="@drawable/progress_bar_gradient_b"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            tools:progress="@tools:sample/us_zipcodes"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/progressBarB"
+            android:paddingStart="0dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingEnd="4dp"
+            tools:max="120000" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

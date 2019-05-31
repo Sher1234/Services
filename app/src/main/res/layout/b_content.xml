@@ -1,142 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    tools:showIn="@layout/b_activity"
+    android:clipToPadding="false"
+    android:fillViewport="true">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white" />
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:liftOnScroll="true">
+        android:layout_width="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <fragment
+            android:name="io.github.sher1234.service.ui.v2.b.fragment.graph.Graph"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/white"
-            app:navigationIcon="@drawable/menu"
-            app:title="@null">
+            tools:layout="@layout/b_fragment_1"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/fragment1" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewTitle"
-                style="@style/TextAppearance.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dashboard" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayout"
+        <fragment
+            android:name="io.github.sher1234.service.ui.v2.b.fragment.pending.Pending"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            tools:layout="@layout/b_fragment_2"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="6dp"
+            android:id="@+id/fragment2" />
+
+        <fragment
+            android:name="io.github.sher1234.service.ui.v2.b.fragment.recent.Recent"
             android:layout_height="wrap_content"
-            android:background="#08000000"
-            android:foreground="?attr/selectableItemBackground"
-            tools:targetApi="M">
+            android:layout_width="match_parent"
+            tools:layout="@layout/b_fragment_2"
+            android:layout_marginBottom="96dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="6dp"
+            android:id="@+id/fragment3" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
-                android:lineSpacingExtra="4dp"
-                android:padding="8dp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/textLight"
-                android:textSize="12sp"
-                tools:text="Calls: 85" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
-                android:lineSpacingExtra="4dp"
-                android:padding="8dp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/textLight"
-                android:textSize="12sp"
-                tools:text="Visits: 85" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
-                android:lineSpacingExtra="4dp"
-                android:padding="8dp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/textLight"
-                android:textSize="12sp"
-                tools:text="Pending: 85" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="42dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_gravity="bottom"
-        android:theme="@style/AppTheme.Black"
-        app:tabGravity="fill"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorGravity="top"
-        app:tabIndicatorHeight="4dp"
-        app:tabTextAppearance="@style/TextAppearance.TabLayout.Text"
-        app:tabUnboundedRipple="false">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/registrations" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/visits" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:theme="@style/AppTheme.Black"
-        android:tint="@color/white"
-        app:fabCustomSize="36dp"
-        app:layout_anchor="@id/tabLayout"
-        app:layout_anchorGravity="center"
-        app:srcCompat="@drawable/add" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.core.widget.NestedScrollView>

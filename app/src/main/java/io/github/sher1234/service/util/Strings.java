@@ -10,10 +10,10 @@ public interface Strings {
     String ExtraData1 = "Extra-Data-1";
     String ExtraData2 = "Extra-Data-2";
     String ExtraData = "Extra-Data";
-    String DateView = "MMM dd, yyyy";
     String DateServer = "yyyy-MM-dd";
     String MonthView = "MMM yyyy";
     String TAG = "TAG_FRAGMENT_VIEW";
+    String DateView = "dd-MM-yy";
 
     String Name = "Name";
     String Email = "Email";

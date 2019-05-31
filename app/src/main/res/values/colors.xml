@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#ea4335</color>
-    <color name="blue">#4285f4</color>
-    <color name="green">#34a853</color>
-    <color name="yellow">#FFAB00</color>
+    <color name="red">#C62828</color>
+    <color name="blue">#1565C0</color>
+    <color name="green">#2E7D32</color>
+    <color name="yellow">#FF8F00</color>
 
     <!--Colors-->
     <!--<color name="red">#B71C1C</color>-->
@@ -18,11 +18,11 @@
     <color name="textDisabled">#949494</color>
 
     <!-- Ripple Colors-->
-    <color name="redRipple">#30B71C1C</color>
-    <color name="blueRipple">#300D47A1</color>
-    <color name="blackRipple">#30000000</color>
-    <color name="greenRipple">#301B5E20</color>
-    <color name="yellowRipple">#30F57F17</color>
+    <color name="redRipple">#20C62828</color>
+    <color name="blueRipple">#201565C0</color>
+    <color name="blackRipple">#20000000</color>
+    <color name="greenRipple">#202E7D32</color>
+    <color name="yellowRipple">#20FF8F00</color>
 
     <!-- Extreme Ripple Colors-->
     <color name="redLight">#15B71C1C</color>

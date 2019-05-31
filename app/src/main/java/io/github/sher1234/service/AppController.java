@@ -1,7 +1,10 @@
 package io.github.sher1234.service;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
 import io.github.sher1234.service.functions.TaskUser;
 import io.github.sher1234.service.model.base.User;
 import io.github.sher1234.service.util.Strings;
@@ -21,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AppController extends Application {
 
-    private static AppController instance;
+    public static AppController instance;
 
     @Contract(pure = true)
     public static synchronized AppController getInstance() {
@@ -80,5 +82,9 @@ public class AppController extends Application {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+    }
+
+    public SharedPreferences getPrefs() {
+        return getSharedPreferences("user.detail", Context.MODE_PRIVATE);
     }
 }

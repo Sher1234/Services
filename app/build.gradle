@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        versionCode 30
+        versionCode 35
         minSdkVersion 21
-        versionName "3.0"
+        versionName "3.5"
         targetSdkVersion 28
         vectorDrawables.useSupportLibrary = true
         applicationId "io.github.sher1234.service"
@@ -20,18 +20,31 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core:1.0.2'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    implementation 'com.google.firebase:firebase-firestore:19.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    implementation 'org.jetbrains:annotations-java5:16.0.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    implementation 'org.jetbrains:annotations-java5:17.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+apply plugin: 'com.google.gms.google-services'
